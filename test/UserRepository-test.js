@@ -1,9 +1,11 @@
 import { expect } from 'chai';
 import UserRepository from '../src/UserRepository';
+import User from '../src/User'
 
 describe('User Repository', () => {
   let user1
   let user2
+  let data
   let userRepo1
   beforeEach(() => {
     user1 = new User (
@@ -37,11 +39,23 @@ describe('User Repository', () => {
       ]
     }
     )
-    repo1 = new UserRepository([user1, user2])
+    data = [user1, user2]
+    repo1 = new UserRepository(data)
   })
-
 
   it('should be a function', function () {
     expect(UserRepository).to.be.a('function');
+  });
+  
+  it('should be a new instance of UserRepository', function () {
+    expect(userRepository1).to.be.an.instanceof(UserRepository);
+  });
+  
+  it('should have a parameter of data', function () {
+    expect(data).to.deep.equal([user1, user2]);
+  });
+  
+  it('should have user data', function () {
+    expect(repo1.userData).to.deep.equal(data);
   });
 });
