@@ -16,4 +16,12 @@ describe('User', () => {
         };
         user = new User(userData);
     });
+
+    it.skip('should be a function', () => {
+        expect(User).to.be.a('function');
+    });
+    
+    it.skip('should be an instance of user', () => {
+        expect(user).to.be.an.instanceOf(User);
+    });
 });
