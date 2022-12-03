@@ -48,8 +48,12 @@ describe('User', () => {
     it.skip('should have an daily step goal', () => {
         expect(user.dailyStepGoal).to.equal(10000);
     });
-    
+
     it.skip('should have an friends which is an array of nums', () => {
         expect(user.friends).to.equal([16, 4, 8]);
+    });
+
+    it.skip('should be able to return the users first name', () => {
+        expect(user.findFirstName()).to.equal('Luisa');
     });
 });
