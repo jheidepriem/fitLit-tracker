@@ -34,6 +34,8 @@ main {
   height: 25vh;
   width: 65vw;
   border: 3px solid red;
+  display: flex;
+  justify-content: center;
 }
 
 .graph-wrapper {
@@ -49,4 +51,10 @@ main {
   height: 40vh;
   width: 30vw;
   border: 3px solid blue;
+  display: flex;
+  justify-content: center;
+}
+
+.step-graph {
+  border-radius: 150px;
 }
