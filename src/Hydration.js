@@ -1,6 +1,6 @@
 class Hydration {
-    constructor() {
-
+    constructor(id) {
+        this.id = id;
     };
 };
 
