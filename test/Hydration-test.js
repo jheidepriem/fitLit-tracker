@@ -1,3 +1,4 @@
+const { expect } = require("chai");
 const Hydration = require("../src/Hydration");
 
 describe("Hydration", () => {
@@ -10,5 +11,13 @@ describe("Hydration", () => {
             numOunces: 37
         };
         hydration = new Hydration(hydrationData);
+      });
+
+      it.skip("should be a function", () => {
+        expect(Hydration).to.be.a("function");
+      });
+
+      it.skip("should be an instance of hydration", () => {
+        expect(hydration).to.be.an.instanceOf(Hydration);
       });
 });
