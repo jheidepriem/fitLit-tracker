@@ -33,7 +33,12 @@ main {
   border: 3px solid red;
 }
 
-.step-graph {
+.graph-wrapper {
+  display: flex;
+}
+
+.step-graph,
+.sleep-graph {
   height: 40vh;
   width: 30vw;
   border: 3px solid blue;
