@@ -75,23 +75,23 @@ describe("Hydration", () => {
         hydration = new Hydration(1, hydrationData);
     });
 
-    it.skip("should be a function", () => {
+    it("should be a function", () => {
     expect(Hydration).to.be.a("function");
     });
 
-    it.skip("should be an instance of hydration", () => {
+    it("should be an instance of hydration", () => {
     expect(hydration).to.be.an.instanceOf(Hydration);
     });
 
-    it.skip("should have a user id", () => {
+    it("should have a user id", () => {
         expect(hydration.id).to.equal(1);
     });
 
-    it.skip("should have an array of user history data", () => {
+    it("should have an array of user history data", () => {
         expect(hydration.userHistory).to.be.an("array");
     });
 
-    it.skip("should be able to filter history based on passed in user id", () => {
+    it("should be able to filter history based on passed in user id", () => {
         expect(hydration.userHistory).to.deep.equal([
             {userID: 1, date: "2019/06/15", numOunces: 30},
             {userID: 1, date: "2019/06/16", numOunces: 40},
