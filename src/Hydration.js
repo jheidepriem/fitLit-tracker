@@ -18,6 +18,10 @@ class Hydration {
         }, 0);
         return sum;
     };
+
+    getTotalAvg() {
+        return this.getTotalOunces() / this.userHistory.length;
+    };
 };
 
 module.exports = Hydration;
