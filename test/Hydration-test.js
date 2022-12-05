@@ -88,20 +88,12 @@ describe("Hydration", () => {
     });
 
     it("should have an array of user history data", () => {
-        expect(hydration.userHistory).to.be.an("array");
+        expect(hydration.userHistory).to.deep.equal([]);
     });
 
     it("should be able to filter history based on passed in user id", () => {
         hydration.filterUserHistory(hydrationData);
-        expect(hydration.userHistory).to.deep.equal([
-            {userID: 1, date: "2019/06/15", numOunces: 45},
-            {userID: 1, date: "2019/06/16", numOunces: 55},
-            {userID: 1, date: "2019/06/17", numOunces: 40},
-            {userID: 1, date: "2019/06/18", numOunces: 60},
-            {userID: 1, date: "2019/06/19", numOunces: 35},
-            {userID: 1, date: "2019/06/20", numOunces: 65},
-            {userID: 1, date: "2019/06/21", numOunces: 50},
-        ]);
+        expect(hydration.userHistory).to.deep.equal([hydration1, hydrationEntry2, hydrationEntry3, hydrationEntry4, hydrationEntry5, hydrationEntry6, hydrationEntry7]);
     });
 
     it("should be able to sum total ounces for all entries", () => {
