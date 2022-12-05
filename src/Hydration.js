@@ -11,6 +11,13 @@ class Hydration {
             };
         });
     };
+
+    getTotalOunces() {
+        const sum = this.userHistory.reduce((total, day) => {
+            return total += day.numOunces;
+        }, 0);
+        return sum;
+    };
 };
 
 module.exports = Hydration;
