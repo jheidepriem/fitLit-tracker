@@ -16,19 +16,19 @@ describe("Hydration", () => {
         hydrationEntry1 = {
             userID: 1,
             date: "2019/06/15",
-            numOunces: 30
+            numOunces: 45
         };
 
         hydrationEntry2 = {
             userID: 1,
             date: "2019/06/16",
-            numOunces: 40
+            numOunces: 55
         };
 
         hydrationEntry3 = {
             userID: 1,
             date: "2019/06/17",
-            numOunces: 50
+            numOunces: 40
         };
 
         hydrationEntry4 = {
@@ -40,19 +40,19 @@ describe("Hydration", () => {
         hydrationEntry5 = {
             userID: 1,
             date: "2019/06/19",
-            numOunces: 50
+            numOunces: 35
         };
 
         hydrationEntry6 = {
             userID: 1,
             date: "2019/06/20",
-            numOunces: 40
+            numOunces: 65
         };
 
         hydrationEntry7 = {
             userID: 1,
             date: "2019/06/21",
-            numOunces: 30
+            numOunces: 50
         };
 
         hydrationEntry8 = {
@@ -94,13 +94,28 @@ describe("Hydration", () => {
     it("should be able to filter history based on passed in user id", () => {
         hydration.filterUserHistory(hydrationData);
         expect(hydration.userHistory).to.deep.equal([
-            {userID: 1, date: "2019/06/15", numOunces: 30},
-            {userID: 1, date: "2019/06/16", numOunces: 40},
-            {userID: 1, date: "2019/06/17", numOunces: 50},
+            {userID: 1, date: "2019/06/15", numOunces: 45},
+            {userID: 1, date: "2019/06/16", numOunces: 55},
+            {userID: 1, date: "2019/06/17", numOunces: 40},
             {userID: 1, date: "2019/06/18", numOunces: 60},
-            {userID: 1, date: "2019/06/19", numOunces: 50},
-            {userID: 1, date: "2019/06/20", numOunces: 40},
-            {userID: 1, date: "2019/06/21", numOunces: 30},
+            {userID: 1, date: "2019/06/19", numOunces: 35},
+            {userID: 1, date: "2019/06/20", numOunces: 65},
+            {userID: 1, date: "2019/06/21", numOunces: 50},
         ]);
+    });
+
+    it.skip("should be able to sum total ounces for all entries", () => {
+        hydration.filterUserHistory(hydrationData);
+        expect(hydration.getTotalOunces()).to.equal(350);
+    });
+
+    it.skip("should be able to calc avg ounces drank for all entries", () => {
+        hydration.filterUserHistory(hydrationData);
+        expect(hydration.getTotalAvg()).to.equal(50);
+    });
+
+    it.skip("should be able to return num ounces for specific date", () => {
+        hydration.filterUserHistory(hydrationData);
+        expect(hydration.getDailyOunces("2019/06/19")).to.equal(35);
     });
 });
