@@ -119,8 +119,8 @@ describe("Hydration", () => {
         expect(hydration.getDailyOunces("2019/06/19")).to.equal(35);
     });
 
-    it.skip("should return last 7 entries of ounces drank by user", () => {
+    it("should return last 7 entries of ounces drank by user", () => {
         hydration.filterUserHistory(hydrationData);
-        expect(hydration.evalDailyOunces()).to.deep.equal([55, 40, 60, 35, 65, 50, 50])
+        expect(hydration.getWeeklyOunces()).to.deep.equal([55, 40, 60, 35, 65, 50, 50]);
     });
 });
