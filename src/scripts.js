@@ -35,5 +35,5 @@ let currentRepo
 
 function displayGreeting() {
   let userName = 
-  userGreeting.innerText = `Hi, ${userName}`
+  userGreeting.innerHTML = `Hi, ${userName}`
 }
