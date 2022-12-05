@@ -72,7 +72,7 @@ describe("Hydration", () => {
             hydrationEntry8,
         ]
 
-        hydration = new Hydration(1, hydrationData);
+        hydration = new Hydration(1);
     });
 
     it("should be a function", () => {
@@ -92,6 +92,7 @@ describe("Hydration", () => {
     });
 
     it("should be able to filter history based on passed in user id", () => {
+        hydration.filterUserHistory(hydrationData);
         expect(hydration.userHistory).to.deep.equal([
             {userID: 1, date: "2019/06/15", numOunces: 30},
             {userID: 1, date: "2019/06/16", numOunces: 40},
