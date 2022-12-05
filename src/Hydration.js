@@ -22,6 +22,13 @@ class Hydration {
     getTotalAvg() {
         return this.getTotalOunces() / this.userHistory.length;
     };
+
+    getDailyOunces(day) {
+        const dailyOunces = this.userHistory.find((entry) => {
+            return entry.date === day
+        });
+        return dailyOunces.numOunces
+    };
 };
 
 module.exports = Hydration;
