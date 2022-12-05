@@ -25,7 +25,15 @@ let stepGoalDisplay = document.querySelector('.step-goal')
 let strideLengthDisplay = document.querySelector('.stride-length')
 let friendsListDisplay = document.querySelector('friends-list')
 
+//Global Variables
+let currentUser 
+let currentRepo 
 
 //EventListeners
 
 //Functions
+
+function displayGreeting() {
+  let userName = 
+  userGreeting.innerText = `Hi, ${userName}`
+}
