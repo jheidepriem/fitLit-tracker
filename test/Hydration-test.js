@@ -104,17 +104,17 @@ describe("Hydration", () => {
         ]);
     });
 
-    it.skip("should be able to sum total ounces for all entries", () => {
+    it("should be able to sum total ounces for all entries", () => {
         hydration.filterUserHistory(hydrationData);
         expect(hydration.getTotalOunces()).to.equal(350);
     });
 
-    it.skip("should be able to calc avg ounces drank for all entries", () => {
+    it("should be able to calc avg ounces drank for all entries", () => {
         hydration.filterUserHistory(hydrationData);
         expect(hydration.getTotalAvg()).to.equal(50);
     });
 
-    it.skip("should be able to return num ounces for specific date", () => {
+    it("should be able to return num ounces for specific date", () => {
         hydration.filterUserHistory(hydrationData);
         expect(hydration.getDailyOunces("2019/06/19")).to.equal(35);
     });
