@@ -49,7 +49,7 @@ describe("Sleep", () => {
       sleepQuality: 1.2
       };
     data = [sleepEntry1, sleepEntry2, sleepEntry3, sleepEntry4, sleepEntry5, sleepEntry6]
-    sleep1 = new Sleep(1, data)
+    sleep1 = new Sleep(1)
   });
 
   it('should be a function', () => {
@@ -65,10 +65,11 @@ describe("Sleep", () => {
   });
 
   it("should have an array of sleep data", () => {
-    expect(sleep1.sleepData).to.deep.equal(data)
+    expect(sleep1.sleepHistory).to.deep.equal([])
   });
 
   it("should have a method that filters the sleep data by user id", () => {
-    expect(sleep1.filterSleepData()).to.deep.equal([sleepEntry1, sleepEntry3, sleepEntry4, sleepEntry5, sleepEntry6])
+    sleep1.filterSleepData(data)
+    expect(sleep1.sleepHistory).to.deep.equal([sleepEntry1, sleepEntry3, sleepEntry4, sleepEntry5, sleepEntry6])
   });
 })
