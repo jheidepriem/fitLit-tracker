@@ -40,8 +40,6 @@ const createUserCard = () => {
   currentUser = new User(userData[getRandomIndex(userData)])
   console.log('current user',currentUser)
   currentRepo = new UserRepository(userData)
-  // user friends is an array of objects. We want to access the id key and
-  // if it matches the user.friends[i] then return the name key that corresponds with the id
   userInfo.innerHTML = ''
   userInfo.innerHTML += `
     <h2>Hi, ${user.findFirstName()}</h2>
@@ -53,11 +51,8 @@ const createUserCard = () => {
     <h3>Daily Step Goal: ${user.dailyStepGoal}</h3>
     <h3>Average Step Goal: ${currentRepo.findAverageStepGoal()}</h3>
   `
-  friendsListDisplay.innerHTML = `
-  
-  `
 }
-  
+
 
 
 
