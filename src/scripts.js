@@ -30,30 +30,38 @@ let currentRepo
 
 //EventListeners
 
+
 //Functions
 const getRandomIndex = array => {
   return Math.floor(Math.random() * array.length);
 }
 
 const createUserCard = () => {
-  let user = new User(userData[getRandomIndex(userData)])
+  currentUser = new User(userData[getRandomIndex(userData)])
+  console.log('current user',currentUser)
+  currentRepo = new UserRepository(userData)
+  // user friends is an array of objects. We want to access the id key and
+  // if it matches the user.friends[i] then return the name key that corresponds with the id
   userInfo.innerHTML = ''
   userInfo.innerHTML += `
     <h2>Hi, ${user.findFirstName()}</h2>
     <h3>Address:${user.address}</h3>
     <h3>Email:${user.email}</h3>
+  `
+  stepGoalDisplay.innerHTML = `
     <h3>Stride Length: ${user.strideLength}</h3>
     <h3>Daily Step Goal: ${user.dailyStepGoal}</h3>
+    <h3>Average Step Goal: ${currentRepo.findAverageStepGoal()}</h3>
+  `
+  friendsListDisplay.innerHTML = `
+  
   `
 }
+  
 
-const displayUserAvgSteps = () => {
-  currentRepo = new UserRepository(userData)
-  currentUser = new User(userData)
-  stepGoalDisplay.innerText = `
-  Your Step Goal: ${currentUser.dailyStepGoal}
-  Average Step Goal: ${currentRepo.findAverageStepGoal()}
-  `
-}
 
-// if userData includes(friends) then return friends.name
+
+
+
+const pageLoad = (createUserCard())  
+window.addEventListener('load',pageLoad)
