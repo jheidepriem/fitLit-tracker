@@ -25,6 +25,7 @@ let stepGoalDisplay = document.querySelector('.step-goal')
 let strideLengthDisplay = document.querySelector('.stride-length')
 let friendsListDisplay = document.querySelector('friends-list')
 
+
 //Global Variables
 let currentUser 
 let currentRepo 
@@ -33,7 +34,22 @@ let currentRepo
 
 //Functions
 
-function displayGreeting() {
-  let userName = 
-  userGreeting.innerHTML = `Hi, ${userName}`
+
+const createUserCard = () => {
+ querySelector.innerHTML = ''
+ querySelector.innerHTML += `
+  <h2>Hi, ${userName}</h2>
+  <h3>Address:</h3>
+  <p>${user.address}</p>
+  <h3>Email:</h3>
+  <p>${user.email}</p>
+  <h3>Stride Length</h3>
+  <p>${user.strideLength}</p>
+  <h3>Daily Step Goal</h3>
+  <p>${user.dailyStepGoal}</p>
+  //user friends goes here
+  `
 }
+
+//create a function in our user class to compare user steps with the average
+//and display it here
