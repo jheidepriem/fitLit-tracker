@@ -16,13 +16,11 @@ import UserRepository from './UserRepository';
 
 import Hydration from '../src/Hydration';
 import Sleep from '../src/Sleep';
+import User from './User';
 
 // Query Selectors
-let userGreeting = document.querySelector('.user-greeting')
-let address = document.querySelector('.address')
-let email = document.querySelector('.email')
+let userInfo = document.querySelector('.user-info')
 let stepGoalDisplay = document.querySelector('.step-goal')
-let strideLengthDisplay = document.querySelector('.stride-length')
 let friendsListDisplay = document.querySelector('friends-list')
 
 
@@ -34,10 +32,9 @@ let currentRepo
 
 //Functions
 
-
 const createUserCard = () => {
- querySelector.innerHTML = ''
- querySelector.innerHTML += `
+ userInfo.innerHTML = ''
+ userInfo.innerHTML += `
   <h2>Hi, ${userName}</h2>
   <h3>Address:</h3>
   <p>${user.address}</p>
@@ -51,5 +48,12 @@ const createUserCard = () => {
   `
 }
 
-//create a function in our user class to compare user steps with the average
-//and display it here
+const displayUserAvgSteps = () => {
+  currentRepo = new UserRepository(userData)
+  currentUser = new User(userData)
+  stepGoalDisplay.innerText = `
+  Your Step Goal: ${currentUser.dailyStepGoal}
+  Average Step Goal: ${currentRepo.findAverageStepGoal()}
+  `
+}
+
