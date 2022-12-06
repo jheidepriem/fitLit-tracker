@@ -6,7 +6,7 @@ describe('User Repository', () => {
   let user1
   let user2
   let data
-  let userRepo1
+  let repo1
   beforeEach(() => {
     user1 = new User (
       {
@@ -43,19 +43,28 @@ describe('User Repository', () => {
     repo1 = new UserRepository(data)
   })
 
-  it('should be a function', function () {
+  it('should be a function',  () => {
     expect(UserRepository).to.be.a('function');
   });
   
-  it('should be a new instance of UserRepository', function () {
-    expect(userRepository1).to.be.an.instanceof(UserRepository);
+  it('should be a new instance of UserRepository', () => {
+    expect(repo1).to.be.an.instanceof(UserRepository);
   });
   
-  it('should have a parameter of data', function () {
+  it('should have a parameter of data', () => {
     expect(data).to.deep.equal([user1, user2]);
   });
   
-  it('should have user data', function () {
+  it('should have user data', () => {
     expect(repo1.userData).to.deep.equal(data);
   });
+
+  it('should retrieve user data', () => {
+    expect(repo1.retrieveUserData(2)).to.deep.equal(user2)
+  })
+
+  it('should calc the average step goal among all users', () => {
+    expect(repo1.findAverageStepGoal()).to.equal(7500)
+  })
+
 });
