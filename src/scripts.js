@@ -31,20 +31,19 @@ let currentRepo
 //EventListeners
 
 //Functions
+const getRandomIndex = array => {
+  return Math.floor(Math.random() * array.length);
+}
 
 const createUserCard = () => {
- userInfo.innerHTML = ''
- userInfo.innerHTML += `
-  <h2>Hi, ${userName}</h2>
-  <h3>Address:</h3>
-  <p>${user.address}</p>
-  <h3>Email:</h3>
-  <p>${user.email}</p>
-  <h3>Stride Length</h3>
-  <p>${user.strideLength}</p>
-  <h3>Daily Step Goal</h3>
-  <p>${user.dailyStepGoal}</p>
-  //user friends goes here
+  let user = new User(userData[getRandomIndex(userData)])
+  userInfo.innerHTML = ''
+  userInfo.innerHTML += `
+    <h2>Hi, ${user.findFirstName()}</h2>
+    <h3>Address:${user.address}</h3>
+    <h3>Email:${user.email}</h3>
+    <h3>Stride Length: ${user.strideLength}</h3>
+    <h3>Daily Step Goal: ${user.dailyStepGoal}</h3>
   `
 }
 
@@ -57,3 +56,4 @@ const displayUserAvgSteps = () => {
   `
 }
 
+// if userData includes(friends) then return friends.name
