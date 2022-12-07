@@ -38,17 +38,17 @@ const getRandomIndex = array => {
 
 const createUserCard = () => {
   currentUser = new User(userData[getRandomIndex(userData)])
-  console.log('current user',currentUser)
+  // console.log('current user',currentUser)
   currentRepo = new UserRepository(userData)
   userInfo.innerHTML = ''
   userInfo.innerHTML += `
-    <h2>Hi, ${user.findFirstName()}</h2>
-    <h3>Address:${user.address}</h3>
-    <h3>Email:${user.email}</h3>
+    <h2>Hi, ${currentUser.findFirstName()}</h2>
+    <h3>Address:${curerntUser.address}</h3>
+    <h3>Email:${currentUser.email}</h3>
   `
   stepGoalDisplay.innerHTML = `
-    <h3>Stride Length: ${user.strideLength}</h3>
-    <h3>Daily Step Goal: ${user.dailyStepGoal}</h3>
+    <h3>Stride Length: ${currentUser.strideLength}</h3>
+    <h3>Daily Step Goal: ${currentUser.dailyStepGoal}</h3>
     <h3>Average Step Goal: ${currentRepo.findAverageStepGoal()}</h3>
   `
 }
