@@ -25,7 +25,7 @@ let friendsListDisplay = document.querySelector('friends-list')
 
 
 //Global Variables
-let currentUser 
+let user 
 let currentRepo 
 
 //EventListeners
@@ -37,7 +37,7 @@ const getRandomIndex = array => {
 }
 
 const createUserCard = () => {
-  currentUser = new User(userData[getRandomIndex(userData)])
+  user = new User(userData[getRandomIndex(userData)])
   console.log('current user',currentUser)
   currentRepo = new UserRepository(userData)
   // user friends is an array of objects. We want to access the id key and
