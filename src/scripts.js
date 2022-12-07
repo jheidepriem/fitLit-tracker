@@ -29,6 +29,8 @@ let todayWater = document.getElementById(".today-water")
 //Global Variables
 let user 
 let currentRepo 
+let hydration
+let sleep
 
 //EventListeners
 
@@ -56,10 +58,15 @@ const createUserCard = () => {
 
 
 const displayDailyOunces = () => {
-
+  hydration = new Hydration(user.id)
+  hydration.filterUserHistory()
+  console.log(hydration)
+  todayWater.innerHTML = `
+  <h2>Today's Ounces: ${hydration.getDailyOunces()}</h2>
+  `
 }
 
 
 
-const pageLoad = (createUserCard())  
+const pageLoad = (createUserCard(), displayDailyOunces())  
 window.addEventListener('load',pageLoad)
