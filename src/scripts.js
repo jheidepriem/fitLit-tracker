@@ -22,7 +22,8 @@ import User from './User';
 let userInfo = document.querySelector('.user-info')
 let stepGoalDisplay = document.querySelector('.step-goal')
 let friendsListDisplay = document.querySelector('friends-list')
-let hydroGraph = document.getElementById("myChart")
+let hydroGraph = document.getElementById("weekWater")
+let todayWater = document.getElementById(".today-water")
 
 
 //Global Variables
@@ -54,7 +55,9 @@ const createUserCard = () => {
 }
 
 
+const displayDailyOunces = () => {
 
+}
 
 
 
