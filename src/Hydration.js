@@ -14,20 +14,26 @@ class Hydration {
 
     getTotalOunces() {
         const sum = this.userHistory.reduce((total, day) => {
-            return total += day.numOunces;
-        }, 0);
-        return sum;
+            return total += day.numOunces
+        }, 0)
+        return sum
     };
 
     getTotalAvg() {
-        return this.getTotalOunces() / this.userHistory.length;
+        return this.getTotalOunces() / this.userHistory.length
     };
 
     getDailyOunces(day) {
         const dailyOunces = this.userHistory.find((entry) => {
             return entry.date === day
-        });
+        })
         return dailyOunces.numOunces
+    };
+
+    getWeeklyOunces() {
+        const weeklyHistory = this.userHistory.slice(-7)
+        const weeklyOunces = weeklyHistory.map(day => day.numOunces)
+        return weeklyOunces
     };
 };
 
