@@ -3,8 +3,6 @@ class UserRepository {
     this.userData = data
   }
 
-  
-
   retrieveUserData(id){
     let singleUserData = this.userData.find((user) => user.id === id)
     return singleUserData
