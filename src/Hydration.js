@@ -20,9 +20,8 @@ class Hydration {
     };
 
     getDailyOunces() {
-        const dailyHistory = this.userHistory.slice(-1)
-        const dailyOunces = dailyHistory.map(day => day.numOunces)
-        return dailyOunces
+        const dailyOunces = this.userHistory.slice(-1)
+        return dailyOunces[0].numOunces
     };
 
     getWeeklyOunces() {
