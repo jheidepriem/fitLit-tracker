@@ -38,17 +38,15 @@ let userData
 
 //Functions
 
-const fetchApiCalls = () => {
-  apiCalls.fetchAllData()
-  .then(data => {
-    userData = data[0].userData;
-    hydration = data[1].hydrationData;
-    sleep = data[2].sleepData;
-    console.log(data)
-    loadPageFunctions();
-    // console.log(data)
-  })
-}
+apiCalls.fetchAllData()
+.then(data => {
+  userData = data[0].userData;
+  hydration = data[1].hydrationData;
+  sleep = data[2].sleepData;
+  console.log(data)
+  loadPageFunctions();
+  // console.log(data)
+})
 
 const loadPageFunctions = () => {
   makeUserInstances(userData);
@@ -99,8 +97,3 @@ const displayDailyOunces = () => {
   <h2>Today's Ounces: ${hydration.getDailyOunces()}</h2>
   `
 }
-
-
-
-const pageLoad = (fetchApiCalls())  
-window.addEventListener('load',pageLoad)
