@@ -712,6 +712,7 @@ let todayWater = document.getElementById(".today-water")
 
 
 //Global Variables
+let allData = [];
 let user 
 let currentRepo 
 let hydration
@@ -726,17 +727,38 @@ let userData
 const fetchApiCalls = () => {
   _src_apiCalls__WEBPACK_IMPORTED_MODULE_6__["default"].fetchAllData()
   .then(data => {
+    console.log(data)
     userData = data[0].userData;
     hydration = data[1].hydration;
     sleep = data[2].sleep;
-    createNewUser();
-    console.log(data)
+    loadPageFunctions();
+    // console.log(data)
   })
 }
 
-const createNewUser = () => {
-  user = new (_User__WEBPACK_IMPORTED_MODULE_5___default())(userData);
+const loadPageFunctions = () => {
+  createNewUser();
+  createNewRepo();
+  createUserCard();
+  makeNewInstances(userData);
+}
 
+// const createNewUser = () => {
+//   user = new User(userData[getRandomIndex(userData)]);
+// }
+const createNewRepo = () => {
+  currentRepo = new _UserRepository__WEBPACK_IMPORTED_MODULE_2__["default"](userData);
+}
+
+const createNewUser = () => {
+  user = currentRepo.userData[getRandomIndex(currentRepo.userData)];
+}
+
+const makeNewInstances = (data) => {
+  data.forEach((obj) => {
+  let newUser = new (_User__WEBPACK_IMPORTED_MODULE_5___default())(obj)
+  allData.push(newUser)
+  })
 }
 
 const getRandomIndex = array => {
@@ -744,8 +766,6 @@ const getRandomIndex = array => {
 }
 
 const createUserCard = () => {
-  user = new (_User__WEBPACK_IMPORTED_MODULE_5___default())(userData[getRandomIndex(userData)])
-  currentRepo = new _UserRepository__WEBPACK_IMPORTED_MODULE_2__["default"](userData)
   userInfo.innerHTML = ''
   userInfo.innerHTML += `
     <h2>Hi, ${user.findFirstName()}</h2>
@@ -771,7 +791,7 @@ const displayDailyOunces = () => {
 
 
 
-const pageLoad = (createUserCard(), fetchApiCalls())  
+const pageLoad = (fetchApiCalls())  
 window.addEventListener('load',pageLoad)
 })();
 

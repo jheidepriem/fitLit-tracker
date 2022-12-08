@@ -14,4 +14,4 @@ const fetchAllData = () => {
   ])
 }
 
-export default { fetchAllData }
+export default { fetchAllData };

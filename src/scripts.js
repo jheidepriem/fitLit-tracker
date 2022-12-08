@@ -15,7 +15,7 @@ import UserRepository from './UserRepository';
 import Hydration from '../src/Hydration';
 import Sleep from '../src/Sleep';
 import User from './User';
-import apiCalls from '../src/apiCalls'
+import apiCalls from './apiCalls';
 
 // Query Selectors
 let userInfo = document.querySelector('.user-info')
@@ -41,11 +41,12 @@ let userData
 const fetchApiCalls = () => {
   apiCalls.fetchAllData()
   .then(data => {
-    userData = data[0].userData;
-    hydration = data[1].hydration;
-    sleep = data[2].sleep;
-    loadPageFunctions();
+    userData = data[0];
+    hydration = data[1];
+    sleep = data[2];
     console.log(data)
+    loadPageFunctions();
+    // console.log(data)
   })
 }
 
