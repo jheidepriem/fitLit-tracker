@@ -113,7 +113,7 @@ describe("Hydration", () => {
     });
 
     it("should be able to return num ounces for the last entry date", () => {
-        expect(hydration.getDailyOunces()).to.deep.equal([50]);
+        expect(hydration.getDailyOunces()).to.deep.equal(50);
     });
 
     it("should return last 7 entries of ounces drank by user", () => {
