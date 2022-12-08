@@ -41,9 +41,9 @@ let userData
 const fetchApiCalls = () => {
   apiCalls.fetchAllData()
   .then(data => {
-    userData = data[0];
-    hydration = data[1];
-    sleep = data[2];
+    userData = data[0].userData;
+    hydration = data[1].hydrationData;
+    sleep = data[2].sleepData;
     console.log(data)
     loadPageFunctions();
     // console.log(data)
@@ -51,10 +51,10 @@ const fetchApiCalls = () => {
 }
 
 const loadPageFunctions = () => {
-  createNewUser();
-  createNewRepo();
-  createUserCard();
   makeUserInstances(userData);
+  createNewRepo();
+  getRandomUser();
+  createUserCard();
 }
 
 const makeUserInstances = (dataFile) => {
@@ -65,16 +65,16 @@ const makeUserInstances = (dataFile) => {
 }
 
 const createNewRepo = () => {
-  currentRepo = new UserRepository(userData);
+  currentRepo = new UserRepository(allUserData);
+  console.log(currentRepo)
 }
-
-const createNewUser = () => {
-  user = currentRepo.userData[getRandomIndex(currentRepo.userData)];
-}
-
 
 const getRandomIndex = array => {
   return Math.floor(Math.random() * array.length);
+}
+
+const getRandomUser = () => {
+  user = currentRepo.userData[getRandomIndex(currentRepo.userData)];
 }
 
 const createUserCard = () => {
@@ -90,7 +90,6 @@ const createUserCard = () => {
     <h3>Average Step Goal: ${currentRepo.findAverageStepGoal()}</h3>
   `
 }
-
 
 const displayDailyOunces = () => {
   hydration = new Hydration(user.id)
