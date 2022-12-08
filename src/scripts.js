@@ -10,8 +10,6 @@ import './images/turing-logo.png'
 
 // An example of how you tell webpack to use a JS file
 
-import userData from './data/users';
-
 import UserRepository from './UserRepository';
 
 import Hydration from '../src/Hydration';
@@ -32,18 +30,43 @@ let user
 let currentRepo 
 let hydration
 let sleep
+let userData
 
 //EventListeners
 
 
 //Functions
+
+const fetchApiCalls = () => {
+  apiCalls.fetchAllData()
+  .then(data => {
+    userData = data[0].userData;
+    hydration = data[1].hydration;
+    sleep = data[2].sleep;
+    loadPageFunctions();
+    console.log(data)
+  })
+}
+
+const loadPageFunctions = () => {
+  createNewUser();
+  createNewRepo();
+  createUserCard();
+}
+
+const createNewUser = () => {
+  user = new User(userData[getRandomIndex(userData)]);
+}
+
+const createNewRepo = () => {
+  currentRepo = new UserRepository(userData);
+}
+
 const getRandomIndex = array => {
   return Math.floor(Math.random() * array.length);
 }
 
 const createUserCard = () => {
-  user = new User(userData[getRandomIndex(userData)])
-  currentRepo = new UserRepository(userData)
   userInfo.innerHTML = ''
   userInfo.innerHTML += `
     <h2>Hi, ${user.findFirstName()}</h2>
@@ -69,5 +92,5 @@ const displayDailyOunces = () => {
 
 
 
-const pageLoad = (createUserCard(), displayDailyOunces())  
+const pageLoad = (fetchApiCalls())  
 window.addEventListener('load',pageLoad)
