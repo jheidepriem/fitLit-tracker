@@ -22,7 +22,7 @@ let userInfo = document.querySelector('.user-info')
 let stepGoalDisplay = document.querySelector('.step-goal')
 let friendsListDisplay = document.querySelector('friends-list')
 let hydroGraph = document.getElementById("weekWater")
-let todayWater = document.getElementById(".today-water")
+let todayWater = document.querySelector(".today-water")
 
 
 //Global Variables
@@ -30,6 +30,7 @@ let allUserData = [];
 let user 
 let currentRepo 
 let hydration
+let hydrationData
 let sleep
 let userData
 
@@ -41,11 +42,10 @@ let userData
 apiCalls.fetchAllData()
 .then(data => {
   userData = data[0].userData;
-  hydration = data[1].hydrationData;
+  hydrationData = data[1].hydrationData;
   sleep = data[2].sleepData;
   console.log(data)
   loadPageFunctions();
-  // console.log(data)
 })
 
 const loadPageFunctions = () => {
@@ -53,6 +53,7 @@ const loadPageFunctions = () => {
   createNewRepo();
   getRandomUser();
   createUserCard();
+  displayDailyOunces(hydrationData);
 }
 
 const makeUserInstances = (dataFile) => {
@@ -64,7 +65,6 @@ const makeUserInstances = (dataFile) => {
 
 const createNewRepo = () => {
   currentRepo = new UserRepository(allUserData);
-  console.log(currentRepo)
 }
 
 const getRandomIndex = array => {
@@ -89,10 +89,8 @@ const createUserCard = () => {
   `
 }
 
-const displayDailyOunces = () => {
-  hydration = new Hydration(user.id)
-  hydration.filterUserHistory()
-  console.log(hydration)
+const displayDailyOunces = (hydrationData) => {
+  hydration = new Hydration(user.id, hydrationData)
   todayWater.innerHTML = `
   <h2>Today's Ounces: ${hydration.getDailyOunces()}</h2>
   `
