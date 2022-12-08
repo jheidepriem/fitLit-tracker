@@ -17,6 +17,7 @@ import UserRepository from './UserRepository';
 import Hydration from '../src/Hydration';
 import Sleep from '../src/Sleep';
 import User from './User';
+import apiCalls from '../src/apiCalls'
 
 // Query Selectors
 let userInfo = document.querySelector('.user-info')
