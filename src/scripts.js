@@ -23,6 +23,7 @@ let stepGoalDisplay = document.querySelector('.step-goal')
 let friendsListDisplay = document.querySelector('friends-list')
 let hydroGraph = document.getElementById("weekWater")
 let todayWater = document.querySelector(".today-water")
+let hydroContainer = document.querySelector(".hydro-container")
 
 
 //Global Variables
@@ -54,6 +55,7 @@ const loadPageFunctions = () => {
   getRandomUser();
   createUserCard();
   displayDailyOunces(hydrationData);
+  displayWeeklyOunces();
 }
 
 const makeUserInstances = (dataFile) => {
@@ -95,3 +97,23 @@ const displayDailyOunces = (hydrationData) => {
   <h2>Today's Ounces: ${hydration.getDailyOunces()}</h2>
   `
 }
+
+const displayWeeklyOunces = () => {
+  const data = {
+    labels: ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5', 'Day 6', 'Day 7'],
+    datasets: [{
+      label: 'Ounces of Water',
+      data: hydration.getWeeklyOunces(),
+      fill: true,
+      borderColor: '#3FD1CB',
+      tension: 0.1
+    }]
+}
+hydroContainer.innerHTML = `<canvas id="weekWater" width="800" height="450"></canvas>`
+const ctx = document.getElementById('weekWater').getContext('2d');
+  const chart = new Chart(ctx, {
+    type: 'line',
+    data: data
+  }); 
+  return chart
+}; 
