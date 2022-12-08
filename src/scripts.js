@@ -26,7 +26,7 @@ let todayWater = document.getElementById(".today-water")
 
 
 //Global Variables
-let allData = [];
+let allUserData = [];
 let user 
 let currentRepo 
 let hydration
@@ -54,12 +54,16 @@ const loadPageFunctions = () => {
   createNewUser();
   createNewRepo();
   createUserCard();
-  makeNewInstances(userData);
+  makeUserInstances(userData);
 }
 
-// const createNewUser = () => {
-//   user = new User(userData[getRandomIndex(userData)]);
-// }
+const makeUserInstances = (dataFile) => {
+  dataFile.forEach((obj) => {
+  let newUser = new User(obj)
+  allUserData.push(newUser)
+  })
+}
+
 const createNewRepo = () => {
   currentRepo = new UserRepository(userData);
 }
@@ -68,12 +72,6 @@ const createNewUser = () => {
   user = currentRepo.userData[getRandomIndex(currentRepo.userData)];
 }
 
-const makeNewInstances = (data) => {
-  data.forEach((obj) => {
-  let newUser = new User(obj)
-  allData.push(newUser)
-  })
-}
 
 const getRandomIndex = array => {
   return Math.floor(Math.random() * array.length);
