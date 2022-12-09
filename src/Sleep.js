@@ -1,6 +1,7 @@
 class Sleep {
   constructor(userID, data) {
     this.id = userID
+    this.allData = data
     this.sleepHistory = data.filter((sleepEntry) => {
       if(sleepEntry.userID === this.id)
       return sleepEntry
@@ -65,7 +66,11 @@ class Sleep {
   };
 
   averageAllUsersQuality() {
-
+    const sum = this.allData.reduce((total, day) => {
+      return total += day.sleepQuality
+    },0)
+    const avg = sum/this.allData.length
+    return Number(avg.toFixed(1))
   };
 }
 
