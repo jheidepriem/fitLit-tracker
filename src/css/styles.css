@@ -1,7 +1,9 @@
-/* COLORS */
-
-#F8F6F6 /*light silver */
-
+/* COLORS 
+#F8F6F6 light silver
+#3FD1CB aqua
+#2F24C1 royal blue
+#4D12EE regular blue
+*/
 
 * {
   font-size: 14px;
@@ -20,6 +22,8 @@ body {
   display: flex;
 }
 
+/* LEFT SIDE */
+
 .left-side {
   height: 100vh;
   width: 25vw;
@@ -34,19 +38,36 @@ body {
   width: auto;
 }
 
+.greeting {
+  font-size: 30px;
+  margin-left: 5%;
+  margin-top: 5%;
+}
+
+.info {
+  font-size: 15px;
+  margin-left: 5%;
+  margin-top: 5%;
+}
+
+/* Main */
 main {
   height: 100vh;
   width: 75vw;
-  border: 3px solid green;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
+h1 {
+  font-size: 50px;
+  margin-bottom: 5%;;
+}
+
 .weekly-water-container {
   height: 333px;
   width: 667px;
-  border: 3px solid red;
+  border: 3px solid #3FD1CB;
   display: flex;
   justify-content: center;
   margin-top: 8%;
