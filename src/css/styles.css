@@ -6,6 +6,7 @@
 */
 
 * {
+  font-family: 'Roboto', sans-serif;
   font-size: 14px;
   margin: 0;
   padding: 0;
@@ -26,12 +27,13 @@ body {
 
 .left-side {
   height: 100vh;
-  width: 25vw;
+  width: 18vw;
   border: 3px solid black;
 }
 
 .step-goal,
-.user-info {
+.user-info, 
+.daily-info {
   border: 2px solid black;
   height: 25vh;
   width: auto;
@@ -61,6 +63,12 @@ main {
 h1 {
   font-size: 50px;
   margin-bottom: 5%;;
+}
+
+.week-ounces{
+  margin-bottom: 1%;
+  margin-top: 3%;
+
 }
 
 .weekly-water-container {

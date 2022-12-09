@@ -22,6 +22,7 @@ let userInfo = document.querySelector('.user-info')
 let stepGoalDisplay = document.querySelector('.step-goal')
 let friendsListDisplay = document.querySelector('friends-list')
 let hydroGraph = document.getElementById("weekWater")
+let dailyInfo = document.querySelector(".daily-info")
 let todayWater = document.querySelector(".today-water")
 let weeklyWaterContainer = document.querySelector(".weekly-water-container")
 
@@ -93,8 +94,8 @@ const createUserCard = () => {
 
 const displayDailyOunces = (hydrationData) => {
   hydration = new Hydration(user.id, hydrationData)
-  todayWater.innerHTML = `
-  <h2>Today's Ounces: ${hydration.getDailyOunces()}</h2>
+  dailyInfo.innerHTML = `
+  <h2 class="info">Today's Ounces: ${hydration.getDailyOunces()}</h2>
   `
 }
 
