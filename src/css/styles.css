@@ -30,7 +30,6 @@ body {
   border: 3px solid black;
 }
 
-.friends-list,
 .step-goal,
 .user-info {
   border: 2px solid black;
@@ -86,7 +85,7 @@ h1 {
 .sleep-graph {
   height: 40vh;
   width: 30vw;
-  border: 3px solid blue;
+  /* border: 3px solid blue; */
   display: flex;
   justify-content: center;
 }
