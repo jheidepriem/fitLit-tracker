@@ -80,7 +80,7 @@ describe("Hydration", () => {
             hydrationEntry9
         ]
 
-        hydration = new Hydration(1);
+        hydration = new Hydration(1, hydrationData);
     });
 
     it("should be a function", () => {
@@ -96,32 +96,27 @@ describe("Hydration", () => {
     });
 
     it("should have an array of user history data", () => {
-        expect(hydration.userHistory).to.deep.equal([]);
+        expect(hydration.userHistory).to.be.an('array');
     });
 
     it("should be able to filter history based on passed in user id", () => {
-        hydration.filterUserHistory(hydrationData);
         expect(hydration.userHistory).to.deep.equal([hydrationEntry1, hydrationEntry2, hydrationEntry3, hydrationEntry4, hydrationEntry5, hydrationEntry6, hydrationEntry7,
         hydrationEntry9]);
     });
 
     it("should be able to sum total ounces for all entries", () => {
-        hydration.filterUserHistory(hydrationData);
         expect(hydration.getTotalOunces()).to.equal(400);
     });
 
     it("should be able to calc avg ounces drank for all entries", () => {
-        hydration.filterUserHistory(hydrationData);
         expect(hydration.getTotalAvg()).to.equal(50);
     });
 
-    it("should be able to return num ounces for specific date", () => {
-        hydration.filterUserHistory(hydrationData);
-        expect(hydration.getDailyOunces("2019/06/19")).to.equal(35);
+    it("should be able to return num ounces for the last entry date", () => {
+        expect(hydration.getDailyOunces()).to.deep.equal(50);
     });
 
     it("should return last 7 entries of ounces drank by user", () => {
-        hydration.filterUserHistory(hydrationData);
         expect(hydration.getWeeklyOunces()).to.deep.equal([55, 40, 60, 35, 65, 50, 50]);
     });
 });
