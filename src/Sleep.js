@@ -38,16 +38,28 @@ class Sleep {
       const dateIndex = obj.date === date 
       return Number(dateIndex)
     })
-    console.log('PICKED DAY', pickedDay)
-    const selectedWeek = this.sleepHistory.slice(pickedDay, -7)
+    let selectedWeek;
+    if(pickedDay <= 6) {
+      selectedWeek = this.sleepHistory.slice(0, 6)
+    } else {
+      selectedWeek = this.sleepHistory.slice((pickedDay - 7), pickedDay)
+    }
     const weeklyHours = selectedWeek.map(day => day.hoursSlept)
      return weeklyHours
   };
 
 
   totalWeeklyQuality(date) {
-    const pickedDay = this.sleepHistory.indexOf(date)
-    const selectedWeek = pickedDay.slice(-7)
+    const pickedDay = this.sleepHistory.findIndex(obj => {
+      const dateIndex = obj.date === date 
+      return Number(dateIndex)
+    })
+    let selectedWeek;
+    if(pickedDay <= 6) {
+      selectedWeek = this.sleepHistory.slice(0, 6)
+    } else {
+      selectedWeek = this.sleepHistory.slice((pickedDay - 7), pickedDay)
+    }
     const weeklyHours = selectedWeek.map(day => day.sleepQuality)
     return weeklyHours
   };
