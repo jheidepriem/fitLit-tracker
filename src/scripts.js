@@ -25,6 +25,7 @@ let hydroGraph = document.getElementById("weekWater")
 let dailyInfo = document.querySelector(".daily-info")
 let todayWater = document.querySelector(".today-water")
 let weeklyWaterContainer = document.querySelector(".weekly-water-container")
+let greeting = document.querySelector(".greeting")
 
 
 //Global Variables
@@ -81,7 +82,6 @@ const getRandomUser = () => {
 const createUserCard = () => {
   userInfo.innerHTML = ''
   userInfo.innerHTML += `
-    <h2 class="greeting">Hi, ${user.findFirstName()}</h2>
     <h3 class="info">Address: ${user.address}</h3>
     <h3 class="info">Email: ${user.email}</h3>
   `
@@ -90,6 +90,8 @@ const createUserCard = () => {
     <h3 class="info">Daily Step Goal: ${user.dailyStepGoal}</h3>
     <h3 class="info">Average Step Goal: ${currentRepo.findAverageStepGoal()}</h3>
   `
+
+  greeting.innerHTML = `Hi, ${user.findFirstName()}!`
 }
 
 const displayDailyOunces = (hydrationData) => {
