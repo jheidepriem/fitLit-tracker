@@ -112,6 +112,6 @@ describe("Sleep", () => {
   });
 
   it('should have a method that returns the average sleep quality across all users', () => {
-    expect(sleep1.averageAllUsersQuality()).to.equal(2.85)
+    expect(sleep1.averageAllUsersQuality()).to.equal(2.8)
   });
 })
