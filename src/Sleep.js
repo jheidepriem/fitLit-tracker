@@ -41,9 +41,9 @@ class Sleep {
     })
     let selectedWeek;
     if(pickedDay <= 6) {
-      selectedWeek = this.sleepHistory.slice(0, 6)
+      selectedWeek = this.sleepHistory.slice(0, pickedDay)
     } else {
-      selectedWeek = this.sleepHistory.slice((pickedDay - 7), pickedDay)
+      selectedWeek = this.sleepHistory.slice((pickedDay - 6), pickedDay)
     }
     const weeklyHours = selectedWeek.map(day => day.hoursSlept)
      return weeklyHours
@@ -57,12 +57,12 @@ class Sleep {
     })
     let selectedWeek;
     if(pickedDay <= 6) {
-      selectedWeek = this.sleepHistory.slice(0, 6)
+      selectedWeek = this.sleepHistory.slice(0, pickedDay)
     } else {
-      selectedWeek = this.sleepHistory.slice((pickedDay - 7), pickedDay)
+      selectedWeek = this.sleepHistory.slice((pickedDay - 6), pickedDay)
     }
-    const weeklyHours = selectedWeek.map(day => day.sleepQuality)
-    return weeklyHours
+    const weeklyQuality = selectedWeek.map(day => day.sleepQuality)
+    return weeklyQuality
   };
 
   averageAllUsersQuality() {
