@@ -49,7 +49,7 @@ describe("Sleep", () => {
       sleepQuality: 1.2
       };
     data = [sleepEntry1, sleepEntry2, sleepEntry3, sleepEntry4, sleepEntry5, sleepEntry6]
-    sleep1 = new Sleep(1)
+    sleep1 = new Sleep(1, data)
   });
 
   it('should be a function', () => {
@@ -65,20 +65,19 @@ describe("Sleep", () => {
   });
 
   it("should have an array of sleep data", () => {
-    expect(sleep1.sleepHistory).to.deep.equal([])
+    expect(sleep1.sleepHistory).to.be.an("array")
   });
 
   it("should have a method that filters the sleep data by user id", () => {
-    sleep1.filterSleepData(data)
     expect(sleep1.sleepHistory).to.deep.equal([sleepEntry1, sleepEntry3, sleepEntry4, sleepEntry5, sleepEntry6])
   });
 
-  it.skip('should have a method that returns the average hours slept per day', () => {
-    expect(sleep1.calculateDailyAverage()).to.equal()
+  it('should have a method that returns the average hours slept per day', () => {
+    expect(sleep1.calculateDailyAverage()).to.equal(7.9)
   });
 
-  it.skip('should have a method that returns the average sleep quality per day', () => {
-    expect(sleep1.calculateDailyQuality()).to.equal()
+  it('should have a method that returns the average sleep quality per day', () => {
+    expect(sleep1.calculateDailyQuality()).to.equal(2.6)
   });
 
   it.skip('should have a method that returns the hours slept for a single date', () => {
