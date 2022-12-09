@@ -82,8 +82,8 @@ const createUserCard = () => {
   userInfo.innerHTML = ''
   userInfo.innerHTML += `
     <h2 class="greeting">Hi, ${user.findFirstName()}</h2>
-    <h3 class="info">Address:${user.address}</h3>
-    <h3 class="info">Email:${user.email}</h3>
+    <h3 class="info">Address: ${user.address}</h3>
+    <h3 class="info">Email: ${user.email}</h3>
   `
   stepGoalDisplay.innerHTML = `
     <h3 class="info">Stride Length: ${user.strideLength}</h3>
@@ -95,7 +95,7 @@ const createUserCard = () => {
 const displayDailyOunces = (hydrationData) => {
   hydration = new Hydration(user.id, hydrationData)
   dailyInfo.innerHTML = `
-  <h2 class="info">Today's Ounces: ${hydration.getDailyOunces()}</h2>
+  <h2 class="today-info">Today's Ounces: ${hydration.getDailyOunces()}</h2>
   `
 }
 
