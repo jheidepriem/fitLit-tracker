@@ -80,12 +80,12 @@ describe("Sleep", () => {
     expect(sleep1.calculateDailyQuality()).to.equal(2.6)
   });
 
-  it.skip('should have a method that returns the hours slept for a single date', () => {
-    expect(sleep1.totalHours()).to.equal()
+  it('should have a method that returns the hours slept for a single date', () => {
+    expect(sleep1.totalDailyHours("2019/06/15")).to.equal(6.1)
   });
 
-  it.skip('should have a method that returns the sleep quality for a single date', () => {
-    expect(sleep1.totalQuality()).to.equal()
+  it('should have a method that returns the sleep quality for a single date', () => {
+    expect(sleep1.totalDailyQuality("2019/06/15")).to.equal(2.2)
   });
 
   it.skip('should have a method that returns the total hours slept each day over the course of a week', () => {
@@ -93,7 +93,7 @@ describe("Sleep", () => {
   });
 
   it.skip('should have a method that returns the total sleep quality each day over the course of a week', () => {
-    expect(sleep1.totalWweeklyQuality()).to.equal()
+    expect(sleep1.totalWeeklyQuality()).to.equal()
   });
 
   it('should have a method that returns the average sleep quality across all users', () => {

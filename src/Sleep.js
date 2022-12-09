@@ -23,16 +23,18 @@ class Sleep {
     return Number(avg.toFixed(1))
   };
 
-  totalHours() {
-
+  totalDailyHours(date) {
+    const pickedDay = this.sleepHistory.find(day => day.date === date)
+    return pickedDay.hoursSlept
   };
 
-  totalQuality() {
-
+  totalDailyQuality(date) {
+    const pickedDay = this.sleepHistory.find(day => day.date === date)
+    return pickedDay.sleepQuality
   }
 
   totalWeeklyHours() {
-
+    
   };
 
   totalWeeklyQuality() {
