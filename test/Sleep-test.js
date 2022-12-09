@@ -8,6 +8,8 @@ describe("Sleep", () => {
   let sleepEntry4;
   let sleepEntry5;
   let sleepEntry6;
+  let sleepEntry7;
+  let sleepEntry8;
   let data;
   let sleep1;
 
@@ -48,7 +50,20 @@ describe("Sleep", () => {
       hoursSlept: 10.7,
       sleepQuality: 1.2
       };
-    data = [sleepEntry1, sleepEntry2, sleepEntry3, sleepEntry4, sleepEntry5, sleepEntry6]
+    sleepEntry7 = {
+      userID: 1,
+      date: "2019/06/20",
+      hoursSlept: 8,
+      sleepQuality: 3.4
+      };
+    sleepEntry8 = {
+      userID: 1,
+      date: "2019/06/21",
+      hoursSlept: 10.1,
+      sleepQuality: 1.8
+      }
+    
+    data = [sleepEntry1, sleepEntry2, sleepEntry3, sleepEntry4, sleepEntry5, sleepEntry6, sleepEntry7, sleepEntry8]
     sleep1 = new Sleep(1, data)
   });
 
@@ -69,11 +84,11 @@ describe("Sleep", () => {
   });
 
   it("should have a method that filters the sleep data by user id", () => {
-    expect(sleep1.sleepHistory).to.deep.equal([sleepEntry1, sleepEntry3, sleepEntry4, sleepEntry5, sleepEntry6])
+    expect(sleep1.sleepHistory).to.deep.equal([sleepEntry1, sleepEntry3, sleepEntry4, sleepEntry5, sleepEntry6, sleepEntry7, sleepEntry8])
   });
 
   it('should have a method that returns the average hours slept per day', () => {
-    expect(sleep1.calculateDailyAverage()).to.equal(7.9)
+    expect(sleep1.calculateDailyAverage()).to.equal(8.2)
   });
 
   it('should have a method that returns the average sleep quality per day', () => {
@@ -88,12 +103,12 @@ describe("Sleep", () => {
     expect(sleep1.totalDailyQuality("2019/06/15")).to.equal(2.2)
   });
 
-  it.skip('should have a method that returns the total hours slept each day over the course of a week', () => {
-    expect(sleep1.totalWeeklyHours()).to.equal()
+  it('should have a method that returns the total hours slept each day over the course of a week', () => {
+    expect(sleep1.totalWeeklyHours("2019/06/21")).to.equal()
   });
 
   it.skip('should have a method that returns the total sleep quality each day over the course of a week', () => {
-    expect(sleep1.totalWeeklyQuality()).to.equal()
+    expect(sleep1.totalWeeklyQuality("2019/06/21")).to.equal()
   });
 
   it('should have a method that returns the average sleep quality across all users', () => {

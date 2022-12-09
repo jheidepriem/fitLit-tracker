@@ -31,14 +31,25 @@ class Sleep {
   totalDailyQuality(date) {
     const pickedDay = this.sleepHistory.find(day => day.date === date)
     return pickedDay.sleepQuality
-  }
-
-  totalWeeklyHours() {
-    
   };
 
-  totalWeeklyQuality() {
+  totalWeeklyHours(date) {
+    const pickedDay = this.sleepHistory.findIndex(obj => {
+      const dateIndex = obj.date === date 
+      return Number(dateIndex)
+    })
+    console.log('PICKED DAY', pickedDay)
+    const selectedWeek = this.sleepHistory.slice(pickedDay, -7)
+    const weeklyHours = selectedWeek.map(day => day.hoursSlept)
+     return weeklyHours
+  };
 
+
+  totalWeeklyQuality(date) {
+    const pickedDay = this.sleepHistory.indexOf(date)
+    const selectedWeek = pickedDay.slice(-7)
+    const weeklyHours = selectedWeek.map(day => day.sleepQuality)
+    return weeklyHours
   };
 
   averageAllUsersQuality() {
