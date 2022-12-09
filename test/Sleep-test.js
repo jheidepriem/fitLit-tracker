@@ -72,4 +72,34 @@ describe("Sleep", () => {
     sleep1.filterSleepData(data)
     expect(sleep1.sleepHistory).to.deep.equal([sleepEntry1, sleepEntry3, sleepEntry4, sleepEntry5, sleepEntry6])
   });
+
+  it.skip('should have a method that returns the average hours slept per day', () => {
+    expect(sleep1.calculateDailyAverage()).to.equal()
+  });
+
+  it.skip('should have a method that returns the average sleep quality per day', () => {
+    expect(sleep1.calculateDailyQuality()).to.equal()
+  });
+
+  it.skip('should have a method that returns the hours slept for a single date', () => {
+    expect(sleep1.totalHours()).to.equal()
+  });
+
+  it.skip('should have a method that returns the sleep quality for a single date', () => {
+    expect(sleep1.totalQuality()).to.equal()
+  });
+
+  it.skip('should have a method that returns the total hours slept each day over the course of a week', () => {
+    expect(sleep1.totalWeeklyHours()).to.equal()
+  });
+
+  it.skip('should have a method that returns the total sleep quality each day over the course of a week', () => {
+    expect(sleep1.totalWweeklyQuality()).to.equal()
+  });
+
+  it('should have a method that returns the average sleep quality across all users', () => {
+    expect(sleep1.averageAllUsersQuality()).to.equal()
+  });
+
+
 })

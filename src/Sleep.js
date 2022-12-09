@@ -11,6 +11,33 @@ class Sleep {
     });
   };
 
+  calculateDailyAverage() {
+
+  };
+
+  calculateDailyQuality() {
+
+  };
+
+  totalHours() {
+
+  };
+
+  totalQuality() {
+
+  }
+
+  totalWeeklyHours() {
+
+  };
+
+  totalWeeklyQuality() {
+
+  };
+
+  averageAllUsersQuality() {
+
+  };
 }
 
 module.exports = Sleep;
