@@ -59,3 +59,5 @@ describe("User", () => {
     expect(user.findFirstName()).to.equal("Luisa");
   });
 });
+
+// Test sad paths

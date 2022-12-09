@@ -84,11 +84,11 @@ describe("Hydration", () => {
     });
 
     it("should be a function", () => {
-    expect(Hydration).to.be.a("function");
+        expect(Hydration).to.be.a("function");
     });
 
     it("should be an instance of hydration", () => {
-    expect(hydration).to.be.an.instanceOf(Hydration);
+        expect(hydration).to.be.an.instanceOf(Hydration);
     });
 
     it("should have a user id", () => {
@@ -101,7 +101,7 @@ describe("Hydration", () => {
 
     it("should be able to filter history based on passed in user id", () => {
         expect(hydration.userHistory).to.deep.equal([hydrationEntry1, hydrationEntry2, hydrationEntry3, hydrationEntry4, hydrationEntry5, hydrationEntry6, hydrationEntry7,
-        hydrationEntry9]);
+            hydrationEntry9]);
     });
 
     it("should be able to sum total ounces for all entries", () => {
@@ -120,3 +120,5 @@ describe("Hydration", () => {
         expect(hydration.getWeeklyOunces()).to.deep.equal([55, 40, 60, 35, 65, 50, 50]);
     });
 });
+
+// Test sad paths: when the data is broken or empty

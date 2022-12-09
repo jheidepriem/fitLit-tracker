@@ -12,28 +12,28 @@ import './images/turing-logo.png'
 
 import UserRepository from './UserRepository';
 import Hydration from '../src/Hydration';
-import Sleep from '../src/Sleep';
+// Sleep was unused
 import User from './User';
 import apiCalls from './apiCalls';
 import { Chart } from 'chart.js/auto';
 
 // Query Selectors
-let userInfo = document.querySelector('.user-info')
-let stepGoalDisplay = document.querySelector('.step-goal')
-let friendsListDisplay = document.querySelector('friends-list')
-let hydroGraph = document.getElementById("weekWater")
-let todayWater = document.querySelector(".today-water")
-let weeklyWaterContainer = document.querySelector(".weekly-water-container")
+let userInfo = document.querySelector('.user-info');
+let stepGoalDisplay = document.querySelector('.step-goal');
+// Removed two unused lines here
+let todayWater = document.querySelector(".today-water");
+let weeklyWaterContainer = document.querySelector(".weekly-water-container");
+// Do all of these need to be `let`s? Most people I know use `const` unless you're actually going to reassign the value of the variable
 
 
 //Global Variables
 let allUserData = [];
-let user 
-let currentRepo 
-let hydration
-let hydrationData
-let sleep
-let userData
+let user;
+let currentRepo;
+let hydration;
+let hydrationData;
+let sleep;
+let userData;
 
 //EventListeners
 
@@ -41,13 +41,13 @@ let userData
 //Functions
 
 apiCalls.fetchAllData()
-.then(data => {
-  userData = data[0].userData;
-  hydrationData = data[1].hydrationData;
-  sleep = data[2].sleepData;
-  console.log(data)
-  loadPageFunctions();
-})
+  .then(data => {
+    // What are these numbers??? What if the data isn't an array, or the array is empty?
+    userData = data[0].userData;
+    hydrationData = data[1].hydrationData;
+    sleep = data[2].sleepData;
+    loadPageFunctions();
+  })
 
 const loadPageFunctions = () => {
   makeUserInstances(userData);
@@ -60,8 +60,8 @@ const loadPageFunctions = () => {
 
 const makeUserInstances = (dataFile) => {
   dataFile.forEach((obj) => {
-  let newUser = new User(obj)
-  allUserData.push(newUser)
+    let newUser = new User(obj)
+    allUserData.push(newUser)
   })
 }
 
@@ -69,38 +69,39 @@ const createNewRepo = () => {
   currentRepo = new UserRepository(allUserData);
 }
 
-const getRandomIndex = array => {
-  return Math.floor(Math.random() * array.length);
-}
+const getRandomIndex = array => Math.floor(Math.random() * array.length;
 
 const getRandomUser = () => {
+  // Why does this get assigned to a variable? Could it just `return` instead?
   user = currentRepo.userData[getRandomIndex(currentRepo.userData)];
 }
 
 const createUserCard = () => {
-  userInfo.innerHTML = ''
+  userInfo.innerHTML = '';
+  // Consider extracting these templates into their own files or even directory
   userInfo.innerHTML += `
     <h2>Hi, ${user.findFirstName()}</h2>
     <h3>Address:${user.address}</h3>
     <h3>Email:${user.email}</h3>
-  `
+  `;
   stepGoalDisplay.innerHTML = `
     <h3>Stride Length: ${user.strideLength}</h3>
     <h3>Daily Step Goal: ${user.dailyStepGoal}</h3>
     <h3>Average Step Goal: ${currentRepo.findAverageStepGoal()}</h3>
-  `
+  `;
 }
 
 const displayDailyOunces = (hydrationData) => {
   hydration = new Hydration(user.id, hydrationData)
-  todayWater.innerHTML = `
-  <h2>Today's Ounces: ${hydration.getDailyOunces()}</h2>
-  `
+  // extract template
+  todayWater.innerHTML = `<h2>Today's Ounces: ${hydration.getDailyOunces()}</h2>`;
 }
 
 const displayWeeklyOunces = () => {
   weeklyWaterContainer.innerHTML = `<canvas id="weekWater"></canvas>`
   const ctx = document.getElementById('weekWater').getContext('2d');
+  // Maybe there should be a chart variable? Or a Main class with a this.chart?
+  // I would probably extract all of this to a "buildChart" or "initializeChart" function
   new Chart(ctx, {
     type: 'line',
     data: {
