@@ -11,11 +11,11 @@ import './images/turing-logo.png'
 // An example of how you tell webpack to use a JS file
 
 import UserRepository from './UserRepository';
-
 import Hydration from '../src/Hydration';
 import Sleep from '../src/Sleep';
 import User from './User';
 import apiCalls from './apiCalls';
+import { Chart } from 'chart.js/auto';
 
 // Query Selectors
 let userInfo = document.querySelector('.user-info')
@@ -23,7 +23,7 @@ let stepGoalDisplay = document.querySelector('.step-goal')
 let friendsListDisplay = document.querySelector('friends-list')
 let hydroGraph = document.getElementById("weekWater")
 let todayWater = document.querySelector(".today-water")
-let hydroContainer = document.querySelector(".hydro-container")
+let weeklyWaterContainer = document.querySelector(".weekly-water-container")
 
 
 //Global Variables
@@ -99,21 +99,24 @@ const displayDailyOunces = (hydrationData) => {
 }
 
 const displayWeeklyOunces = () => {
-  const data = {
-    labels: ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5', 'Day 6', 'Day 7'],
-    datasets: [{
-      label: 'Ounces of Water',
-      data: hydration.getWeeklyOunces(),
-      fill: true,
-      borderColor: '#3FD1CB',
-      tension: 0.1
-    }]
+  weeklyWaterContainer.innerHTML = `<canvas id="weekWater"></canvas>`
+  const ctx = document.getElementById('weekWater').getContext('2d');
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5', 'Day 6', 'Day 7'],
+      datasets: [{
+        label: 'Ounces of Water',
+        data: hydration.getWeeklyOunces(),
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
 }
-hydroContainer.innerHTML = `<canvas id="weekWater" width="800" height="450"></canvas>`
-const ctx = document.getElementById('weekWater').getContext('2d');
-  const chart = new Chart(ctx, {
-    type: 'line',
-    data: data
-  }); 
-  return chart
-}; 
