@@ -102,13 +102,15 @@ const displayWeeklyOunces = () => {
   weeklyWaterContainer.innerHTML = `<canvas id="weekWater"></canvas>`
   const ctx = document.getElementById('weekWater').getContext('2d');
   new Chart(ctx, {
-    type: 'bar',
+    type: 'line',
     data: {
       labels: ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5', 'Day 6', 'Day 7'],
       datasets: [{
         label: 'Ounces of Water',
         data: hydration.getWeeklyOunces(),
-        borderWidth: 1
+        fill: true,
+        borderColor: 'rgb(75, 192, 192)',
+        tension: 0.1
       }]
     },
     options: {
