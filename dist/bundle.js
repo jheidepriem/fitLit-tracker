@@ -484,17 +484,13 @@ class UserRepository {
 /***/ ((module) => {
 
 class Hydration {
-    constructor(id) {
+    constructor(id, data) {
         this.id = id;
-        this.userHistory = [];
-    };
-
-    filterUserHistory(hydrationData) {
-        this.userHistory = hydrationData.filter((history) => {
-            if(history.userID === this.id) {
-                return history
-            };
-        });
+        this.userHistory = data.filter((obj) => {
+            if(obj.userID === this.id) {
+                return obj
+            }
+        })
     };
 
     getTotalOunces() {
@@ -508,11 +504,9 @@ class Hydration {
         return this.getTotalOunces() / this.userHistory.length
     };
 
-    getDailyOunces(day) {
-        const dailyOunces = this.userHistory.find((entry) => {
-            return entry.date === day
-        })
-        return dailyOunces.numOunces
+    getDailyOunces() {
+        const dailyOunces = this.userHistory.slice(-1)
+        return dailyOunces[0].numOunces
     };
 
     getWeeklyOunces() {
@@ -581,7 +575,7 @@ __webpack_require__.r(__webpack_exports__);
 const fetchApiUrl = (path) => {
   return fetch(`https://fitlit-api.herokuapp.com/api/v1/${path}`)
   .then(response => response.json())
-  .then(data => console.log(data))
+  .then(data => data)
   .catch(error => console.log(`${path} error`))
 }
 
@@ -683,7 +677,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _src_Sleep__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_src_Sleep__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _User__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(10);
 /* harmony import */ var _User__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_User__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _src_apiCalls__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(11);
+/* harmony import */ var _apiCalls__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(11);
 // This is the JavaScript entry file - your code begins here
 // Do not delete or rename this file ********
 
@@ -708,13 +702,15 @@ let userInfo = document.querySelector('.user-info')
 let stepGoalDisplay = document.querySelector('.step-goal')
 let friendsListDisplay = document.querySelector('friends-list')
 let hydroGraph = document.getElementById("weekWater")
-let todayWater = document.getElementById(".today-water")
+let todayWater = document.querySelector(".today-water")
 
 
 //Global Variables
+let allUserData = [];
 let user 
 let currentRepo 
 let hydration
+let hydrationData
 let sleep
 let userData
 
@@ -723,29 +719,43 @@ let userData
 
 //Functions
 
-const fetchApiCalls = () => {
-  _src_apiCalls__WEBPACK_IMPORTED_MODULE_6__["default"].fetchAllData()
-  .then(data => {
-    userData = data[0].userData;
-    hydration = data[1].hydration;
-    sleep = data[2].sleep;
-    createNewUser();
-    console.log(data)
+_apiCalls__WEBPACK_IMPORTED_MODULE_6__["default"].fetchAllData()
+.then(data => {
+  userData = data[0].userData;
+  hydrationData = data[1].hydrationData;
+  sleep = data[2].sleepData;
+  console.log(data)
+  loadPageFunctions();
+})
+
+const loadPageFunctions = () => {
+  makeUserInstances(userData);
+  createNewRepo();
+  getRandomUser();
+  createUserCard();
+  displayDailyOunces(hydrationData);
+}
+
+const makeUserInstances = (dataFile) => {
+  dataFile.forEach((obj) => {
+  let newUser = new (_User__WEBPACK_IMPORTED_MODULE_5___default())(obj)
+  allUserData.push(newUser)
   })
 }
 
-const createNewUser = () => {
-  user = new (_User__WEBPACK_IMPORTED_MODULE_5___default())(userData);
-
+const createNewRepo = () => {
+  currentRepo = new _UserRepository__WEBPACK_IMPORTED_MODULE_2__["default"](allUserData);
 }
 
 const getRandomIndex = array => {
   return Math.floor(Math.random() * array.length);
 }
 
+const getRandomUser = () => {
+  user = currentRepo.userData[getRandomIndex(currentRepo.userData)];
+}
+
 const createUserCard = () => {
-  user = new (_User__WEBPACK_IMPORTED_MODULE_5___default())(userData[getRandomIndex(userData)])
-  currentRepo = new _UserRepository__WEBPACK_IMPORTED_MODULE_2__["default"](userData)
   userInfo.innerHTML = ''
   userInfo.innerHTML += `
     <h2>Hi, ${user.findFirstName()}</h2>
@@ -759,20 +769,30 @@ const createUserCard = () => {
   `
 }
 
-
-const displayDailyOunces = () => {
-  hydration = new (_src_Hydration__WEBPACK_IMPORTED_MODULE_3___default())(user.id)
-  hydration.filterUserHistory()
-  console.log(hydration)
+const displayDailyOunces = (hydrationData) => {
+  hydration = new (_src_Hydration__WEBPACK_IMPORTED_MODULE_3___default())(user.id, hydrationData)
   todayWater.innerHTML = `
   <h2>Today's Ounces: ${hydration.getDailyOunces()}</h2>
   `
 }
 
+const displayWeeklyOunces = () => {
 
+  new Chart(hydroGraph, {
+    type: 'line',
+    data: {
+        labels: ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5', 'Day 6', 'Day 7'],
+        datasets: [{
+          label: 'Ounces of Water',
+          data: hydration.getWeeklyOunces(),
+          fill: true,
+          borderColor: '#3FD1CB',
+          tension: 0.1
+        }]
+    }
 
-const pageLoad = (createUserCard(), fetchApiCalls())  
-window.addEventListener('load',pageLoad)
+  }); 
+};
 })();
 
 /******/ })()
