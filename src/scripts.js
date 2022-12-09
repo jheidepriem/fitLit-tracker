@@ -86,9 +86,9 @@ const createUserCard = () => {
     <h3 class="info">Email: ${user.email}</h3>
   `
   stepGoalDisplay.innerHTML = `
-    <h3 class="info">Stride Length: ${user.strideLength}</h3>
-    <h3 class="info">Daily Step Goal: ${user.dailyStepGoal}</h3>
-    <h3 class="info">Average Step Goal: ${currentRepo.findAverageStepGoal()}</h3>
+    <h3 class="step-info">Stride Length: ${user.strideLength}</h3>
+    <h3 class="step-info">Daily Step Goal: ${user.dailyStepGoal}</h3>
+    <h3 class="step-info">Average Step Goal: ${currentRepo.findAverageStepGoal()}</h3>
   `
 
   greeting.innerHTML = `Hi, ${user.findFirstName()}!`

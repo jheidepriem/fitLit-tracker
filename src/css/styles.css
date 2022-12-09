@@ -42,8 +42,12 @@ body {
   flex-direction: column;
   justify-content: center;
   margin-left: 5%;
-  height: 25vh;
-  width: 15vw;
+  height: 20vh;
+  width: 18vw;
+}
+
+.info{
+  margin: 0% 8% 0% 5%;
 }
 
 .daily-info {
@@ -52,10 +56,14 @@ body {
   box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, .2);
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  height: 25vh;
+  height: 35vh;
   margin-left: 5%;
-  width: 15vw;
+  width: 18vw;
+}
+
+.today-info {
+  font-size: 18px;
+  margin: 10% 8% 5% 8%;
 }
 
 .step-goal {
@@ -64,20 +72,14 @@ body {
   box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, .2);
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-  height: 25vh;
+  height: 20vh;
   margin-left: 5%;
-  width: 15vw;
+  width: 18vw;
 }
 
-.info {
+.step-info {
   font-size: 15px;
-  margin: 4% 8% 0% 8%;
-}
-
-.today-info {
-  font-size: 20px;
-  margin: 10% 8% 5% 8%;
+  margin: 8% 8% 0% 8%;
 }
 
 /* Main */
