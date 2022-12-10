@@ -18,13 +18,12 @@ import apiCalls from './apiCalls';
 import { Chart } from 'chart.js/auto';
 
 // Query Selectors
-let userInfo = document.querySelector('.user-info')
-let stepGoalDisplay = document.querySelector('.step-goal')
-let friendsListDisplay = document.querySelector('friends-list')
-let hydroGraph = document.getElementById("weekWater")
-let todayWater = document.querySelector(".today-water")
-let weeklyWaterContainer = document.querySelector(".weekly-water-container")
-
+const userInfo = document.querySelector('.user-info')
+const stepGoalDisplay = document.querySelector('.step-goal')
+const todayWater = document.querySelector(".today-water")
+const weeklyWaterContainer = document.querySelector(".weekly-water-container")
+const sleepDataContainer = document.querySelector(".sleep-data-container")
+const dailyInfoDisplay = document.querySelector(".daily-info")
 
 //Global Variables
 let allUserData = [];
@@ -32,8 +31,10 @@ let user
 let currentRepo 
 let hydration
 let hydrationData
-let sleep
+let sleepData
 let userData
+let sleep
+
 
 //EventListeners
 
@@ -44,7 +45,7 @@ apiCalls.fetchAllData()
 .then(data => {
   userData = data[0].userData;
   hydrationData = data[1].hydrationData;
-  sleep = data[2].sleepData;
+  sleepData = data[2].sleepData;
   console.log(data)
   loadPageFunctions();
 })
@@ -54,8 +55,9 @@ const loadPageFunctions = () => {
   createNewRepo();
   getRandomUser();
   createUserCard();
-  displayDailyOunces(hydrationData);
-  displayWeeklyOunces();
+  displaySleepData();
+  displayAllTimeSleep(hydrationData);
+  displayWaterData();
 }
 
 const makeUserInstances = (dataFile) => {
@@ -91,26 +93,35 @@ const createUserCard = () => {
   `
 }
 
-const displayDailyOunces = (hydrationData) => {
-  hydration = new Hydration(user.id, hydrationData)
-  todayWater.innerHTML = `
-  <h2>Today's Ounces: ${hydration.getDailyOunces()}</h2>
-  `
-}
-
-const displayWeeklyOunces = () => {
+const displayWaterData = () => {
   weeklyWaterContainer.innerHTML = `<canvas id="weekWater"></canvas>`
   const ctx = document.getElementById('weekWater').getContext('2d');
   new Chart(ctx, {
-    type: 'line',
+    type: 'bar',
     data: {
       labels: ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5', 'Day 6', 'Day 7'],
       datasets: [{
         label: 'Ounces of Water',
         data: hydration.getWeeklyOunces(),
-        fill: true,
-        borderColor: 'rgb(75, 192, 192)',
-        tension: 0.1
+        backgroundColor: [
+          'rgba(255, 99, 132, 0.2)',
+          'rgba(255, 159, 64, 0.2)',
+          'rgba(255, 205, 86, 0.2)',
+          'rgba(75, 192, 192, 0.2)',
+          'rgba(54, 162, 235, 0.2)',
+          'rgba(153, 102, 255, 0.2)',
+          'rgba(201, 203, 207, 0.2)'
+        ],
+        borderColor: [
+          'rgb(255, 99, 132)',
+          'rgb(255, 159, 64)',
+          'rgb(255, 205, 86)',
+          'rgb(75, 192, 192)',
+          'rgb(54, 162, 235)',
+          'rgb(153, 102, 255)',
+          'rgb(201, 203, 207)'
+        ],
+        borderWidth: 1
       }]
     },
     options: {
@@ -121,4 +132,52 @@ const displayWeeklyOunces = () => {
       }
     }
   });
+}
+
+const displaySleepData = () => {
+  sleep = new Sleep(user.id, sleepData)
+  sleepDataContainer.innerHTML = `<canvas id="weekSleep"></canvas>`
+  const ctx = document.getElementById('weekSleep').getContext('2d');
+  new Chart(ctx, {
+  type: 'line',
+  data: {
+    labels: ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5', 'Day 6', 'Day 7'],
+    datasets: [
+      {
+        label: 'Weekly Hours',
+        data: sleep.totalWeeklyHours(),
+        borderColor: 'rgb(77, 18, 238)',
+        backgroundColor: 'rgb(248, 246, 246)',
+      },
+      {
+        label: 'Weekly Quality',
+        data: sleep.totalWeeklyQuality(),
+        borderColor: 'rgb(63, 209, 203)',
+        backgroundColor: 'rgb(248, 246, 246)',
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: 'top',
+      },
+      title: {
+        display: true,
+        text: 'Weekly Sleep Data'
+        }
+      }
+    }
+  });
+}
+
+const displayAllTimeSleep = (hydrationData) => {
+    hydration = new Hydration(user.id, hydrationData)
+    dailyInfoDisplay.innerHTML = `
+    <h3>All-time Sleep Quality: ${sleep.calculateDailyQuality()}</h3>
+    <h3>All-time Sleep Hours Average: ${sleep.calculateDailyAverage()}</h3>
+    <h2>Today's Ounces: ${hydration.getDailyOunces()}</h2>
+    
+   `
 }
