@@ -24,6 +24,9 @@ const sleepDataContainer = document.querySelector('.sleep-data-container')
 const dailyInfoDisplay = document.querySelector('.daily-info')
 const greeting = document.querySelector('.greeting')
 const todayContainer = document.querySelector('.today-container')
+const waterContainer = document.querySelector('.water-container')
+const sleepContainer = document.querySelector('.sleep-container')
+const activityContainer = document.querySelector('.activity-container')
 
 //Global Variables
 let allUserData = [];
@@ -68,7 +71,6 @@ const makeUserInstances = (dataFile) => {
   })
 }
 
-
 const getRandomIndex = array => Math.floor(Math.random() * array.length);
 
 const createNewRepo = () => currentRepo = new UserRepository(allUserData); 
@@ -95,9 +97,9 @@ const createUserCard = () => {
 
 const displayTodayInfo = () => {
   const lastIndex = sleep.sleepHistory.length-1
-  todayContainer.innerHTML = ''
-  todayContainer.innerHTML += `
-  <h2 class="today-title">Today's Ounces: ${hydration.getDailyOunces()}</h2>
+  waterContainer.innerHTML += `
+  <h2 class="today-title">Today's Ounces: ${hydration.getDailyOunces()}</h2>`
+  sleepContainer.innerHTML += `
   <h2 class="today-title">Today's Hours Slept: ${sleep.totalDailyHours(sleep.sleepHistory[lastIndex].date)}</h2>
   <h2 class="today-title">Today's Quality of Sleep: ${sleep.totalDailyQuality(sleep.sleepHistory[lastIndex].date)}</h2>
   `
