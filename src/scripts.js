@@ -19,10 +19,11 @@ import { Chart } from 'chart.js/auto';
 // Query Selectors
 const userInfo = document.querySelector('.user-info')
 const stepGoalDisplay = document.querySelector('.step-goal')
-const todayWater = document.querySelector(".today-water")
-const weeklyWaterContainer = document.querySelector(".weekly-water-container")
-const sleepDataContainer = document.querySelector(".sleep-data-container")
-const dailyInfoDisplay = document.querySelector(".daily-info")
+const weeklyWaterContainer = document.querySelector('.weekly-water-container')
+const sleepDataContainer = document.querySelector('.sleep-data-container')
+const dailyInfoDisplay = document.querySelector('.daily-info')
+const greeting = document.querySelector('.greeting')
+const todayContainer = document.querySelector('.today-container')
 
 //Global Variables
 let allUserData = [];
@@ -44,7 +45,6 @@ apiCalls.fetchAllData()
   userData = data[0].userData;
   hydrationData = data[1].hydrationData;
   sleepData = data[2].sleepData;
-  console.log(data)
   loadPageFunctions();
 })
 
@@ -52,10 +52,13 @@ const loadPageFunctions = () => {
   makeUserInstances(userData);
   createNewRepo();
   getRandomUser();
+  newHydration();
+  newSleep();
   createUserCard();
   displaySleepData();
   displayAllTimeSleep(hydrationData);
   displayWaterData();
+  displayTodayInfo();
 }
 
 const makeUserInstances = (dataFile) => {
@@ -65,11 +68,16 @@ const makeUserInstances = (dataFile) => {
   })
 }
 
-const createNewRepo = () => currentRepo = new UserRepository(allUserData);
 
 const getRandomIndex = array => Math.floor(Math.random() * array.length);
 
+const createNewRepo = () => currentRepo = new UserRepository(allUserData); 
+
 const getRandomUser = () => user = currentRepo.userData[getRandomIndex(currentRepo.userData)];
+
+const newHydration = () => hydration = new Hydration(user.id, hydrationData);
+
+const newSleep = () => sleep = new Sleep(user.id, sleepData);
 
 const createUserCard = () => {
   userInfo.innerHTML = ''
@@ -85,12 +93,21 @@ const createUserCard = () => {
   greeting.innerHTML = `Hi, ${user.findFirstName()}!`
 }
 
+const displayTodayInfo = () => {
+  const lastIndex = sleep.sleepHistory.length-1
+  todayContainer.innerHTML = ''
+  todayContainer.innerHTML += `
+  <h2 class="today-title">Today's Ounces: ${hydration.getDailyOunces()}</h2>
+  <h2 class="today-title">Today's Hours Slept: ${sleep.totalDailyHours(sleep.sleepHistory[lastIndex].date)}</h2>
+  <h2 class="today-title">Today's Quality of Sleep: ${sleep.totalDailyQuality(sleep.sleepHistory[lastIndex].date)}</h2>
+  `
+}
+
 const displayAllTimeSleep = (hydrationData) => {
-  hydration = new Hydration(user.id, hydrationData)
-  dailyInfoDisplay.innerHTML = `
+  dailyInfoDisplay.innerHTML = ''
+  dailyInfoDisplay.innerHTML += `
   <h3>All-time Sleep Quality: ${sleep.calculateDailyQuality()}</h3>
   <h3>All-time Sleep Hours Average: ${sleep.calculateDailyAverage()}</h3>
-  <h2>Today's Ounces: ${hydration.getDailyOunces()}</h2>
  `
 }
 
@@ -136,7 +153,6 @@ const displayWaterData = () => {
 }
 
 const displaySleepData = () => {
-  sleep = new Sleep(user.id, sleepData)
   sleepDataContainer.innerHTML = `<canvas id="weekSleep"></canvas>`
   const ctx = document.getElementById('weekSleep').getContext('2d');
   new Chart(ctx, {

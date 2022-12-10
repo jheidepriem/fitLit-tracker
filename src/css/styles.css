@@ -96,7 +96,7 @@ main {
 
 .greeting {
   font-size: 30px;
-  margin: 0% 0% 10% 0%;
+  margin: 0% 0% 2% 0%;
 }
 
 h1 {
@@ -104,27 +104,31 @@ h1 {
   margin-bottom: 5%;;
 }
 
-.week-ounces{
-  margin-bottom: 1%;
-  margin-top: 3%;
-
+.today-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 50vh;
+  justify-content: space-evenly;
+  width: 75vw;
 }
 
-.weekly-water-container {
-  height: 333px;
-  width: 667px;
+.graphs-container {
+  display: flex;
+  flex-direction: row;
+  height: 50vh;
+  justify-content: space-around;
+  width: 75vw;
+}
+
+.container {
+  height: 215px;
+  width: 434px;
   border: 3px solid #3FD1CB;
   display: flex;
   justify-content: center;
-  margin-top: 8%;
+  margin-top: 2%;
   margin-bottom: 8%;
-}
-
-.graph-wrapper {
-  height: 45vh;
-  width: 75vw;
-  display: flex;
-  justify-content: space-around;
   align-items: center;
 }
 

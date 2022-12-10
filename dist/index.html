@@ -16,12 +16,17 @@
     <main>
       <h1>Activity Tracker</h1>
       <h2 class="greeting"></h2>
-      <h2 class="week-ounces">Ounces This Week:</h2>
-      <div class="weekly-water-container">
-        <canvas id="weekWater"></canvas>
-      </div>
-      <div class="sleep-data-container">
-        <canvas id="weekSleep"></canvas>
+      <div class="today-container"></div>
+        <div class="water-container"></div>
+        <div class="sleep-container"></div>
+        <div class="activity-container"></div>
+      <div class="graphs-container">
+        <div class="weekly-water-container container">
+          <canvas id="weekWater"></canvas>
+        </div>
+        <div class="sleep-data-container container">
+          <canvas id="weekSleep"></canvas>
+        </div>
       </div>
       <!-- Do not include the scripts.js file here - it is done automatically by the webpack server -->
       <script src="bundle.js"></script>
