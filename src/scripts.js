@@ -18,12 +18,12 @@ import apiCalls from './apiCalls';
 import { Chart } from 'chart.js/auto';
 
 // Query Selectors
-let userInfo = document.querySelector('.user-info')
-let stepGoalDisplay = document.querySelector('.step-goal')
-let todayWater = document.querySelector(".today-water")
-let weeklyWaterContainer = document.querySelector(".weekly-water-container")
-let sleepDataContainer = document.querySelector(".sleep-data-container")
-
+const userInfo = document.querySelector('.user-info')
+const stepGoalDisplay = document.querySelector('.step-goal')
+const todayWater = document.querySelector(".today-water")
+const weeklyWaterContainer = document.querySelector(".weekly-water-container")
+const sleepDataContainer = document.querySelector(".sleep-data-container")
+const dailyInfoDisplay = document.querySelector(".daily-info")
 
 //Global Variables
 let allUserData = [];
@@ -33,6 +33,7 @@ let hydration
 let hydrationData
 let sleepData
 let userData
+let sleep
 
 
 //EventListeners
@@ -54,9 +55,9 @@ const loadPageFunctions = () => {
   createNewRepo();
   getRandomUser();
   createUserCard();
-  displayDailyOunces(hydrationData);
+  displaySleepData();
+  displayAllTimeSleep(hydrationData);
   displayWaterData();
-  displaySleepData()
 }
 
 const makeUserInstances = (dataFile) => {
@@ -89,13 +90,6 @@ const createUserCard = () => {
     <h3>Stride Length: ${user.strideLength}</h3>
     <h3>Daily Step Goal: ${user.dailyStepGoal}</h3>
     <h3>Average Step Goal: ${currentRepo.findAverageStepGoal()}</h3>
-  `
-}
-
-const displayDailyOunces = (hydrationData) => {
-  hydration = new Hydration(user.id, hydrationData)
-  todayWater.innerHTML = `
-  <h2>Today's Ounces: ${hydration.getDailyOunces()}</h2>
   `
 }
 
@@ -141,7 +135,7 @@ const displayWaterData = () => {
 }
 
 const displaySleepData = () => {
-  let sleep = new Sleep(user.id, sleepData)
+  sleep = new Sleep(user.id, sleepData)
   sleepDataContainer.innerHTML = `<canvas id="weekSleep"></canvas>`
   const ctx = document.getElementById('weekSleep').getContext('2d');
   new Chart(ctx, {
@@ -178,3 +172,12 @@ const displaySleepData = () => {
   });
 }
 
+const displayAllTimeSleep = (hydrationData) => {
+    hydration = new Hydration(user.id, hydrationData)
+    dailyInfoDisplay.innerHTML = `
+    <h3>All-time Sleep Quality: ${sleep.calculateDailyQuality()}</h3>
+    <h3>All-time Sleep Hours Average: ${sleep.calculateDailyAverage()}</h3>
+    <h2>Today's Ounces: ${hydration.getDailyOunces()}</h2>
+    
+   `
+}
