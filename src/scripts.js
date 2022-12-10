@@ -103,9 +103,15 @@ const createUserCard = () => {
 const displayTodayInfo = () => {
   const lastIndex = sleep.sleepHistory.length-1
   waterContainer.innerHTML += `
+  <div class="emoji">
+  <img src="./images/water.jpg" alt="steps">
+</div>
   <h3 class="today-title">Today's Ounces:</h3>
   <p class="today-title">${hydration.getDailyOunces()}</p>`
   sleepContainer.innerHTML += `
+  <div class="emoji">
+    <img src="./images/zzz.jpg" alt="steps">
+  </div>
   <h3 class="today-title">Today's Hours Slept:</h3>
   <p class="today-title"> ${sleep.totalDailyHours(sleep.sleepHistory[lastIndex].date)}</p>
   <h3 class="today-title">Today's Quality of Sleep:</h3>
