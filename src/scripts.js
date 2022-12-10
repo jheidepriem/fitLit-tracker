@@ -7,7 +7,6 @@ import './css/styles.css';
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/turing-logo.png'
 
-
 // An example of how you tell webpack to use a JS file
 
 import UserRepository from './UserRepository';
@@ -34,7 +33,6 @@ let hydrationData
 let sleepData
 let userData
 let sleep
-
 
 //EventListeners
 
@@ -67,17 +65,11 @@ const makeUserInstances = (dataFile) => {
   })
 }
 
-const createNewRepo = () => {
-  currentRepo = new UserRepository(allUserData);
-}
+const createNewRepo = () => currentRepo = new UserRepository(allUserData);
 
-const getRandomIndex = array => {
-  return Math.floor(Math.random() * array.length);
-}
+const getRandomIndex = array => Math.floor(Math.random() * array.length);
 
-const getRandomUser = () => {
-  user = currentRepo.userData[getRandomIndex(currentRepo.userData)];
-}
+const getRandomUser = () => user = currentRepo.userData[getRandomIndex(currentRepo.userData)];
 
 const createUserCard = () => {
   userInfo.innerHTML = ''
@@ -90,8 +82,16 @@ const createUserCard = () => {
     <h3 class="step-info">Daily Step Goal: ${user.dailyStepGoal}</h3>
     <h3 class="step-info">Average Step Goal: ${currentRepo.findAverageStepGoal()}</h3>
   `
-
   greeting.innerHTML = `Hi, ${user.findFirstName()}!`
+}
+
+const displayAllTimeSleep = (hydrationData) => {
+  hydration = new Hydration(user.id, hydrationData)
+  dailyInfoDisplay.innerHTML = `
+  <h3>All-time Sleep Quality: ${sleep.calculateDailyQuality()}</h3>
+  <h3>All-time Sleep Hours Average: ${sleep.calculateDailyAverage()}</h3>
+  <h2>Today's Ounces: ${hydration.getDailyOunces()}</h2>
+ `
 }
 
 const displayWaterData = () => {
@@ -171,14 +171,4 @@ const displaySleepData = () => {
       }
     }
   });
-}
-
-const displayAllTimeSleep = (hydrationData) => {
-    hydration = new Hydration(user.id, hydrationData)
-    dailyInfoDisplay.innerHTML = `
-    <h3>All-time Sleep Quality: ${sleep.calculateDailyQuality()}</h3>
-    <h3>All-time Sleep Hours Average: ${sleep.calculateDailyAverage()}</h3>
-    <h2>Today's Ounces: ${hydration.getDailyOunces()}</h2>
-    
-   `
 }
