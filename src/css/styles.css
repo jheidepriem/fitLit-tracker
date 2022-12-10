@@ -19,6 +19,7 @@ body {
   width: 100vw;
 }
 
+
 /* LEFT SIDE */
 
 .left-side {
@@ -119,6 +120,7 @@ main {
 h1 {
   font-size: 50px;
   margin-bottom: 3%;
+  margin-top: 4%;
 }
 
 .today-container {
