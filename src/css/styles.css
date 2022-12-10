@@ -23,15 +23,23 @@ body {
   display: flex;
 }
 
+p {
+  font: inherit;
+}
+
+h3 {
+  font: inherit;
+}
+
 /* LEFT SIDE */
 
 .left-side {
+  align-items: center;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   height: 100vh;
-  margin-left: 2%;
-  width: 25vw;
+  width: 20vw;
 }
 
 .user-info {
@@ -40,30 +48,16 @@ body {
   box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, .2);
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
   justify-content: center;
   margin-left: 5%;
-  height: 20vh;
-  width: 18vw;
+  height: 24vh;
+  text-align: center;
+  width: 15vw;
 }
 
 .info {
   margin: 0% 8% 0% 5%;
-}
-
-.daily-info {
-  border: 2px solid #e2efff;
-  border-radius: 16%;
-  box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, .2);
-  display: flex;
-  flex-direction: column;
-  height: 35vh;
-  margin-left: 5%;
-  width: 18vw;
-}
-
-.today-info {
-  font-size: 18px;
-  margin: 10% 8% 5% 8%;
 }
 
 .step-goal {
@@ -72,9 +66,41 @@ body {
   box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, .2);
   display: flex;
   flex-direction: column;
-  height: 20vh;
+  height: 32vh;
   margin-left: 5%;
-  width: 18vw;
+  text-align: center;
+  width: 15vw;
+}
+
+.daily-info {
+  align-items: center;
+  border: 2px solid #e2efff;
+  border-radius: 16%;
+  box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, .2);
+  display: flex;
+  flex-direction: column;
+  height: 28vh;
+  justify-content: center;
+  margin-left: 5%;
+  text-align: center;
+  width: 15vw;
+}
+
+.today {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 10% 8% 5% 8%;
+}
+
+.today-title {
+  font-size: 16px;
+}
+
+.alltime {
+  font-size: 18px;
+  margin: 5% 0% 0% 5%;
 }
 
 .step-info {
@@ -91,7 +117,7 @@ main {
   flex-direction: column;
   height: 100vh;
   margin: 1% 1% 1% 1%;
-  width: 75vw;
+  width: 90vw;
 }
 
 .greeting {
@@ -101,7 +127,7 @@ main {
 
 h1 {
   font-size: 50px;
-  margin-bottom: 5%;;
+  margin-bottom: 3%;
 }
 
 .today-container {
@@ -114,9 +140,12 @@ h1 {
 }
 
 .today {
-  border: 2px solid blue;
+  border: 2px solid #e2efff;
+  border-radius: 16%;
+  box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, .2);
   display: flex;
   flex-direction: column;
+  margin: 5% 2% 5% 2%;
   height: 30vh;
   width: 20vw;
 }
@@ -134,23 +163,25 @@ h1 {
 }
 
 .container {
-  height: 215px;
-  width: 434px;
+  align-items: center;
   border: 3px solid #3FD1CB;
+  border-radius: 5%;
+  box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, .2);
   display: flex;
+  height: 215px;
   justify-content: center;
   margin-top: 2%;
   margin-bottom: 8%;
-  align-items: center;
+  width: 434px;
 }
 
 .step-graph,
 .sleep-graph {
-  height: 40vh;
-  width: 30vw;
-  /* border: 3px solid blue; */
   display: flex;
+  height: 40vh;
+  /* border: 3px solid blue; */
   justify-content: center;
+  width: 30vw;
 }
 
 .step-graph {

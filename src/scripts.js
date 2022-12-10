@@ -84,13 +84,18 @@ const newSleep = () => sleep = new Sleep(user.id, sleepData);
 const createUserCard = () => {
   userInfo.innerHTML = ''
   userInfo.innerHTML += `
-    <h3 class="info">Address: ${user.address}</h3>
-    <h3 class="info">Email: ${user.email}</h3>
+    <h3 class="info">Address:</h3>
+    <p class="info">${user.address}</p>
+    <h3 class="info">Email:</h3>
+    <p class="info">${user.email}</p>
   `
   stepGoalDisplay.innerHTML = `
-    <h3 class="step-info">Stride Length: ${user.strideLength}</h3>
-    <h3 class="step-info">Daily Step Goal: ${user.dailyStepGoal}</h3>
-    <h3 class="step-info">Average Step Goal: ${currentRepo.findAverageStepGoal()}</h3>
+    <h3 class="step-info">Stride Length:</h3>
+    <p class="step-info">${user.strideLength}</p>
+    <h3 class="step-info">Daily Step Goal:</h3>
+    <p class="step-info">${user.dailyStepGoal}<p>
+    <h3 class="step-info">Average Step Goal:</h3>
+    <p class="step-info">${currentRepo.findAverageStepGoal()}</p>
   `
   greeting.innerHTML = `Hi, ${user.findFirstName()}!`
 }
@@ -98,18 +103,23 @@ const createUserCard = () => {
 const displayTodayInfo = () => {
   const lastIndex = sleep.sleepHistory.length-1
   waterContainer.innerHTML += `
-  <h2 class="today-title">Today's Ounces: ${hydration.getDailyOunces()}</h2>`
+  <h3 class="today-title">Today's Ounces:</h3>
+  <p class="today-title">${hydration.getDailyOunces()}</p>`
   sleepContainer.innerHTML += `
-  <h2 class="today-title">Today's Hours Slept: ${sleep.totalDailyHours(sleep.sleepHistory[lastIndex].date)}</h2>
-  <h2 class="today-title">Today's Quality of Sleep: ${sleep.totalDailyQuality(sleep.sleepHistory[lastIndex].date)}</h2>
+  <h3 class="today-title">Today's Hours Slept:</h3>
+  <p class="today-title"> ${sleep.totalDailyHours(sleep.sleepHistory[lastIndex].date)}</p>
+  <h3 class="today-title">Today's Quality of Sleep:</h3>
+  <p class="today-title">${sleep.totalDailyQuality(sleep.sleepHistory[lastIndex].date)}</p>
   `
 }
 
 const displayAllTimeSleep = (hydrationData) => {
   dailyInfoDisplay.innerHTML = ''
   dailyInfoDisplay.innerHTML += `
-  <h3>All-time Sleep Quality: ${sleep.calculateDailyQuality()}</h3>
-  <h3>All-time Sleep Hours Average: ${sleep.calculateDailyAverage()}</h3>
+  <h3 class="alltime">All-time Sleep Quality:</h3>
+  <p class="alltime"> ${sleep.calculateDailyQuality()}</p>
+  <h3 class="alltime">All-time Sleep Hours Average:</h3>
+  <p class="alltime">${sleep.calculateDailyAverage()}</p>
  `
 }
 
