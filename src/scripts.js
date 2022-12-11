@@ -116,7 +116,7 @@ const displayTodayInfo = () => {
     sleep.sleepHistory[lastIndex].date
   )}</p>
   <h3 class="today-title">Today's Quality of Sleep:</h3>
-  <p class="today-title">${sleep.totalDailyQuality(
+  <p class="today-title">${sleep.giveDailyQuality(
     sleep.sleepHistory[lastIndex].date
   )}</p>
   `;

@@ -29,7 +29,7 @@ class Sleep {
     return pickedDay.hoursSlept
   };
 
-  totalDailyQuality(date) {
+  giveDailyQuality(date) {
     const pickedDay = this.sleepHistory.find(day => day.date === date)
     return pickedDay.sleepQuality
   };
