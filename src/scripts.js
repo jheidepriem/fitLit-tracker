@@ -126,7 +126,7 @@ const displayAllTimeSleep = (hydrationData) => {
   dailyInfoDisplay.innerHTML = "";
   dailyInfoDisplay.innerHTML += `
   <h3 class="alltime">All-time Sleep Quality:</h3>
-  <p class="alltime"> ${sleep.calculateDailyQuality()}</p>
+  <p class="alltime"> ${sleep.calcDailyQualityAvg()}</p>
   <h3 class="alltime">All-time Sleep Hours Average:</h3>
   <p class="alltime">${sleep.calcDailyHrsAvg()}</p>
  `;

@@ -16,7 +16,7 @@ class Sleep {
     return Number(avg.toFixed(1))
   };
 
-  calculateDailyQuality() {
+  calcDailyQualityAvg() {
     const sum = this.sleepHistory.reduce((total, day) => {
       return total += day.sleepQuality
     },0)
