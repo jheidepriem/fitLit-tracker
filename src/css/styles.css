@@ -38,11 +38,19 @@ body {
   box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, .2);
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
+  /* flex-flow: column; */
   justify-content: center;
   margin-left: 5%;
   text-align: center;
   width: 15vw;
+}
+
+.title {
+  color: #3FD1CB;
+}
+
+.p {
+  color: #2F24C1;
 }
 
 .user-info-card {
@@ -51,7 +59,7 @@ body {
 
 .user-info {
   font-size: 14px;
-  margin-top: 4%;
+  margin: 3% 3% 1% 3%;
 }
 
 .step-info-card {
@@ -68,7 +76,7 @@ body {
 }
 
 .all-time {
-  font-size: 15px;
+  font-size: 16px;
   margin: 5% 0% 0% 5%;
 }
 
@@ -84,15 +92,17 @@ main {
   width: 90vw;
 }
 
-.greeting {
-  font-size: 30px;
-  margin: 0% 0% 2% 0%;
-}
-
 h1 {
+  color: #3FD1CB;
   font-size: 50px;
   margin-bottom: 3%;
   margin-top: 4%;
+}
+
+.greeting {
+  color: #2F24C1;
+  font-size: 30px;
+  margin: 0% 0% 2% 0%;
 }
 
 .today-container {
