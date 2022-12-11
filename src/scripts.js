@@ -19,8 +19,10 @@ const stride = document.querySelector(".stride")
 const goal = document.querySelector(".goal")
 const average = document.querySelector(".average")
 const ounces = document.querySelector(".ounces");
-const dailyHours = document.querySelector('.daily-hours')
-const dailyQuality = document.querySelector('.daily-quality')
+const dailyHours = document.querySelector(".daily-hours")
+const dailyQuality = document.querySelector(".daily-quality")
+const qualityAvg = document.querySelector(".quality")
+const hoursAvg = document.querySelector(".hours")
 
 //Global Variables
 let allUserData = [];
@@ -88,7 +90,6 @@ const showStepInfo = () => {
 };
 
 const showTodayWater = () => ounces.innerText += `${hydration.getDailyOunces()}`;
-};
 
 const showTodaySleep = () => {
   const lastIndex = sleep.sleepHistory.length - 1;
@@ -97,13 +98,8 @@ const showTodaySleep = () => {
 };
 
 const allTimeSleep = () => {
-  dailyInfoDisplay.innerHTML = "";
-  dailyInfoDisplay.innerHTML += `
-  <h3 class="all-time">All-time Sleep Quality:</h3>
-  <p class="all-time"> ${sleep.calcDailyQualityAvg()}</p>
-  <h3 class="all-time">All-time Sleep Hours Average:</h3>
-  <p class="all-time">${sleep.calcDailyHrsAvg()}</p>
- `
+  qualityAvg.innerText = `${sleep.calcDailyQualityAvg()}`
+  hoursAvg.innerText = `${sleep.calcDailyHrsAvg()}`
 };
 
 const waterGraph = () => {
