@@ -42,6 +42,7 @@ const loadPageFunctions = () => {
   newHydration();
   newSleep();
   createUserCard();
+  greetUser();
   displaySleepData();
   displayAllTimeSleep(hydrationData);
   displayWaterData();
@@ -65,6 +66,8 @@ const newHydration = () => (hydration = new Hydration(user.id, hydrationData));
 
 const newSleep = () => (sleep = new Sleep(user.id, sleepData));
 
+const greetUser = () => {greeting.innerHTML = `Hi, ${user.findFirstName()}!`;};
+
 const createUserCard = () => {
   userInfo.innerHTML = "";
   userInfo.innerHTML += `
@@ -81,7 +84,6 @@ const createUserCard = () => {
     <h3 class="step-info">Average Step Goal:</h3>
     <p class="step-info">${currentRepo.findAverageStepGoal()}</p>
   `;
-  greeting.innerHTML = `Hi, ${user.findFirstName()}!`;
 };
 
 const displayTodayInfo = () => {
