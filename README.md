@@ -1,9 +1,10 @@
 ## Abstract
+The purpose of this app is to display a user's data, such as sleep, hydration and activity for the latest day and week including comparisions to the average of all user's for each topic.
 
 ## Setup
 
-1. Then, that person should fork this repo - on the top right corner of this page, click the **Fork** button.
-2. 
+1. In your browser, paste this link: https://github.com/jheidepriem/fitLit-tracker
+2. Fork this repo - on the top right corner of this page, click the **Fork** button.
 3. Once you have cloned the repo, change into the directory and install the project dependencies. Run `npm install` to install project dependencies.
 4. Run `npm start` in the terminal to see the HTML page. `Control + C` is the command to stop running the local server.  Closing the terminal without stopping the server first could allow the server to continue to run in the background and cause problems. This command is not specific to Webpack; make note of it for future use.    
 5. Do not run `npm audit fix --force`.  This will update to the latest version of packages.  We need to be using `webpack-dev-server@3.11.2` which is not the latest version.  If you start to run into Webpack errors, first check that all group members are using the correct version.  
@@ -26,66 +27,6 @@ Reid Poole: https://github.com/rpoole444
 * VScode
 
 ## Future Features
+Some future features would be to add each user's friends activity and rank them highest to lowest in a right side panel. Another feature would be to add a profile image for each user. A separate page view to add data would also be a fun future feature so that the page isn't cluttered.
 
 ## GIF
----------------------------------------------------------------------------
-## Data Model
-
-**Users**
-
-```
-[
-  {
-    "id": [number],
-    "name": [string],
-    "address": [string],
-    "email": [string],
-    "strideLength": [number - feet],
-    "dailyStepGoal": [number - steps],
-    "friends": [array - one-way connection to other user(s)]
-  },
-  ...more user data
-]
-```
-
-**Activity**
-
-```
-[
-  {
-    "userID": [number],
-    "date": [string YYYY/MM/DD],
-    "numSteps": [number - steps],
-    "minutesActive": [number - minutes],
-    "flightsOfStairs": [number - flights]
-  },
-  ...more activity data
-]
-```
-
-**Hydration**
-
-```
-[
-  {
-    "userID": [number],
-    "date": [string YYYY/MM/DD],
-    "numOunces": [number - ounces]
-  },
-  ...more hydration data
-]
-```
-
-**Sleep**
-
-```
-[
-  {
-    "userID": [number],
-    "date": [string YYYY/MM/DD],
-    "hoursSlept": [number - hours],
-    "sleepQuality": [number - unitless]
-  },
-  ...more sleep data
-]
-```
