@@ -128,7 +128,7 @@ const displayAllTimeSleep = (hydrationData) => {
   <h3 class="alltime">All-time Sleep Quality:</h3>
   <p class="alltime"> ${sleep.calculateDailyQuality()}</p>
   <h3 class="alltime">All-time Sleep Hours Average:</h3>
-  <p class="alltime">${sleep.calculateDailyAverage()}</p>
+  <p class="alltime">${sleep.calcDailyHrsAvg()}</p>
  `;
 };
 

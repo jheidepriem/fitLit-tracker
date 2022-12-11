@@ -8,7 +8,7 @@ class Sleep {
     });
   }
 
-  calculateDailyAverage() {
+  calcDailyHrsAvg() {
     const sum = this.sleepHistory.reduce((total, day) => {
       return total += day.hoursSlept
     },0)
