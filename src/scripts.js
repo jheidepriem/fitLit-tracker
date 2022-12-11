@@ -13,6 +13,11 @@ const weeklyWaterContainer = document.querySelector(".weekly-water-container");
 const sleepDataContainer = document.querySelector(".sleep-data-container");
 const dailyInfoDisplay = document.querySelector(".daily-info");
 const greeting = document.querySelector(".greeting");
+const address = document.querySelector(".address")
+const email = document.querySelector(".email")
+const stride = document.querySelector(".stride")
+const goal = document.querySelector(".goal")
+const average = document.querySelector(".average")
 const waterContainer = document.querySelector(".water-container");
 const dailyHours = document.querySelector('.daily-hours')
 const dailyQuality = document.querySelector('.daily-quality')
@@ -72,24 +77,14 @@ const newSleep = () => sleep = new Sleep(user.id, sleepData);
 const greetUser = () => greeting.innerHTML = `Hi, ${user.findFirstName()}!`;
 
 const showUserInfo = () => {
-  userInfo.innerHTML = "";
-  userInfo.innerHTML += `
-    <h3 class="info">Address:</h3>
-    <p class="info">${user.address}</p>
-    <h3 class="info">Email:</h3>
-    <p class="info">${user.email}</p>
-  `
+  address.innerText = `${user.address}`
+  email.innerText = `${user.email}`
 };
 
 const showStepInfo = () => {
-  stepGoalDisplay.innerHTML = `
-    <h3 class="step-info">Stride Length:</h3>
-    <p class="step-info">${user.strideLength}</p>
-    <h3 class="step-info">Daily Step Goal:</h3>
-    <p class="step-info">${user.dailyStepGoal}<p>
-    <h3 class="step-info">Average Step Goal:</h3>
-    <p class="step-info">${currentRepo.findAverageStepGoal()}</p>
-  `
+  stride.innerText = `${user.strideLength}`
+  goal.innerText = `${user.dailyStepGoal}`
+  average.innerText = `${currentRepo.findAverageStepGoal()}`
 };
 
 const showTodayWater = () => {
