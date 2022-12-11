@@ -24,7 +24,7 @@ class Sleep {
     return Number(avg.toFixed(1))
   };
 
-  totalDailyHours(date) {
+  giveDailyHrs(date) {
     const pickedDay = this.sleepHistory.find(day => day.date === date)
     return pickedDay.hoursSlept
   };

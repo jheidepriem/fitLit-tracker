@@ -112,7 +112,7 @@ const displayTodayInfo = () => {
     <img src="./images/zzz.jpg" alt="steps">
   </div>
   <h3 class="today-title">Today's Hours Slept:</h3>
-  <p class="today-title"> ${sleep.totalDailyHours(
+  <p class="today-title"> ${sleep.giveDailyHrs(
     sleep.sleepHistory[lastIndex].date
   )}</p>
   <h3 class="today-title">Today's Quality of Sleep:</h3>
