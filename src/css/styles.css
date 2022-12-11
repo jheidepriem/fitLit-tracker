@@ -1,73 +1,180 @@
-/* COLORS */
-
-#F8F6F6 /*light silver */
-
+/* COLORS 
+#F8F6F6 light silver
+#3FD1CB aqua
+#2F24C1 royal blue
+#4D12EE regular blue
+*/
 
 * {
-  font-size: 14px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
   margin: 0;
   padding: 0;
   font-family: "Open Sans";
 }
 
-body,
-html {
+body {
+  display: flex;
   height: 100vh;
   width: 100vw;
 }
 
-body {
-  display: flex;
-}
+
+/* LEFT SIDE */
 
 .left-side {
-  height: 100vh;
-  width: 25vw;
-  border: 3px solid black;
-}
-
-.friends-list,
-.step-goal,
-.user-info {
-  border: 2px solid black;
-  height: 25vh;
-  width: auto;
-}
-
-main {
-  height: 100vh;
-  width: 75vw;
-  border: 3px solid green;
+  align-items: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  justify-content: space-evenly;
+  height: 100vh;
+  width: 20vw;
 }
 
-.weekly-water-container {
-  height: 333px;
-  width: 667px;
-  border: 3px solid red;
+.user-info {
+  border: 2px solid #E3FDFD;
+  border-radius: 16%;
+  box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, .2);
   display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  font-size: 15px;
   justify-content: center;
-  margin-top: 8%;
-  margin-bottom: 8%;
+  margin-left: 5%;
+  height: 24vh;
+  text-align: center;
+  width: 15vw;
 }
 
-.graph-wrapper {
-  height: 45vh;
-  width: 75vw;
+.info {
+  margin: 0% 8% 0% 5%;
+}
+
+.step-goal {
+  border: 2px solid #e2efff;
+  border-radius: 16%;
+  box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, .2);
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
+  height: 32vh;
+  justify-content: center;
+  margin-left: 5%;
+  text-align: center;
+  width: 15vw;
+}
+
+.daily-info {
   align-items: center;
+  border: 2px solid #e2efff;
+  border-radius: 16%;
+  box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, .2);
+  display: flex;
+  flex-direction: column;
+  font-size: small;
+  height: 28vh;
+  justify-content: center;
+  margin-left: 5%;
+  text-align: center;
+  width: 15vw;
+}
+
+.today {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 10% 8% 5% 8%;
+}
+
+.today-title {
+  font-size: 16px;
+}
+
+.alltime {
+  font-size: 18px;
+  margin: 5% 0% 0% 5%;
+}
+
+.step-info {
+  font-size: 15px;
+  margin: 8% 8% 0% 8%;
+}
+
+/* Main */
+main {
+  align-items: center;
+  border: 2px solid #F8F6F6;
+  box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, .2);
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  margin: 1% 1% 1% 1%;
+  width: 90vw;
+}
+
+.greeting {
+  font-size: 30px;
+  margin: 0% 0% 2% 0%;
+}
+
+h1 {
+  font-size: 50px;
+  margin-bottom: 3%;
+  margin-top: 4%;
+}
+
+.today-container {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  height: 50vh;
+  justify-content: space-evenly;
+  width: 75vw;
+}
+
+.today {
+  border: 2px solid #e2efff;
+  border-radius: 16%;
+  box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, .2);
+  display: flex;
+  flex-direction: column;
+  margin: 3% 2% 3% 2%;
+  height: 30vh;
+  width: 20vw;
+}
+
+.today-title {
+  margin: 5% 0% 0% 5%;
+}
+
+.graphs-container {
+  display: flex;
+  flex-direction: row;
+  height: 50vh;
+  justify-content: space-around;
+  width: 75vw;
+}
+
+.container {
+  align-items: center;
+  border: 3px solid #3FD1CB;
+  border-radius: 5%;
+  box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, .2);
+  display: flex;
+  height: 25vh;
+  justify-content: center;
+  margin-top: 2%;
+  margin-bottom: 8%;
+  width: 30vw;
 }
 
 .step-graph,
 .sleep-graph {
-  height: 40vh;
-  width: 30vw;
-  border: 3px solid blue;
   display: flex;
+  height: 40vh;
+  /* border: 3px solid blue; */
   justify-content: center;
+  width: 30vw;
 }
 
 .step-graph {
