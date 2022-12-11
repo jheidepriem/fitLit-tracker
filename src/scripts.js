@@ -41,7 +41,7 @@ const loadPageFunctions = () => {
   getRandomUser();
   newHydration();
   newSleep();
-  createUserCard();
+  showUserInfo();
   greetUser();
   displaySleepData();
   displayAllTimeSleep(hydrationData);
@@ -68,7 +68,7 @@ const newSleep = () => (sleep = new Sleep(user.id, sleepData));
 
 const greetUser = () => {greeting.innerHTML = `Hi, ${user.findFirstName()}!`;};
 
-const createUserCard = () => {
+const showUserInfo = () => {
   userInfo.innerHTML = "";
   userInfo.innerHTML += `
     <h3 class="info">Address:</h3>
