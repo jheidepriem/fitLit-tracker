@@ -23,10 +23,8 @@ const weeklyWaterContainer = document.querySelector(".weekly-water-container");
 const sleepDataContainer = document.querySelector(".sleep-data-container");
 const dailyInfoDisplay = document.querySelector(".daily-info");
 const greeting = document.querySelector(".greeting");
-const todayContainer = document.querySelector(".today-container");
 const waterContainer = document.querySelector(".water-container");
 const sleepContainer = document.querySelector(".sleep-container");
-const activityContainer = document.querySelector(".activity-container");
 
 //Global Variables
 let allUserData = [];
