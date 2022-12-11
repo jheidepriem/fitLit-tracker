@@ -26,8 +26,6 @@ let sleepData;
 let userData;
 let sleep;
 
-//EventListeners
-
 //Functions
 
 apiCalls.fetchAllData().then((data) => {
@@ -59,10 +57,9 @@ const makeUserInstances = (dataFile) => {
 
 const getRandomIndex = (array) => Math.floor(Math.random() * array.length);
 
-const createNewRepo = () => (currentRepo = new UserRepository(allUserData));
+const getRandomUser = () => (user = currentRepo.userData[getRandomIndex(currentRepo.userData)]);
 
-const getRandomUser = () =>
-  (user = currentRepo.userData[getRandomIndex(currentRepo.userData)]);
+const createNewRepo = () => (currentRepo = new UserRepository(allUserData));
 
 const newHydration = () => (hydration = new Hydration(user.id, hydrationData));
 
@@ -110,7 +107,7 @@ const displayTodayInfo = () => {
   `;
 };
 
-const displayAllTimeSleep = (hydrationData) => {
+const displayAllTimeSleep = () => {
   dailyInfoDisplay.innerHTML = "";
   dailyInfoDisplay.innerHTML += `
   <h3 class="alltime">All-time Sleep Quality:</h3>
