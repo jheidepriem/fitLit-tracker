@@ -7,11 +7,9 @@ import apiCalls from "./apiCalls";
 import { Chart } from "chart.js/auto";
 
 // Query Selectors
-const userInfo = document.querySelector(".user-info");
-const stepGoalDisplay = document.querySelector(".step-goal");
+
 const weeklyWaterContainer = document.querySelector(".weekly-water-container");
 const sleepDataContainer = document.querySelector(".sleep-data-container");
-const dailyInfoDisplay = document.querySelector(".daily-info");
 const greeting = document.querySelector(".greeting");
 const address = document.querySelector(".address")
 const email = document.querySelector(".email")
