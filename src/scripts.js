@@ -41,9 +41,10 @@ const loadPageFunctions = () => {
   getRandomUser();
   newHydration();
   newSleep();
+  greetUser();
   showUserInfo();
   showStepInfo();
-  greetUser();
+  showTodayWater();
   displaySleepData();
   displayAllTimeSleep(hydrationData);
   displayWaterData();
@@ -90,14 +91,17 @@ const showStepInfo = () => {
   `;
 }
 
-const displayTodayInfo = () => {
-  const lastIndex = sleep.sleepHistory.length - 1;
+const showTodayWater = () => {
   waterContainer.innerHTML += `
   <div class="emoji">
     <img src="./images/water.jpg" alt="steps">
   </div>
   <h3 class="today-title">Today's Ounces:</h3>
   <p class="today-title">${hydration.getDailyOunces()}</p>`;
+}
+
+const displayTodayInfo = () => {
+  const lastIndex = sleep.sleepHistory.length - 1;
   sleepContainer.innerHTML += `
   <div class="emoji">
     <img src="./images/zzz.jpg" alt="steps">
