@@ -83,7 +83,7 @@ body {
 /* Main */
 main {
   align-items: center;
-  border: 2px solid #F8F6F6;
+  border: 2px solid #E3FDFD;
   box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, .2);
   display: flex;
   flex-direction: column;
@@ -116,7 +116,7 @@ h1 {
 
 .today {
   align-items: center;
-  border: 2px solid #e2efff;
+  border: 2px solid #E3FDFD;
   border-radius: 16%;
   box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, .2);
   display: flex;
@@ -128,6 +128,7 @@ h1 {
 }
 
 .today-title {
+  color: #3FD1CB;
   font-size: 16px;
 }
 
