@@ -18,7 +18,7 @@ const email = document.querySelector(".email")
 const stride = document.querySelector(".stride")
 const goal = document.querySelector(".goal")
 const average = document.querySelector(".average")
-const waterContainer = document.querySelector(".water-container");
+const ounces = document.querySelector(".ounces");
 const dailyHours = document.querySelector('.daily-hours')
 const dailyQuality = document.querySelector('.daily-quality')
 
@@ -87,13 +87,7 @@ const showStepInfo = () => {
   average.innerText = `${currentRepo.findAverageStepGoal()}`
 };
 
-const showTodayWater = () => {
-  waterContainer.innerHTML += `
-  <div class="emoji">
-    <img src="./images/water.jpg" alt="steps">
-  </div>
-  <h3 class="today-title">Today's Ounces:</h3>
-  <p class="today-title">${hydration.getDailyOunces()}</p>`
+const showTodayWater = () => ounces.innerText += `${hydration.getDailyOunces()}`;
 };
 
 const showTodaySleep = () => {
