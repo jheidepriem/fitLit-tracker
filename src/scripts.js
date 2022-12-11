@@ -14,7 +14,6 @@ const sleepDataContainer = document.querySelector(".sleep-data-container");
 const dailyInfoDisplay = document.querySelector(".daily-info");
 const greeting = document.querySelector(".greeting");
 const waterContainer = document.querySelector(".water-container");
-const sleepContainer = document.querySelector(".sleep-container");
 const dailyHours = document.querySelector('.daily-hours')
 const dailyQuality = document.querySelector('.daily-quality')
 
@@ -79,7 +78,7 @@ const showUserInfo = () => {
     <p class="info">${user.address}</p>
     <h3 class="info">Email:</h3>
     <p class="info">${user.email}</p>
-  `;
+  `
 };
 
 const showStepInfo = () => {
@@ -90,8 +89,8 @@ const showStepInfo = () => {
     <p class="step-info">${user.dailyStepGoal}<p>
     <h3 class="step-info">Average Step Goal:</h3>
     <p class="step-info">${currentRepo.findAverageStepGoal()}</p>
-  `;
-}
+  `
+};
 
 const showTodayWater = () => {
   waterContainer.innerHTML += `
@@ -99,8 +98,8 @@ const showTodayWater = () => {
     <img src="./images/water.jpg" alt="steps">
   </div>
   <h3 class="today-title">Today's Ounces:</h3>
-  <p class="today-title">${hydration.getDailyOunces()}</p>`;
-}
+  <p class="today-title">${hydration.getDailyOunces()}</p>`
+};
 
 const showTodaySleep = () => {
   const lastIndex = sleep.sleepHistory.length - 1;
@@ -115,7 +114,7 @@ const allTimeSleep = () => {
   <p class="alltime"> ${sleep.calcDailyQualityAvg()}</p>
   <h3 class="alltime">All-time Sleep Hours Average:</h3>
   <p class="alltime">${sleep.calcDailyHrsAvg()}</p>
- `;
+ `
 };
 
 const displayWaterData = () => {
