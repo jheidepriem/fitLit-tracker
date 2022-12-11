@@ -45,16 +45,16 @@ apiCalls.fetchAllData().then((data) => {
 
 const loadPageFunctions = () => {
   makeUserInstances(userData);
-  createNewRepo();
+  newRepo();
   getRandomUser();
   newHydration();
   newSleep();
   greetUser();
   showUserInfo();
   showStepInfo();
+  showAllTimeInfo();
   showTodayWater();
   showTodaySleep();
-  allTimeSleep();
   waterGraph();
   sleepGraph();
 };
@@ -70,7 +70,7 @@ const getRandomIndex = (array) => Math.floor(Math.random() * array.length);
 
 const getRandomUser = () => user = currentRepo.userData[getRandomIndex(currentRepo.userData)];
 
-const createNewRepo = () => currentRepo = new UserRepository(allUserData);
+const newRepo = () => currentRepo = new UserRepository(allUserData);
 
 const newHydration = () => hydration = new Hydration(user.id, hydrationData);
 
@@ -97,7 +97,7 @@ const showTodaySleep = () => {
   dailyQuality.innerText = `${sleep.giveDailyQuality(sleep.sleepHistory[lastIndex].date)}`
 };
 
-const allTimeSleep = () => {
+const showAllTimeInfo = () => {
   qualityAvg.innerText = `${sleep.calcDailyQualityAvg()}`
   hoursAvg.innerText = `${sleep.calcDailyHrsAvg()}`
 };
