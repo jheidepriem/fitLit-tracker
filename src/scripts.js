@@ -42,6 +42,7 @@ const loadPageFunctions = () => {
   newHydration();
   newSleep();
   showUserInfo();
+  showStepInfo();
   greetUser();
   displaySleepData();
   displayAllTimeSleep(hydrationData);
@@ -76,6 +77,9 @@ const showUserInfo = () => {
     <h3 class="info">Email:</h3>
     <p class="info">${user.email}</p>
   `;
+};
+
+const showStepInfo = () => {
   stepGoalDisplay.innerHTML = `
     <h3 class="step-info">Stride Length:</h3>
     <p class="step-info">${user.strideLength}</p>
@@ -84,7 +88,7 @@ const showUserInfo = () => {
     <h3 class="step-info">Average Step Goal:</h3>
     <p class="step-info">${currentRepo.findAverageStepGoal()}</p>
   `;
-};
+}
 
 const displayTodayInfo = () => {
   const lastIndex = sleep.sleepHistory.length - 1;
