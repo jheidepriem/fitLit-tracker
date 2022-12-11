@@ -133,6 +133,7 @@ h1 {
 }
 
 .graphs-container {
+  align-items: center;
   display: flex;
   flex-direction: row;
   height: 50vh;
