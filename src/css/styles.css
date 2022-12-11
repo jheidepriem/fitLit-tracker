@@ -31,56 +31,44 @@ body {
   width: 20vw;
 }
 
-.user-info {
+.card {
+  align-items: center;
   border: 2px solid #E3FDFD;
   border-radius: 16%;
   box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, .2);
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  font-size: 15px;
   justify-content: center;
   margin-left: 5%;
-  height: 24vh;
   text-align: center;
   width: 15vw;
 }
 
-.step-goal {
-  border: 2px solid #e2efff;
-  border-radius: 16%;
-  box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, .2);
-  display: flex;
-  flex-direction: column;
+.user-info-card {
+  height: 28vh;
+}
+
+.user-info {
+  font-size: 14px;
+  margin-top: 4%;
+}
+
+.step-info-card {
   height: 32vh;
-  justify-content: center;
-  margin-left: 5%;
-  text-align: center;
-  width: 15vw;
 }
 
 .step-info {
-  font-size: 15px;
-  margin: 8% 8% 0% 8%;
+  font-size: 16px;
+  margin-top: 4%;
 }
 
-.daily-info {
-  align-items: center;
-  border: 2px solid #e2efff;
-  border-radius: 16%;
-  box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, .2);
-  display: flex;
-  flex-direction: column;
-  font-size: small;
-  height: 28vh;
-  justify-content: center;
-  margin-left: 5%;
-  text-align: center;
-  width: 15vw;
+.all-time-info {
+  height: 26vh;
 }
 
 .all-time {
-  font-size: 18px;
+  font-size: 15px;
   margin: 5% 0% 0% 5%;
 }
 
