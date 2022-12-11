@@ -142,7 +142,7 @@ h1 {
 
 .container {
   align-items: center;
-  border: 3px solid #3FD1CB;
+  border: 2px solid #E3FDFD;
   border-radius: 5%;
   box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, .2);
   display: flex;
@@ -150,7 +150,7 @@ h1 {
   justify-content: center;
   margin-top: 2%;
   margin-bottom: 8%;
-  opacity: 80%;
+  opacity: 100%;
   width: 30vw;
 }
 
