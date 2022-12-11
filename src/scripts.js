@@ -105,10 +105,10 @@ const showTodaySleep = () => {
 const allTimeSleep = () => {
   dailyInfoDisplay.innerHTML = "";
   dailyInfoDisplay.innerHTML += `
-  <h3 class="alltime">All-time Sleep Quality:</h3>
-  <p class="alltime"> ${sleep.calcDailyQualityAvg()}</p>
-  <h3 class="alltime">All-time Sleep Hours Average:</h3>
-  <p class="alltime">${sleep.calcDailyHrsAvg()}</p>
+  <h3 class="all-time">All-time Sleep Quality:</h3>
+  <p class="all-time"> ${sleep.calcDailyQualityAvg()}</p>
+  <h3 class="all-time">All-time Sleep Hours Average:</h3>
+  <p class="all-time">${sleep.calcDailyHrsAvg()}</p>
  `
 };
 
