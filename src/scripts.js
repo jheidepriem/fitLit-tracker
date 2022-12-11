@@ -15,6 +15,8 @@ const dailyInfoDisplay = document.querySelector(".daily-info");
 const greeting = document.querySelector(".greeting");
 const waterContainer = document.querySelector(".water-container");
 const sleepContainer = document.querySelector(".sleep-container");
+const dailyHours = document.querySelector('.daily-hours')
+const dailyQuality = document.querySelector('.daily-quality')
 
 //Global Variables
 let allUserData = [];
@@ -102,19 +104,8 @@ const showTodayWater = () => {
 
 const displayTodayInfo = () => {
   const lastIndex = sleep.sleepHistory.length - 1;
-  sleepContainer.innerHTML += `
-  <div class="emoji">
-    <img src="./images/zzz.jpg" alt="steps">
-  </div>
-  <h3 class="today-title">Today's Hours Slept:</h3>
-  <p class="today-title"> ${sleep.giveDailyHrs(
-    sleep.sleepHistory[lastIndex].date
-  )}</p>
-  <h3 class="today-title">Today's Quality of Sleep:</h3>
-  <p class="today-title">${sleep.giveDailyQuality(
-    sleep.sleepHistory[lastIndex].date
-  )}</p>
-  `;
+  dailyHours.innerText = `${sleep.giveDailyHrs(sleep.sleepHistory[lastIndex].date)}`
+  dailyQuality.innerText = `${sleep.giveDailyQuality(sleep.sleepHistory[lastIndex].date)}`
 };
 
 const displayAllTimeSleep = () => {
