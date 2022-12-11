@@ -53,6 +53,7 @@ body {
   color: #2F24C1;
 }
 
+
 .user-info-card {
   height: 28vh;
 }
@@ -97,6 +98,11 @@ h1 {
   font-size: 50px;
   margin-bottom: 2%;
   margin-top: 3%;
+}
+
+.p-main {
+  font-size: 20px;
+  color: #2F24C1;
 }
 
 .greeting {
