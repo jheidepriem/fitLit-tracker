@@ -50,7 +50,7 @@ const loadPageFunctions = () => {
   displaySleepData();
   displayAllTimeSleep(hydrationData);
   displayWaterData();
-  displayTodayInfo();
+  showTodaySleep();
 };
 
 const makeUserInstances = (dataFile) => {
@@ -102,7 +102,7 @@ const showTodayWater = () => {
   <p class="today-title">${hydration.getDailyOunces()}</p>`;
 }
 
-const displayTodayInfo = () => {
+const showTodaySleep = () => {
   const lastIndex = sleep.sleepHistory.length - 1;
   dailyHours.innerText = `${sleep.giveDailyHrs(sleep.sleepHistory[lastIndex].date)}`
   dailyQuality.innerText = `${sleep.giveDailyQuality(sleep.sleepHistory[lastIndex].date)}`
