@@ -48,7 +48,7 @@ const loadPageFunctions = () => {
   showStepInfo();
   showTodayWater();
   displaySleepData();
-  displayAllTimeSleep(hydrationData);
+  allTimeSleep();
   displayWaterData();
   showTodaySleep();
 };
@@ -108,7 +108,7 @@ const showTodaySleep = () => {
   dailyQuality.innerText = `${sleep.giveDailyQuality(sleep.sleepHistory[lastIndex].date)}`
 };
 
-const displayAllTimeSleep = () => {
+const allTimeSleep = () => {
   dailyInfoDisplay.innerHTML = "";
   dailyInfoDisplay.innerHTML += `
   <h3 class="alltime">All-time Sleep Quality:</h3>
