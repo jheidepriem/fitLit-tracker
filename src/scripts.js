@@ -46,10 +46,10 @@ const loadPageFunctions = () => {
   showUserInfo();
   showStepInfo();
   showTodayWater();
-  displaySleepData();
-  allTimeSleep();
-  displayWaterData();
   showTodaySleep();
+  allTimeSleep();
+  waterGraph();
+  sleepGraph();
 };
 
 const makeUserInstances = (dataFile) => {
@@ -117,7 +117,7 @@ const allTimeSleep = () => {
  `
 };
 
-const displayWaterData = () => {
+const waterGraph = () => {
   weeklyWaterContainer.innerHTML = `<canvas id="weekWater"></canvas>`;
   const ctx = document.getElementById("weekWater").getContext("2d");
   new Chart(ctx, {
@@ -160,7 +160,7 @@ const displayWaterData = () => {
   });
 };
 
-const displaySleepData = () => {
+const sleepGraph = () => {
   sleepDataContainer.innerHTML = `<canvas id="weekSleep"></canvas>`;
   const ctx = document.getElementById("weekSleep").getContext("2d");
   new Chart(ctx, {
