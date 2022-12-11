@@ -62,15 +62,15 @@ const makeUserInstances = (dataFile) => {
 
 const getRandomIndex = (array) => Math.floor(Math.random() * array.length);
 
-const getRandomUser = () => (user = currentRepo.userData[getRandomIndex(currentRepo.userData)]);
+const getRandomUser = () => user = currentRepo.userData[getRandomIndex(currentRepo.userData)];
 
-const createNewRepo = () => (currentRepo = new UserRepository(allUserData));
+const createNewRepo = () => currentRepo = new UserRepository(allUserData);
 
-const newHydration = () => (hydration = new Hydration(user.id, hydrationData));
+const newHydration = () => hydration = new Hydration(user.id, hydrationData);
 
-const newSleep = () => (sleep = new Sleep(user.id, sleepData));
+const newSleep = () => sleep = new Sleep(user.id, sleepData);
 
-const greetUser = () => {greeting.innerHTML = `Hi, ${user.findFirstName()}!`;};
+const greetUser = () => greeting.innerHTML = `Hi, ${user.findFirstName()}!`;
 
 const showUserInfo = () => {
   userInfo.innerHTML = "";
