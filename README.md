@@ -9,10 +9,10 @@
 5. Do not run `npm audit fix --force`.  This will update to the latest version of packages.  We need to be using `webpack-dev-server@3.11.2` which is not the latest version.  If you start to run into Webpack errors, first check that all group members are using the correct version.  
 
 ## Contributors
-* Josephine Heidepriem: https://github.com/jheidepriem
-* Angie Wirth: https://github.com/awirth224
-* Matt Rowan: https://github.com/MRowan121
-* Reid Poole: https://github.com/rpoole444
+* [Josephine Heidepriem] (https://github.com/jheidepriem)
+* [Angie Wirth] (https://github.com/awirth224)
+* [Matt Rowan] (https://github.com/MRowan121)
+* [Reid Poole] (https://github.com/rpoole444)
 
 ## Technologies Used
 * Mocha
