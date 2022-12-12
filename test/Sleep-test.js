@@ -96,7 +96,7 @@ describe("Sleep", () => {
   });
 
   it('should have a method that returns the hours slept for a single date', () => {
-    expect(sleep1.totalDailyHours("2019/06/15")).to.equal(6.1)
+    expect(sleep1.giveDailyHrs("2019/06/15")).to.equal(6.1)
   });
 
   it('should have a method that returns the sleep quality for a single date', () => {
