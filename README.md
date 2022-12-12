@@ -10,10 +10,10 @@ The purpose of this app is to display a user's data, such as sleep, hydration an
 5. Do not run `npm audit fix --force`.  This will update to the latest version of packages.  We need to be using `webpack-dev-server@3.11.2` which is not the latest version.  If you start to run into Webpack errors, first check that all group members are using the correct version.  
 
 ## Contributors
-Josephine Heidepriem: https://github.com/jheidepriem
-Angie Wirth: https://github.com/awirth224
-Matt Rowan: https://github.com/MRowan121
-Reid Poole: https://github.com/rpoole444
+* [Josephine Heidepriem](https://github.com/jheidepriem)
+* [Angie Wirth](https://github.com/awirth224)
+* [Matt Rowan](https://github.com/MRowan121)
+* [Reid Poole](https://github.com/rpoole444)
 
 ## Technologies Used
 * Mocha
@@ -30,3 +30,8 @@ Reid Poole: https://github.com/rpoole444
 Some future features would be to add each user's friends activity and rank them highest to lowest in a right side panel. Another feature would be to add a profile image for each user. A separate page view to add data would also be a fun future feature so that the page isn't cluttered.
 
 ## GIF
+![fitGif](https://user-images.githubusercontent.com/110955503/207127036-e1385276-5b43-4af0-84c3-173de74355b0.gif)
+
+
+
+
