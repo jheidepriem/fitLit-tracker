@@ -1,11 +1,7 @@
 class Hydration {
     constructor(id, data) {
         this.id = id;
-        this.userHistory = data.filter((obj) => {
-            if(obj.userID === this.id) {
-                return obj
-            }
-        })
+        this.userHistory = data.filter((obj) => obj.userID === this.id)
     };
 
     getTotalOunces() {

@@ -88,19 +88,19 @@ describe("Sleep", () => {
   });
 
   it('should have a method that returns the average hours slept per day', () => {
-    expect(sleep1.calculateDailyAverage()).to.equal(8.2)
+    expect(sleep1.calcDailyHrsAvg()).to.equal(8.2)
   });
 
   it('should have a method that returns the average sleep quality per day', () => {
-    expect(sleep1.calculateDailyQuality()).to.equal(2.6)
+    expect(sleep1.calcDailyQualityAvg()).to.equal(2.6)
   });
 
   it('should have a method that returns the hours slept for a single date', () => {
-    expect(sleep1.totalDailyHours("2019/06/15")).to.equal(6.1)
+    expect(sleep1.giveDailyHrs("2019/06/15")).to.equal(6.1)
   });
 
   it('should have a method that returns the sleep quality for a single date', () => {
-    expect(sleep1.totalDailyQuality("2019/06/15")).to.equal(2.2)
+    expect(sleep1.giveDailyQuality("2019/06/15")).to.equal(2.2)
   });
 
   it('should have a method that returns the total hours slept each day over the course of a week', () => {

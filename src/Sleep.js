@@ -2,13 +2,10 @@ class Sleep {
   constructor(userID, data) {
     this.id = userID
     this.allData = data
-    this.sleepHistory = data.filter((sleepEntry) => {
-      if(sleepEntry.userID === this.id)
-      return sleepEntry
-    });
+    this.sleepHistory = data.filter((sleepEntry) => sleepEntry.userID === this.id);
   }
 
-  calculateDailyAverage() {
+  calcDailyHrsAvg() {
     const sum = this.sleepHistory.reduce((total, day) => {
       return total += day.hoursSlept
     },0)
@@ -16,7 +13,7 @@ class Sleep {
     return Number(avg.toFixed(1))
   };
 
-  calculateDailyQuality() {
+  calcDailyQualityAvg() {
     const sum = this.sleepHistory.reduce((total, day) => {
       return total += day.sleepQuality
     },0)
@@ -24,12 +21,12 @@ class Sleep {
     return Number(avg.toFixed(1))
   };
 
-  totalDailyHours(date) {
+  giveDailyHrs(date) {
     const pickedDay = this.sleepHistory.find(day => day.date === date)
     return pickedDay.hoursSlept
   };
 
-  totalDailyQuality(date) {
+  giveDailyQuality(date) {
     const pickedDay = this.sleepHistory.find(day => day.date === date)
     return pickedDay.sleepQuality
   };
@@ -48,7 +45,6 @@ class Sleep {
     const weeklyHours = selectedWeek.map(day => day.hoursSlept)
      return weeklyHours
   };
-
 
   totalWeeklyQuality(date) {
     const pickedDay = this.sleepHistory.findIndex(obj => {
