@@ -2,10 +2,7 @@ class Sleep {
   constructor(userID, data) {
     this.id = userID
     this.allData = data
-    this.sleepHistory = data.filter((sleepEntry) => {
-      if(sleepEntry.userID === this.id)
-      return sleepEntry
-    });
+    this.sleepHistory = data.filter((sleepEntry) => sleepEntry.userID === this.id);
   }
 
   calcDailyHrsAvg() {
@@ -48,7 +45,6 @@ class Sleep {
     const weeklyHours = selectedWeek.map(day => day.hoursSlept)
      return weeklyHours
   };
-
 
   totalWeeklyQuality(date) {
     const pickedDay = this.sleepHistory.findIndex(obj => {

@@ -96,8 +96,8 @@ const showTodaySleep = () => {
 };
 
 const showAllTimeInfo = () => {
-  qualityAvg.innerText = `${sleep.calcDailyQualityAvg()}`
   hoursAvg.innerText = `${sleep.calcDailyHrsAvg()}`
+  qualityAvg.innerText = `${sleep.calcDailyQualityAvg()}`
 };
 
 const waterGraph = () => {
