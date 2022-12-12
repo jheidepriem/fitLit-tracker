@@ -46,7 +46,6 @@ class Sleep {
      return weeklyHours
   };
 
-
   totalWeeklyQuality(date) {
     const pickedDay = this.sleepHistory.findIndex(obj => {
       const dateIndex = obj.date === date 
