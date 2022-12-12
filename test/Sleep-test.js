@@ -88,7 +88,7 @@ describe("Sleep", () => {
   });
 
   it('should have a method that returns the average hours slept per day', () => {
-    expect(sleep1.calculateDailyAverage()).to.equal(8.2)
+    expect(sleep1.calcDailyHrsAvg()).to.equal(8.2)
   });
 
   it('should have a method that returns the average sleep quality per day', () => {
