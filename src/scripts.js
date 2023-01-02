@@ -91,8 +91,8 @@ const showTodayWater = () => ounces.innerText += `${hydration.getDailyOunces()}`
 
 const showTodaySleep = () => {
   const lastIndex = sleep.sleepHistory.length - 1;
-  dailyHours.innerText = `${sleep.giveDailyHrs(sleep.sleepHistory[lastIndex].date)}`
-  dailyQuality.innerText = `${sleep.giveDailyQuality(sleep.sleepHistory[lastIndex].date)}`
+  dailyHours.innerText = `${sleep.giveDaily(sleep.sleepHistory[lastIndex].date, "hoursSlept")}`
+  dailyQuality.innerText = `${sleep.giveDaily(sleep.sleepHistory[lastIndex].date, "sleepQuality")}`
 };
 
 const showAllTimeInfo = () => {
