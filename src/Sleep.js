@@ -21,15 +21,15 @@ class Sleep {
     return Number(avg.toFixed(1))
   };
 
-  giveDailyHrs(date) {
+  giveDaily(date, measure) {
     const pickedDay = this.sleepHistory.find(day => day.date === date)
-    return pickedDay.hoursSlept
+    return pickedDay[measure]
   };
 
-  giveDailyQuality(date) {
-    const pickedDay = this.sleepHistory.find(day => day.date === date)
-    return pickedDay.sleepQuality
-  };
+  // giveDailyQuality(date) {
+  //   const pickedDay = this.sleepHistory.find(day => day.date === date)
+  //   return pickedDay.sleepQuality
+  // };
 
   totalWeeklyHours(date) {
     const pickedDay = this.sleepHistory.findIndex(obj => {
