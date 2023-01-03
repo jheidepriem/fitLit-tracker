@@ -23,7 +23,11 @@ class Sleep {
 
   giveDaily(date, measure) {
     const pickedDay = this.sleepHistory.find(day => day.date === date)
-    return pickedDay[measure]
+    if(!pickedDay) {
+      return undefined
+    } else {
+      return pickedDay[measure]
+    }
   };
 
   totalWeekly(date, measure) {
