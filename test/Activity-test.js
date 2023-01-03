@@ -144,4 +144,11 @@ describe("activity", () => {
         expect(activity.returnMilesWalked("2019/06/21")).to.equal(2.4)
         expect(activity.returnMilesWalked()).to.equal(8.1)
     })
+
+    it("should be able to check if step goal was reached for a given day" , () => {
+        activity.checkStepGoal("2019/06/21")
+        expect(activity.stepGoalReached).to.equal(false)
+        activity.checkStepGoal("2019/06/22")
+        expect(activity.stepGoalReached).to.equal(true)
+    })
 });
