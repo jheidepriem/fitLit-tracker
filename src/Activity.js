@@ -1,6 +1,7 @@
 class Activity {
     constructor(data, user) {
         this.currentUser = user
+        this.allData = data
         this.activityHistory = data.filter((activityEntry) => activityEntry.userID === this.currentUser.id)
         this.stepGoalReached = false
     };
@@ -44,7 +45,13 @@ class Activity {
       return sortedData[0].flightsOfStairs
     }
 
+    findAvgMin(){
 
+    }
+
+    findAllUsersAvg() {
+      
+    }
 
 };
 
