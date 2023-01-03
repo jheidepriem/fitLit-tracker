@@ -39,6 +39,13 @@ class Activity {
       return filteredData
     }
 
+    findAllTimeStairsRecord() {
+      const sortedData = this.activityHistory.map(entry => entry).sort((a, b) => b.flightsOfStairs - a.flightsOfStairs)
+      return sortedData[0].flightsOfStairs
+    }
+
+
+
 };
 
 module.exports = Activity;
