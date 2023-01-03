@@ -34,6 +34,11 @@ class Activity {
         }
     }
 
+    findReachedGoals(){
+      const filteredData = this.activityHistory.filter(entry => entry.numSteps >= this.currentUser.dailyStepGoal)
+      return filteredData
+    }
+
 };
 
 module.exports = Activity;
