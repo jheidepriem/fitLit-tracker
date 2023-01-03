@@ -21,44 +21,28 @@ class Sleep {
     return Number(avg.toFixed(1))
   };
 
-  giveDailyHrs(date) {
+  giveDaily(date, measure) {
     const pickedDay = this.sleepHistory.find(day => day.date === date)
-    return pickedDay.hoursSlept
+    if(!pickedDay) {
+      return undefined
+    } else {
+      return pickedDay[measure]
+    }
   };
 
-  giveDailyQuality(date) {
-    const pickedDay = this.sleepHistory.find(day => day.date === date)
-    return pickedDay.sleepQuality
-  };
-
-  totalWeeklyHours(date) {
+  totalWeekly(date, measure) {
     const pickedDay = this.sleepHistory.findIndex(obj => {
       const dateIndex = obj.date === date 
       return Number(dateIndex)
     })
     let selectedWeek;
     if(pickedDay <= 6) {
-      selectedWeek = this.sleepHistory.slice(0, pickedDay)
+      selectedWeek = this.sleepHistory.slice(0, pickedDay + 1)
     } else {
-      selectedWeek = this.sleepHistory.slice((pickedDay - 6), pickedDay)
+      selectedWeek = this.sleepHistory.slice((pickedDay - 6), pickedDay + 1)
     }
-    const weeklyHours = selectedWeek.map(day => day.hoursSlept)
-     return weeklyHours
-  };
-
-  totalWeeklyQuality(date) {
-    const pickedDay = this.sleepHistory.findIndex(obj => {
-      const dateIndex = obj.date === date 
-      return Number(dateIndex)
-    })
-    let selectedWeek;
-    if(pickedDay <= 6) {
-      selectedWeek = this.sleepHistory.slice(0, pickedDay)
-    } else {
-      selectedWeek = this.sleepHistory.slice((pickedDay - 6), pickedDay)
-    }
-    const weeklyQuality = selectedWeek.map(day => day.sleepQuality)
-    return weeklyQuality
+    const weeklyMeasure = selectedWeek.map(day => day[measure])
+     return weeklyMeasure
   };
 
   averageAllUsersQuality() {

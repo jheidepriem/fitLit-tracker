@@ -95,20 +95,19 @@ describe("Sleep", () => {
     expect(sleep1.calcDailyQualityAvg()).to.equal(2.6)
   });
 
-  it('should have a method that returns the hours slept for a single date', () => {
-    expect(sleep1.giveDailyHrs("2019/06/15")).to.equal(6.1)
+  it('should have a method that returns either specified measurement for a single date', () => {
+    expect(sleep1.giveDaily("2019/06/14", "hoursSlept")).to.be.undefined
+    expect(sleep1.giveDaily("2019/06/14", "sleepQuality")).to.be.undefined
+    expect(sleep1.giveDaily("2019/06/15", "sleepQuality")).to.equal(2.2)
+    expect(sleep1.giveDaily("2019/06/15", "hoursSlept")).to.equal(6.1)
   });
 
-  it('should have a method that returns the sleep quality for a single date', () => {
-    expect(sleep1.giveDailyQuality("2019/06/15")).to.equal(2.2)
-  });
 
-  it('should have a method that returns the total hours slept each day over the course of a week', () => {
-    expect(sleep1.totalWeeklyHours("2019/06/21")).to.deep.equal([ 6.1, 4.1, 8, 10.4, 10.7, 8 ])
-  });
-
-  it('should have a method that returns the total sleep quality each day over the course of a week', () => {
-    expect(sleep1.totalWeeklyQuality("2019/06/21")).to.deep.equal([ 2.2, 3.8, 2.6, 3.1, 1.2, 3.4 ])
+  it('should have a method that returns the specified measurement each day over the course of a week', () => {
+    expect(sleep1.totalWeekly("2019/06/14", "hoursSlept")).to.be.an('array')
+    expect(sleep1.totalWeekly("2019/06/14", "sleepQuality")).to.be.an('array')
+    expect(sleep1.totalWeekly("2019/06/21", "hoursSlept")).to.deep.equal([ 6.1, 4.1, 8, 10.4, 10.7, 8, 10.1 ])
+    expect(sleep1.totalWeekly("2019/06/21", "sleepQuality")).to.deep.equal([ 2.2, 3.8, 2.6, 3.1, 1.2, 3.4, 1.8 ])
   });
 
   it('should have a method that returns the average sleep quality across all users', () => {

@@ -91,8 +91,8 @@ const showTodayWater = () => ounces.innerText += `${hydration.getDailyOunces()}`
 
 const showTodaySleep = () => {
   const lastIndex = sleep.sleepHistory.length - 1;
-  dailyHours.innerText = `${sleep.giveDailyHrs(sleep.sleepHistory[lastIndex].date)}`
-  dailyQuality.innerText = `${sleep.giveDailyQuality(sleep.sleepHistory[lastIndex].date)}`
+  dailyHours.innerText = `${sleep.giveDaily(sleep.sleepHistory[lastIndex].date, "hoursSlept")}`
+  dailyQuality.innerText = `${sleep.giveDaily(sleep.sleepHistory[lastIndex].date, "sleepQuality")}`
 };
 
 const showAllTimeInfo = () => {
@@ -144,6 +144,7 @@ const waterGraph = () => {
 };
 
 const sleepGraph = () => {
+  const lastIndex = sleep.sleepHistory.length - 1;
   sleepDataContainer.innerHTML = `<canvas id="weekSleep"></canvas>`;
   const ctx = document.getElementById("weekSleep").getContext("2d");
   new Chart(ctx, {
@@ -153,13 +154,13 @@ const sleepGraph = () => {
       datasets: [
         {
           label: "Weekly Hours",
-          data: sleep.totalWeeklyHours(),
+          data: sleep.totalWeekly(sleep.sleepHistory[lastIndex].date, "hoursSlept"),
           borderColor: "rgb(77, 18, 238)",
           backgroundColor: "rgb(248, 246, 246)",
         },
         {
           label: "Weekly Quality",
-          data: sleep.totalWeeklyQuality(),
+          data: sleep.totalWeekly(sleep.sleepHistory[lastIndex].date, "sleepQuality"),
           borderColor: "rgb(63, 209, 203)",
           backgroundColor: "rgb(248, 246, 246)",
         },
