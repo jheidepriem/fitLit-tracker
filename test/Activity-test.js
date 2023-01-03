@@ -155,4 +155,8 @@ describe("activity", () => {
     it("should be able to find all days that reach step goal", () => {
         expect(activity.findReachedGoals()).to.deep.equal([activityEntry5, activityEntry7, activityEntry9])
     })
+
+    it("should find users all time stairs record", () => {
+        expect(activity.findAllTimeStairsRecord()).to.equal(35)
+    })
 });
