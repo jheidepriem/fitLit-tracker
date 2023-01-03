@@ -26,6 +26,14 @@ class Activity {
             return Number(miles.toFixed(1))
         }
     }
+
+    checkStepGoal(date) {
+        const providedDate = this.activityHistory.find(entry => entry.date === date)
+        if(providedDate.numSteps >= this.currentUser.dailyStepGoal) {
+           this.stepGoalReached = true
+        }
+    }
+
 };
 
 module.exports = Activity;
