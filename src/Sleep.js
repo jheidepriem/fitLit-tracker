@@ -33,9 +33,9 @@ class Sleep {
     })
     let selectedWeek;
     if(pickedDay <= 6) {
-      selectedWeek = this.sleepHistory.slice(0, pickedDay)
+      selectedWeek = this.sleepHistory.slice(0, pickedDay + 1)
     } else {
-      selectedWeek = this.sleepHistory.slice((pickedDay - 6), pickedDay)
+      selectedWeek = this.sleepHistory.slice((pickedDay - 6), pickedDay + 1)
     }
     const weeklyMeasure = selectedWeek.map(day => day[measure])
      return weeklyMeasure
