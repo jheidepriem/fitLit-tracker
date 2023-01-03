@@ -112,7 +112,7 @@ describe("activity", () => {
         
         user1 = new User(user1Data)
 
-        activity = new Activity(1, activityData);
+        activity = new Activity(activityData, user1);
     });
 
     it("should be a function", () => {
@@ -123,8 +123,8 @@ describe("activity", () => {
         expect(activity).to.be.an.instanceOf(Activity);
     });
 
-    it("should have a user id", () => {
-        expect(activity.id).to.equal(1);
+    it("should have a current user", () => {
+        expect(activity.currentUser).to.equal(user1);
     });
 
     it("should be able to filter history based on passed in user id", () => {
@@ -138,5 +138,10 @@ describe("activity", () => {
     it("should be able to return the minutes a user is active", () => {
         expect(activity.returnMinutesActive("2019/06/21")).to.equal(50)
         expect(activity.returnMinutesActive()).to.equal(60)
+    })
+
+    it("should be able to return the miles a user has walked", () => {
+        expect(activity.returnMilesWalked("2019/06/21")).to.equal(2.4)
+        expect(activity.returnMilesWalked()).to.equal(8.1)
     })
 });
