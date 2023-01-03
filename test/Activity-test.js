@@ -127,6 +127,10 @@ describe("activity", () => {
         expect(activity.currentUser).to.equal(user1);
     });
 
+    it("should have activity data for all users", () => {
+        expect(activity.allData).to.deep.equal(activityData)
+    })
+
     it("should be able to filter history based on passed in user id", () => {
         expect(activity.activityHistory).to.deep.equal([activityEntry1, activityEntry3, activityEntry4, activityEntry5, activityEntry6, activityEntry7, activityEntry8, activityEntry9]);
     });
@@ -158,5 +162,15 @@ describe("activity", () => {
 
     it("should find users all time stairs record", () => {
         expect(activity.findAllTimeStairsRecord()).to.equal(35)
+    })
+
+    it("should find the average minutes active for any week", () => {
+        expect(activity.findAvgMin()).to.equal()
+    })
+
+    it("should find the average minutes active for all users", () => {
+        expect(activity.findAllUsersAvg("flightsOfStairs")).to.equal()
+        expect(activity.findAllUsersAvg("minutesActive")).to.equal()
+        expect(activity.findAllUsersAvg("numSteps")).to.equal()
     })
 });
