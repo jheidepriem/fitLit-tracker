@@ -176,4 +176,16 @@ describe("activity", () => {
         expect(activity.findAllUsersAvg("2019/06/15", "minutesActive")).to.equal(25)
         expect(activity.findAllUsersAvg("2019/06/15", "numSteps")).to.equal(1050)
     })
+
+      it('should have a method that returns the specified measurement each day over the course of a week', () => {
+        expect(activity.getWeeklyData("2019/06/19", "flightsOfStairs")).to.deep.equal([10, 0, 15, 20, 35, 5, 0])
+        expect(activity.getWeeklyData("2019/06/22", "flightsOfStairs")).to.deep.equal([0, 15, 20, 35, 5, 0, 0])
+
+        expect(activity.getWeeklyData("2019/06/19", "minutesActive")).to.deep.equal([20, 10, 25, 15, 25, 10, 50])
+        expect(activity.getWeeklyData("2019/06/22", "minutesActive")).to.deep.equal([10, 25, 15, 25, 10, 50, 60])
+        
+        expect(activity.getWeeklyData("2019/06/19", "numSteps")).to.deep.equal([1000, 9000, 8000, 10005, 8035, 10000, 2900])
+        expect(activity.getWeeklyData("2019/06/22", "numSteps")).to.deep.equal([9000, 8000, 10005, 8035, 10000, 2900, 10000])
+      });
+      
 });
