@@ -154,6 +154,8 @@ describe("activity", () => {
         expect(activity.stepGoalReached).to.equal(false)
         activity.checkStepGoal("2019/06/22")
         expect(activity.stepGoalReached).to.equal(true)
+        activity.checkStepGoal()
+        expect(activity.stepGoalReached).to.equal(true)
     })
 
     it("should be able to find all days that reach step goal", () => {
