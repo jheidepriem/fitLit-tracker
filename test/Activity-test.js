@@ -98,7 +98,7 @@ describe("activity", () => {
             activityEntry7,
             activityEntry8,
             activityEntry9
-        ]
+        ];
 
         user1Data = {
             id: 1,
