@@ -169,7 +169,7 @@ describe("activity", () => {
         expect(activity.findAvgMin("2019/06/22")).to.equal(27.9)
     })
 
-    it.skip("should find the average minutes active for all users for a specific date", () => {
+    it("should find the average minutes active for all users for a specific date", () => {
         expect(activity.findAllUsersAvg("2019/06/15", "flightsOfStairs")).to.equal(15)
         expect(activity.findAllUsersAvg("2019/06/15", "minutesActive")).to.equal(25)
         expect(activity.findAllUsersAvg("2019/06/15", "numSteps")).to.equal(1050)
