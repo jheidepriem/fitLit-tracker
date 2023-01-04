@@ -62,7 +62,20 @@ body {
 }
 
 .input-container {
-  height: 20vh;
+  height: 30vh;
+}
+
+.submit-input {
+  background-color: rgb(72, 185, 255);
+  border-radius: 8%;
+  color: #fefefe;
+  height: 7vh;
+  width: 9vw;
+}
+
+.submit-input:hover {
+  background-color: rgb(0, 115, 255);
+  cursor: pointer;
 }
 
 .all-time-info {
@@ -88,7 +101,7 @@ main {
 
 h1 {
   color: #193498;
-  font-size: 40px;
+  font-size: 36px;
   margin-bottom: 2%;
   margin-top: 3%;
 }
@@ -116,7 +129,7 @@ h1 {
   flex-direction: column;
   justify-content: space-evenly;
   margin: 2% 1% 3% 1%;
-  height: 30vh;
+  height: 32vh;
   width: 20vw;
 }
 
@@ -140,8 +153,8 @@ h1 {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  height: 15vh;
-  width: 70vw;
+  height: 10vh;
+  width: 72vw;
 }
 
 .p-h {
@@ -162,7 +175,7 @@ h1 {
   align-items: center;
   display: flex;
   flex-direction: row;
-  height: 40vh;
+  height: 42vh;
   justify-content: space-around;
   width: 75vw;
 }
