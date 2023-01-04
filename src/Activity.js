@@ -29,9 +29,12 @@ class Activity {
     }
 
     checkStepGoal(date) {
-        const providedDate = this.activityHistory.find(entry => entry.date === date)
+        let providedDate = this.activityHistory.find(entry => entry.date === date)
+        if(!providedDate) {
+            providedDate = this.activityHistory.slice(-1)[0].date
+        }
         if(providedDate.numSteps >= this.currentUser.dailyStepGoal) {
-           this.stepGoalReached = true
+            this.stepGoalReached = true
         }
     }
 
