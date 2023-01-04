@@ -75,6 +75,21 @@ class Activity {
         }, 0)/filteredData.length
         return Number(avgData.toFixed(1))
     }
+
+    getWeeklyData(date, measure) {
+        const pickedDay = this.activityHistory.findIndex(obj => {
+          const dateIndex = obj.date === date 
+          return Number(dateIndex)
+        })
+        let selectedWeek;
+        if(pickedDay <= 6) {
+          selectedWeek = this.activityHistory.slice(0, 7)
+        } else {
+          selectedWeek = this.activityHistory.slice((pickedDay - 6), pickedDay + 1)
+        }
+        const weeklyMeasure = selectedWeek.map(day => day[measure])
+         return weeklyMeasure
+      };
 };
 
 module.exports = Activity;
