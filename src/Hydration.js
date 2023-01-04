@@ -1,15 +1,7 @@
 class Hydration {
-    constructor(id) {
+    constructor(id, data) {
         this.id = id;
-        this.userHistory = [];
-    };
-
-    filterUserHistory(hydrationData) {
-        this.userHistory = hydrationData.filter((history) => {
-            if(history.userID === this.id) {
-                return history
-            };
-        });
+        this.userHistory = data.filter((obj) => obj.userID === this.id)
     };
 
     getTotalOunces() {
@@ -23,11 +15,9 @@ class Hydration {
         return this.getTotalOunces() / this.userHistory.length
     };
 
-    getDailyOunces(day) {
-        const dailyOunces = this.userHistory.find((entry) => {
-            return entry.date === day
-        })
-        return dailyOunces.numOunces
+    getDailyOunces() {
+        const dailyOunces = this.userHistory.slice(-1)
+        return dailyOunces[0].numOunces
     };
 
     getWeeklyOunces() {

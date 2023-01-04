@@ -51,10 +51,6 @@ describe('User Repository', () => {
     expect(repo1).to.be.an.instanceof(UserRepository);
   });
   
-  it('should have a parameter of data', () => {
-    expect(data).to.deep.equal([user1, user2]);
-  });
-  
   it('should have user data', () => {
     expect(repo1.userData).to.deep.equal(data);
   });
