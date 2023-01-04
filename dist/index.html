@@ -11,55 +11,84 @@
     <aside class="left-side">
       <div class="user-info-card card">
         <h3 class="title user-info">Address:</h3>
-        <p class="address p user-info"></p>
+        <p class="address user-info"></p>
         <h3 class="title user-info">Email:</h3>
-        <p class="email p user-info"></p>
+        <p class="email user-info"></p>
       </div>
-      <div class="step-info-card card">
-        <h3 class="title step-info">Stride Length:</h3>
-        <p class="stride p step-info"></p>
-        <h3 class="title step-info">Daily Step Goal:</h3>
-        <p class="goal p step-info"><p>
-        <h3 class="title step-info">Average Step Goal:</h3>
-        <p class="average p step-info">$</p>
+      <div class="input-container card">
+        <button class="submit-input">Add new data</button>
+        <form>
+        </form>
       </div>
       <div class="all-time-info card">
         <h3 class="title all-time">All-time Sleep Hours Average:</h3>
-        <p class="hours p all-time"></p>
+        <p class="hours all-time"></p>
         <h3 class="title all-time">All-time Sleep Quality:</h3>
-        <p class="quality p all-time"></p>
+        <p class="quality all-time"></p>
       </div>
     </aside>
     <main>
-      <h1>Activity Tracker</h1>
-      <h2 class="greeting"></h2>
+      <h1 class="greeting"></h1>
       <div class="today-container">
         <div class="water-container today">
           <div class="emoji">
             <img src="./images/water.jpg" alt="water-glass">
           </div>
-          <h3 class="today-title">Today's Ounces:</h3>
-          <p class="ounces p-main"></p>
+          <div class="text-container">
+            <h3 class="today-title">Today's Ounces:</h3>
+            <p class="ounces p-main"></p>
+          </div>
         </div>
         <div class="activity-container today">
           <div class="emoji">
             <img src="./images/steps.jpg" alt="steps">
           </div>
-          <h3 class="today-title">Today's Active Minutes:</h3>
-          <p class="p"></p>
-          <h3 class="today-title">Today's Distance Walked:</h3>
-          <p class="p"></p>
-          <h3 class="today-title">Today's Steps:</h3>
-          <p class="p"></p>
+          <div class="text-container">
+            <h3 class="today-title">Today's Active Minutes:</h3>
+            <p class="p-main"></p>
+            <h3 class="today-title">Today's Distance Walked:</h3>
+            <p class="p-main"></p>
+            <h3 class="today-title">Today's Steps:</h3>
+            <p class="p-main"></p>
+          </div>
+        </div>
+        <div class="all-users-container today">
+          <div class="emoji">
+            <img src="./images/steps.jpg" alt="steps">
+          </div>
+          <div class="text-container">
+            <h3 class="today-title">Average Active Minutes:</h3>
+            <p class="p-main"></p>
+            <h3 class="today-title">Average Distance Walked:</h3>
+            <p class="p-main"></p>
+            <h3 class="today-title">Average Steps:</h3>
+            <p class="p-main"></p>
+          </div>
         </div>
         <div class="sleep-container today">
           <div class="emoji">
             <img src="./images/zzz.jpg" alt="bed">
           </div>
-          <h3 class="today-title">Today's Hours Slept:</h3>
-          <p class="daily-hours p-main"> </p>
-          <h3 class="today-title">Today's Quality of Sleep:</h3>
-          <p class="daily-quality p-main"></p>
+          <div>
+            <h3 class="today-title">Today's Hours Slept:</h3>
+            <p class="daily-hours p-main"> </p>
+            <h3 class="today-title">Today's Quality of Sleep:</h3>
+            <p class="daily-quality p-main"></p>
+          </div>
+        </div>
+      </div>
+      <div class="stride-container">
+        <div class="p-h">
+          <h3 class="title step-info">Stride Length:</h3>
+          <p class="stride p"></p>
+        </div>
+        <div class="p-h">
+          <h3 class="title step-info">Daily Step Goal:</h3>
+          <p class="goal p"><p>
+        </div>
+        <div class="p-h">
+          <h3 class="title step-info">Average Step Goal:</h3>
+          <p class="average p">$</p>
         </div>
       </div>
       <div class="graphs-container">
