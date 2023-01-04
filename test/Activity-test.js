@@ -154,6 +154,8 @@ describe("activity", () => {
         expect(activity.stepGoalReached).to.equal(false)
         activity.checkStepGoal("2019/06/22")
         expect(activity.stepGoalReached).to.equal(true)
+        activity.checkStepGoal()
+        expect(activity.stepGoalReached).to.equal(true)
     })
 
     it("should be able to find all days that reach step goal", () => {
@@ -165,12 +167,25 @@ describe("activity", () => {
     })
 
     it("should find the average minutes active for any week", () => {
-        expect(activity.findAvgMin()).to.equal()
+        expect(activity.findAvgMin("2019/06/21")).to.equal(22.1)
+        expect(activity.findAvgMin("2019/06/22")).to.equal(27.9)
     })
 
-    it("should find the average minutes active for all users", () => {
-        expect(activity.findAllUsersAvg("flightsOfStairs")).to.equal()
-        expect(activity.findAllUsersAvg("minutesActive")).to.equal()
-        expect(activity.findAllUsersAvg("numSteps")).to.equal()
+    it("should find the average minutes active for all users for a specific date", () => {
+        expect(activity.findAllUsersAvg("2019/06/15", "flightsOfStairs")).to.equal(15)
+        expect(activity.findAllUsersAvg("2019/06/15", "minutesActive")).to.equal(25)
+        expect(activity.findAllUsersAvg("2019/06/15", "numSteps")).to.equal(1050)
     })
+
+      it('should have a method that returns the specified measurement each day over the course of a week', () => {
+        expect(activity.getWeeklyData("2019/06/19", "flightsOfStairs")).to.deep.equal([10, 0, 15, 20, 35, 5, 0])
+        expect(activity.getWeeklyData("2019/06/22", "flightsOfStairs")).to.deep.equal([0, 15, 20, 35, 5, 0, 0])
+
+        expect(activity.getWeeklyData("2019/06/19", "minutesActive")).to.deep.equal([20, 10, 25, 15, 25, 10, 50])
+        expect(activity.getWeeklyData("2019/06/22", "minutesActive")).to.deep.equal([10, 25, 15, 25, 10, 50, 60])
+        
+        expect(activity.getWeeklyData("2019/06/19", "numSteps")).to.deep.equal([1000, 9000, 8000, 10005, 8035, 10000, 2900])
+        expect(activity.getWeeklyData("2019/06/22", "numSteps")).to.deep.equal([9000, 8000, 10005, 8035, 10000, 2900, 10000])
+      });
+      
 });

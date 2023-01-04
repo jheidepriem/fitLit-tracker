@@ -97,7 +97,7 @@ describe("Sleep", () => {
   });
 
   it("should have sleep data for all users", () => {
-    expect(sleep1.sleepHistory).to.deep.equal(data)
+    expect(sleep1.allData).to.deep.equal(data)
   });
 
   it("should have a method that filters the sleep data by user id", () => {
