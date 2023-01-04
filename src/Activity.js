@@ -57,17 +57,21 @@ class Activity {
             selectedWeek = this.activityHistory.slice((pickedDay - 6), pickedDay + 1)
         }
         const weeklyMeasure = selectedWeek.map(day => day.minutesActive)
-        const totalMin = weeklyMeasure.reduce((acc, sum) => {
+        const avgMin = weeklyMeasure.reduce((acc, sum) => {
             acc += sum
             return acc
-        }, 0)
-        const avgMin = (totalMin/weeklyMeasure.length).toFixed(1)
-        return Number(avgMin)
+        }, 0)/weeklyMeasure.length
+        return Number(avgMin.toFixed(1))
     }
 
-    findAllUsersAvg() {
+    findAllUsersAvg(date, measure) {
+        const filteredData = this.allData.filter(entry => entry.date === date)
+        const avgData = filteredData.reduce((acc, entry) => {
+            acc += entry[measure]
+            return acc
+        }, 0)/filteredData.length
+        return Number(avgData.toFixed(1))
     }
-
 };
 
 module.exports = Activity;
