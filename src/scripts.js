@@ -1,9 +1,10 @@
 import "./css/styles.css";
 import UserRepository from "./UserRepository";
-import Hydration from "../src/Hydration";
-import Sleep from "../src/Sleep";
+import Hydration from "./Hydration";
+import Sleep from "./Sleep"
 import User from "./User";
 import apiCalls from "./apiCalls";
+import Activity from "./Activity";
 import { waterGraph, sleepGraph } from "./graphs";
 
 // Query Selectors
@@ -35,6 +36,8 @@ let hydrationData;
 let sleepData;
 let userData;
 let sleep;
+let activity
+let activityData
 
 //Functions
 
@@ -42,6 +45,7 @@ apiCalls.fetchAllData().then((data) => {
   userData = data[0].userData;
   hydrationData = data[1].hydrationData;
   sleepData = data[2].sleepData;
+  activityData = data[3].activityData;
   loadPageFunctions();
 });
 
