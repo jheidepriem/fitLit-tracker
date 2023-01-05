@@ -1,15 +1,14 @@
 import "./css/styles.css";
 import UserRepository from "./UserRepository";
-import Hydration from "../src/Hydration";
-import Sleep from "../src/Sleep";
+import Hydration from "./Hydration";
+import Sleep from "./Sleep"
 import User from "./User";
 import apiCalls from "./apiCalls";
+import Activity from "./Activity";
 import { waterGraph, sleepGraph } from "./graphs";
 
 // Query Selectors
 
-const weeklyWaterContainer = document.querySelector(".weekly-water-container");
-const sleepDataContainer = document.querySelector(".sleep-data-container");
 const greeting = document.querySelector(".greeting");
 const address = document.querySelector(".address");
 const email = document.querySelector(".email");
@@ -21,6 +20,12 @@ const dailyHours = document.querySelector(".daily-hours");
 const dailyQuality = document.querySelector(".daily-quality");
 const qualityAvg = document.querySelector(".quality");
 const hoursAvg = document.querySelector(".hours");
+const userMinutes = document.getElementById("minutes");
+const userDistance = document.getElementById("distance");
+const userSteps = document.getElementById("steps");
+const allMinutes = document.getElementById("allMinutes");
+const allDistance = document.getElementById("allDistance");
+const allSteps = document.getElementById("allSteps");
 
 //Global Variables
 let allUserData = [];
@@ -31,6 +36,8 @@ let hydrationData;
 let sleepData;
 let userData;
 let sleep;
+let activity
+let activityData
 
 //Functions
 
@@ -38,6 +45,7 @@ apiCalls.fetchAllData().then((data) => {
   userData = data[0].userData;
   hydrationData = data[1].hydrationData;
   sleepData = data[2].sleepData;
+  activityData = data[3].activityData;
   loadPageFunctions();
 });
 
@@ -47,12 +55,14 @@ const loadPageFunctions = () => {
   getRandomUser();
   newHydration();
   newSleep();
+  newActivity();
   greetUser();
   showUserInfo();
   showStepInfo();
   showAllTimeInfo();
   showTodayWater();
   showTodaySleep();
+  showUserActivity();
   waterGraph(hydration.getWeeklyOunces());
   sleepGraph(
     sleep.totalWeekly(
@@ -64,6 +74,7 @@ const loadPageFunctions = () => {
       "sleepQuality"
     )
   );
+  dailyActiveGraph()
 };
 
 const makeUserInstances = (dataFile) => {
@@ -84,11 +95,19 @@ const newHydration = () => (hydration = new Hydration(user.id, hydrationData));
 
 const newSleep = () => (sleep = new Sleep(user.id, sleepData));
 
+const newActivity = () => (activity = new Activity(activityData, user))
+
 const greetUser = () => (greeting.innerHTML = `Hi, ${user.findFirstName()}!`);
 
 const showUserInfo = () => {
   address.innerText = `${user.address}`;
   email.innerText = `${user.email}`;
+};
+
+const showUserActivity = () => {
+  userMinutes.innerText = `${activity.returnMinutesActive()}`;
+  userDistance.innerText = `${activity.returnMilesWalked()}`;
+  userSteps.innerText = `${activity.returnSteps()}`;
 };
 
 const showStepInfo = () => {

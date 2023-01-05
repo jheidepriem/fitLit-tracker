@@ -82,4 +82,49 @@ const sleepGraph = (sleepData1, sleepData2) => {
     },
   });
 };
-export { waterGraph, sleepGraph };
+
+const dailyActiveGraph = (activeData1, activeData2) => {
+  sleepDataContainer.innerHTML = `<canvas id="weekSleep"></canvas>`;
+  const ctx = document.getElementById("weekSleep").getContext("2d");
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: labels,
+      datasets: [
+        {
+          label: 'User Step Count',
+          data: activeData1,
+          borderColor: Utils.CHART_COLORS.red,
+          backgroundColor: Utils.transparentize(Utils.CHART_COLORS.red, 0.5),
+        },
+        {
+          label: 'All User Step Count',
+          data: activeData2,
+          borderColor: Utils.CHART_COLORS.blue,
+          backgroundColor: Utils.transparentize(Utils.CHART_COLORS.blue, 0.5),
+        },
+      ],
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: {
+          position: 'top',
+        },
+        title: {
+          display: true,
+          text: 'Chart.js Bar Chart'
+        }
+      }
+    }
+  });
+};
+
+
+
+
+
+
+
+export { waterGraph, sleepGraph, dailyActiveGraph };
+
