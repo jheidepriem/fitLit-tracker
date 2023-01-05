@@ -6,6 +6,16 @@ class Activity {
         this.stepGoalReached = false
     };
 
+    returnSteps(date) {
+            const providedDate = this.activityHistory.find(entry => entry.date === date)
+            if(providedDate) {
+                return providedDate.numSteps
+            } else {
+                const latestDate = this.activityHistory.slice(-1)
+                return latestDate[0].numSteps
+            }
+        }
+
     returnMinutesActive(date) {
         const providedDate = this.activityHistory.find(entry => entry.date === date)
         if(providedDate) {
@@ -91,5 +101,7 @@ class Activity {
          return weeklyMeasure
       };
 };
+
+
 
 module.exports = Activity;
