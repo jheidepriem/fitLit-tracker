@@ -77,7 +77,7 @@ describe("activity", () => {
             date: "2019/06/21",
             numSteps: 2900,
             minutesActive: 50,
-            flightsOfStairs: 0
+            flightsOfStairs: 30
         };
 
         activityEntry9 = {
@@ -85,7 +85,7 @@ describe("activity", () => {
             date: "2019/06/22",
             numSteps: 10000,
             minutesActive: 60,
-            flightsOfStairs: 0
+            flightsOfStairs: 20
         };
 
         activityData = [
@@ -149,6 +149,11 @@ describe("activity", () => {
         expect(activity.returnMinutesActive()).to.equal(60)
     })
 
+      it("should be able to return the stairs a user climbed", () => {
+        expect(activity.returnStairs("2019/06/21")).to.equal(30)
+        expect(activity.returnStairs()).to.equal(20)
+    })
+
     it("should be able to return the miles a user has walked", () => {
         expect(activity.returnMilesWalked("2019/06/21")).to.equal(2.4)
         expect(activity.returnMilesWalked()).to.equal(8.1)
@@ -183,8 +188,8 @@ describe("activity", () => {
     })
 
       it('should have a method that returns the specified measurement each day over the course of a week', () => {
-        expect(activity.getWeeklyData("2019/06/19", "flightsOfStairs")).to.deep.equal([10, 0, 15, 20, 35, 5, 0])
-        expect(activity.getWeeklyData("2019/06/22", "flightsOfStairs")).to.deep.equal([0, 15, 20, 35, 5, 0, 0])
+        expect(activity.getWeeklyData("2019/06/19", "flightsOfStairs")).to.deep.equal([10, 0, 15, 20, 35, 5, 30])
+        expect(activity.getWeeklyData("2019/06/22", "flightsOfStairs")).to.deep.equal([0, 15, 20, 35, 5, 30, 20])
 
         expect(activity.getWeeklyData("2019/06/19", "minutesActive")).to.deep.equal([20, 10, 25, 15, 25, 10, 50])
         expect(activity.getWeeklyData("2019/06/22", "minutesActive")).to.deep.equal([10, 25, 15, 25, 10, 50, 60])
