@@ -139,6 +139,11 @@ describe("activity", () => {
         expect(activity.stepGoalReached).to.equal(false);
     });
 
+    it("should be able to return the number of steps for a user", () => {
+            expect(activity.returnSteps("2019/06/21")).to.equal(2900)
+            expect(activity.returnSteps()).to.equal(10000)
+        })
+
     it("should be able to return the minutes a user is active", () => {
         expect(activity.returnMinutesActive("2019/06/21")).to.equal(50)
         expect(activity.returnMinutesActive()).to.equal(60)
