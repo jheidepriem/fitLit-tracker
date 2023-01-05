@@ -8,8 +8,6 @@ import { waterGraph, sleepGraph } from "./graphs";
 
 // Query Selectors
 
-const weeklyWaterContainer = document.querySelector(".weekly-water-container");
-const sleepDataContainer = document.querySelector(".sleep-data-container");
 const greeting = document.querySelector(".greeting");
 const address = document.querySelector(".address");
 const email = document.querySelector(".email");
@@ -21,6 +19,12 @@ const dailyHours = document.querySelector(".daily-hours");
 const dailyQuality = document.querySelector(".daily-quality");
 const qualityAvg = document.querySelector(".quality");
 const hoursAvg = document.querySelector(".hours");
+const userMinutes = document.getElementById("minutes");
+const userDistance = document.getElementById("distance");
+const userSteps = document.getElementById("steps");
+const allMinutes = document.getElementById("allMinutes");
+const allDistance = document.getElementById("allDistance");
+const allSteps = document.getElementById("allSteps");
 
 //Global Variables
 let allUserData = [];
