@@ -26,6 +26,16 @@ class Activity {
         }
     }
 
+    returnStairs(date) {
+        const providedDate = this.activityHistory.find(entry => entry.date === date)
+        if(providedDate) {
+            return providedDate.flightsOfStairs
+        } else {
+            const latestDate = this.activityHistory.slice(-1)
+            return latestDate[0].flightsOfStairs
+        }
+    }
+
     returnMilesWalked(date) {
         const providedDate = this.activityHistory.find(entry => entry.date === date)
         if(providedDate) {
