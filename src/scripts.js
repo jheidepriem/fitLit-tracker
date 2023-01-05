@@ -55,12 +55,14 @@ const loadPageFunctions = () => {
   getRandomUser();
   newHydration();
   newSleep();
+  newActivity();
   greetUser();
   showUserInfo();
   showStepInfo();
   showAllTimeInfo();
   showTodayWater();
   showTodaySleep();
+  showUserActivity();
   waterGraph(hydration.getWeeklyOunces());
   sleepGraph(
     sleep.totalWeekly(
@@ -92,11 +94,19 @@ const newHydration = () => (hydration = new Hydration(user.id, hydrationData));
 
 const newSleep = () => (sleep = new Sleep(user.id, sleepData));
 
+const newActivity = () => (activity = new Activity(activityData, user))
+
 const greetUser = () => (greeting.innerHTML = `Hi, ${user.findFirstName()}!`);
 
 const showUserInfo = () => {
   address.innerText = `${user.address}`;
   email.innerText = `${user.email}`;
+};
+
+const showUserActivity = () => {
+  userMinutes.innerText = `${activity.returnMinutesActive()}`;
+  userDistance.innerText = `${activity.returnMilesWalked()}`;
+  userSteps.innerText = `${activity.returnSteps()}`;
 };
 
 const showStepInfo = () => {
