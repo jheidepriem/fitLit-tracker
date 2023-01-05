@@ -2,6 +2,7 @@ import { Chart } from "chart.js/auto";
 
 const weeklyWaterContainer = document.querySelector(".weekly-water-container");
 const sleepDataContainer = document.querySelector(".sleep-data-container");
+const dailyDataContainer = document.querySelector(".all-users-container");
 
 const waterGraph = (waterData) => {
   weeklyWaterContainer.innerHTML = `<canvas id="weekWater"></canvas>`;
@@ -84,8 +85,8 @@ const sleepGraph = (sleepData1, sleepData2) => {
 };
 
 const dailyActiveGraph = (activeData1, activeData2) => {
-  sleepDataContainer.innerHTML = `<canvas id="weekSleep"></canvas>`;
-  const ctx = document.getElementById("weekSleep").getContext("2d");
+  dailyDataContainer.innerHTML = `<canvas id="dailyActivity"></canvas>`;
+  const ctx = document.getElementById("dailyActivity").getContext("2d");
   new Chart(ctx, {
     type: 'bar',
     data: {
