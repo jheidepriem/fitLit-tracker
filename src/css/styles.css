@@ -194,15 +194,14 @@ h1 {
   width: 30vw;
 }
 
-.step-graph,
+/* .step-graph,
 .sleep-graph {
   display: flex;
   height: 40vh;
-  /* border: 3px solid blue; */
   justify-content: center;
   width: 30vw;
-}
+} 
 
 .step-graph {
   border-radius: 150px;
-}
+} */
