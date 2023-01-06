@@ -16,9 +16,18 @@
         <p class="email user-info"></p>
       </div>
       <div class="input-container card">
-        <button class="submit-input">Add new data</button>
-        <form>
-        </form>
+        <!-- <button class="submit-input">Add new data</button>
+        <div> -->
+          <form class="input-list">
+            <input type="radio" id="activity" name="newDataType" value="activity">
+            <label for="activity">Activity</label>
+            <input type="radio" id="hydration" name="newDataType" value="hydration">
+            <label for="hydration">Hydration</label>
+            <input type="radio" id="sleep" name="newDataType" value="sleep">
+            <label for="sleep">Sleep</label>
+            <button type=“button” class=“add-data-btn”>Add Data!</button>
+          </form>
+        <!-- </div> -->
       </div>
       <div class="all-time-info card">
         <h3 class="title all-time">All-time Sleep Hours Average:</h3>
@@ -101,6 +110,9 @@
         </div>
         <div class="sleep-data-container container">
           <canvas id="weekSleep"></canvas>
+        </div>
+        <div class="activity-data-container container">
+          <canvas id="weekActivity"></canvas>
         </div>
       </div>
       <script src="bundle.js"></script>
