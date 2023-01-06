@@ -78,6 +78,11 @@ body {
   cursor: pointer;
 }
 
+.input-list {
+  display: flex;
+  flex-direction: column;
+}
+
 .all-time-info {
   height: 26vh;
 }
