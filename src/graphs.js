@@ -2,7 +2,6 @@ import { Chart } from "chart.js/auto";
 
 const weeklyWaterContainer = document.querySelector(".weekly-water-container");
 const sleepDataContainer = document.querySelector(".sleep-data-container");
-const dailyDataContainer = document.querySelector(".all-users-container");
 
 const waterGraph = (waterData) => {
   weeklyWaterContainer.innerHTML = `<canvas id="weekWater"></canvas>`;
@@ -83,49 +82,4 @@ const sleepGraph = (sleepData1, sleepData2) => {
     },
   });
 };
-
-const dailyActiveGraph = (activeData1, activeData2) => {
-  dailyDataContainer.innerHTML = `<canvas id="dailyActivity"></canvas>`;
-  const ctx = document.getElementById("dailyActivity").getContext("2d");
-  new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels: labels,
-      datasets: [
-        {
-          label: 'User Step Count',
-          data: activeData1,
-          borderColor: Utils.CHART_COLORS.red,
-          backgroundColor: Utils.transparentize(Utils.CHART_COLORS.red, 0.5),
-        },
-        {
-          label: 'All User Step Count',
-          data: activeData2,
-          borderColor: Utils.CHART_COLORS.blue,
-          backgroundColor: Utils.transparentize(Utils.CHART_COLORS.blue, 0.5),
-        },
-      ],
-    },
-    options: {
-      responsive: true,
-      plugins: {
-        legend: {
-          position: 'top',
-        },
-        title: {
-          display: true,
-          text: 'Chart.js Bar Chart'
-        }
-      }
-    }
-  });
-};
-
-
-
-
-
-
-
-export { waterGraph, sleepGraph, dailyActiveGraph };
 
