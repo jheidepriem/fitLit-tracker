@@ -30,7 +30,6 @@ const allSteps = document.getElementById("allSteps");
 const allStairs = document.getElementById("allStairs");
 const dataForm = document.getElementsByName("newDataType");
 const addDataBtn = document.querySelector(".add-data-btn");
-const newDataBtn = document.querySelector(".submit-input")
 
 //Global Variables
 let allUserData = [];
@@ -43,6 +42,7 @@ let userData;
 let sleep;
 let activity;
 let activityData;
+
 
 //Functions
 
@@ -96,15 +96,15 @@ const loadPageFunctions = () => {
           )
         };
 
-addDataBtn.addEventListener("click", doSomething)
+// addDataBtn.addEventListener("click", doSomething)
 
-const doSomething = () => {
-  for(i = 0; i < dataForm.length; i++) {
-      if(dataForm[i].checked) {
-          console.log(dataForm[i].id)
-      }
-  }
-}
+// function doSomething() {
+//   for(i = 0; i < dataForm.length; i++) {
+//       if(dataForm[i].checked) {
+//           console.log(dataForm[i].id)
+//       }
+//   }
+// }
         
 const makeUserInstances = (dataFile) => {
   dataFile.forEach((obj) => {
