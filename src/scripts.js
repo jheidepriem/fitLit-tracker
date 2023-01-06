@@ -5,7 +5,7 @@ import Sleep from "./Sleep"
 import User from "./User";
 import apiCalls from "./apiCalls";
 import Activity from "./Activity";
-import { waterGraph, sleepGraph } from "./graphs";
+import { waterGraph, sleepGraph, weeklyActivityGraph } from "./graphs";
 
 // Query Selectors
 
@@ -76,6 +76,11 @@ const loadPageFunctions = () => {
       "sleepQuality"
     )
   );
+  weeklyActivityGraph(
+    activity.getWeeklyData("numSteps"), 
+    activity.getWeeklyData("minutesActive"),
+    activity.getWeeklyData("flightsOfStairs")
+  )
   showAverageActivity();
 };
 
