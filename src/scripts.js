@@ -74,8 +74,6 @@ const loadPageFunctions = () => {
       "sleepQuality"
     )
   );
-  dailyActiveGraph(activity.returnSteps(), activity.findAllUsersAvg("numSteps"));
-
 };
 
 const makeUserInstances = (dataFile) => {
