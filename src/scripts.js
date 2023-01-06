@@ -28,6 +28,9 @@ const allMinutes = document.getElementById("allMinutes");
 const allDistance = document.getElementById("allDistance");
 const allSteps = document.getElementById("allSteps");
 const allStairs = document.getElementById("allStairs");
+const dataForm = document.getElementsByName("newDataType");
+const addDataBtn = document.querySelector(".add-data-btn");
+const newDataBtn = document.querySelector(".submit-input")
 
 //Global Variables
 let allUserData = [];
@@ -64,6 +67,7 @@ const loadPageFunctions = () => {
   showAllTimeInfo();
   showTodayWater();
   showTodaySleep();
+  showAverageActivity();
   showUserActivity();
   waterGraph(hydration.getWeeklyOunces());
   sleepGraph(
@@ -77,13 +81,31 @@ const loadPageFunctions = () => {
     )
   );
   weeklyActivityGraph(
-    activity.getWeeklyData("numSteps"), 
-    activity.getWeeklyData("minutesActive"),
-    activity.getWeeklyData("flightsOfStairs")
-  )
-  showAverageActivity();
-};
+    activity.getWeeklyData( 
+      activity.activityHistory[activity.activityHistory.length - 1].date,
+      "numSteps"
+      ), 
+      activity.getWeeklyData(
+        activity.activityHistory[activity.activityHistory.length - 1].date,
+        "minutesActive"
+        ),
+        activity.getWeeklyData(
+          activity.activityHistory[activity.activityHistory.length - 1].date,
+          "flightsOfStairs"
+          )
+          )
+        };
 
+addDataBtn.addEventListener("click", doSomething)
+
+const doSomething = () => {
+  for(i = 0; i < dataForm.length; i++) {
+      if(dataForm[i].checked) {
+          console.log(dataForm[i].id)
+      }
+  }
+}
+        
 const makeUserInstances = (dataFile) => {
   dataFile.forEach((obj) => {
     let newUser = new User(obj);
