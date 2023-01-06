@@ -23,9 +23,11 @@ const hoursAvg = document.querySelector(".hours");
 const userMinutes = document.getElementById("minutes");
 const userDistance = document.getElementById("distance");
 const userSteps = document.getElementById("steps");
+const userStairs = document.getElementById("stairs");
 const allMinutes = document.getElementById("allMinutes");
 const allDistance = document.getElementById("allDistance");
 const allSteps = document.getElementById("allSteps");
+const allStairs = document.getElementById("allStairs");
 
 //Global Variables
 let allUserData = [];
@@ -36,8 +38,8 @@ let hydrationData;
 let sleepData;
 let userData;
 let sleep;
-let activity
-let activityData
+let activity;
+let activityData;
 
 //Functions
 
@@ -74,6 +76,7 @@ const loadPageFunctions = () => {
       "sleepQuality"
     )
   );
+  showAverageActivity();
 };
 
 const makeUserInstances = (dataFile) => {
@@ -107,7 +110,15 @@ const showUserActivity = () => {
   userMinutes.innerText = `${activity.returnMinutesActive()}`;
   userDistance.innerText = `${activity.returnMilesWalked()}`;
   userSteps.innerText = `${activity.returnSteps()}`;
+  userStairs.innerText = `${activity.returnStairs()}`;
 };
+
+const showAverageActivity = () => {
+  allMinutes.innerText = `${activity.findAllUsersAvg("minutesActive")}`;
+  //allDistance.innerText = `${activity.findAllUsersStairs()}`;
+  allSteps.innerText = `${activity.findAllUsersAvg("numSteps")}`;
+  allStairs.innerText = `${activity.findAllUsersAvg("flightsOfStairs")}`;
+}
 
 const showStepInfo = () => {
   stride.innerText = `${user.strideLength}`;
