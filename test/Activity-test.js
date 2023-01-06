@@ -12,6 +12,7 @@ describe("activity", () => {
     let activityEntry7;
     let activityEntry8;
     let activityEntry9;
+    let activityEntry10;
     let activityData;
     let activity;
     let user1
@@ -77,7 +78,7 @@ describe("activity", () => {
             date: "2019/06/21",
             numSteps: 2900,
             minutesActive: 50,
-            flightsOfStairs: 0
+            flightsOfStairs: 30
         };
 
         activityEntry9 = {
@@ -85,7 +86,16 @@ describe("activity", () => {
             date: "2019/06/22",
             numSteps: 10000,
             minutesActive: 60,
-            flightsOfStairs: 0
+            flightsOfStairs: 20
+        };
+
+
+        activityEntry10 = {
+            userID: 2,
+            date: "2019/06/22",
+            numSteps: 15000,
+            minutesActive: 80,
+            flightsOfStairs: 40
         };
 
         activityData = [
@@ -97,8 +107,9 @@ describe("activity", () => {
             activityEntry6,
             activityEntry7,
             activityEntry8,
-            activityEntry9
-        ];
+            activityEntry9,
+            activityEntry10
+            ];
 
         user1Data = {
             id: 1,
@@ -139,9 +150,19 @@ describe("activity", () => {
         expect(activity.stepGoalReached).to.equal(false);
     });
 
+    it("should be able to return the number of steps for a user", () => {
+            expect(activity.returnSteps("2019/06/21")).to.equal(2900)
+            expect(activity.returnSteps()).to.equal(10000)
+        })
+
     it("should be able to return the minutes a user is active", () => {
         expect(activity.returnMinutesActive("2019/06/21")).to.equal(50)
         expect(activity.returnMinutesActive()).to.equal(60)
+    })
+
+      it("should be able to return the stairs a user climbed", () => {
+        expect(activity.returnStairs("2019/06/21")).to.equal(30)
+        expect(activity.returnStairs()).to.equal(20)
     })
 
     it("should be able to return the miles a user has walked", () => {
@@ -172,14 +193,14 @@ describe("activity", () => {
     })
 
     it("should find the average minutes active for all users for a specific date", () => {
-        expect(activity.findAllUsersAvg("2019/06/15", "flightsOfStairs")).to.equal(15)
-        expect(activity.findAllUsersAvg("2019/06/15", "minutesActive")).to.equal(25)
-        expect(activity.findAllUsersAvg("2019/06/15", "numSteps")).to.equal(1050)
+        expect(activity.findAllUsersAvg("flightsOfStairs", "2019/06/15")).to.equal(15)
+        expect(activity.findAllUsersAvg("minutesActive", "2019/06/15" )).to.equal(25)
+        expect(activity.findAllUsersAvg("numSteps")).to.equal(12500)
     })
 
       it('should have a method that returns the specified measurement each day over the course of a week', () => {
-        expect(activity.getWeeklyData("2019/06/19", "flightsOfStairs")).to.deep.equal([10, 0, 15, 20, 35, 5, 0])
-        expect(activity.getWeeklyData("2019/06/22", "flightsOfStairs")).to.deep.equal([0, 15, 20, 35, 5, 0, 0])
+        expect(activity.getWeeklyData("2019/06/19", "flightsOfStairs")).to.deep.equal([10, 0, 15, 20, 35, 5, 30])
+        expect(activity.getWeeklyData("2019/06/22", "flightsOfStairs")).to.deep.equal([0, 15, 20, 35, 5, 30, 20])
 
         expect(activity.getWeeklyData("2019/06/19", "minutesActive")).to.deep.equal([20, 10, 25, 15, 25, 10, 50])
         expect(activity.getWeeklyData("2019/06/22", "minutesActive")).to.deep.equal([10, 25, 15, 25, 10, 50, 60])
