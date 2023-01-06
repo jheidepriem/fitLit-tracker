@@ -2,6 +2,7 @@ import { Chart } from "chart.js/auto";
 
 const weeklyWaterContainer = document.querySelector(".weekly-water-container");
 const sleepDataContainer = document.querySelector(".sleep-data-container");
+const weeklyActivityContainer = document.querySelector(".activity-data-container")
 
 const waterGraph = (waterData) => {
   weeklyWaterContainer.innerHTML = `<canvas id="weekWater"></canvas>`;
@@ -82,4 +83,67 @@ const sleepGraph = (sleepData1, sleepData2) => {
     },
   });
 };
-export { waterGraph, sleepGraph };
+
+const weeklyActivityGraph = (weekData1, weekData2, weekData3) => {
+  weeklyActivityContainer.innerHTML = `<canvas id="weekActivity"></canvas>`;
+  const ctx = document.getElementById("weekActivity").getContext("2d");
+  new Chart(ctx, {
+    type: "line",
+    data: {
+      labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
+      datasets: [
+    {
+      label: 'Unfilled',
+      fill: false,
+      backgroundColor: Utils.CHART_COLORS.blue,
+      borderColor: Utils.CHART_COLORS.blue,
+      data: weekData1, 
+    }, {
+      label: 'Dashed',
+      fill: false,
+      backgroundColor: Utils.CHART_COLORS.green,
+      borderColor: Utils.CHART_COLORS.green,
+      borderDash: [5, 5],
+      data: weekData2,
+    }, {
+      label: 'Filled',
+      backgroundColor: Utils.CHART_COLORS.red,
+      borderColor: Utils.CHART_COLORS.red,
+      data: weekData3,
+      fill: true,
+    },
+  ],
+},
+  options: {
+    responsive: true,
+    plugins: {
+      title: {
+        display: true,
+        text: 'Chart.js Line Chart'
+      },
+    },
+    interaction: {
+      mode: 'index',
+      intersect: false
+    },
+    scales: {
+      x: {
+        display: true,
+        title: {
+          display: true,
+          text: 'Month'
+        }
+      },
+      y: {
+        display: true,
+        title: {
+          display: true,
+          text: 'Value'
+        },
+      },
+    },
+  },
+  });
+};
+
+export { waterGraph, sleepGraph, weeklyActivityGraph };
