@@ -93,22 +93,22 @@ const weeklyActivityGraph = (weekData1, weekData2, weekData3) => {
       labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
       datasets: [
     {
-      label: 'Unfilled',
+      label: 'Number of Steps',
       fill: false,
-      backgroundColor: Utils.CHART_COLORS.blue,
-      borderColor: Utils.CHART_COLORS.blue,
+      backgroundColor:  "rgb(248, 246, 246)",
+      borderColor: "rgb(77, 18, 238)",
       data: weekData1, 
     }, {
-      label: 'Dashed',
+      label: 'Minutes Active',
       fill: false,
-      backgroundColor: Utils.CHART_COLORS.green,
-      borderColor: Utils.CHART_COLORS.green,
+      backgroundColor:  "rgb(248, 246, 246)",
+      borderColor: "rgb(77, 18, 238)",
       borderDash: [5, 5],
       data: weekData2,
     }, {
-      label: 'Filled',
-      backgroundColor: Utils.CHART_COLORS.red,
-      borderColor: Utils.CHART_COLORS.red,
+      label: 'Flights of Stairs Climbed',
+      backgroundColor:  "rgb(248, 246, 246)",
+      borderColor: "rgb(77, 18, 238)",
       data: weekData3,
       fill: true,
     },
@@ -119,7 +119,7 @@ const weeklyActivityGraph = (weekData1, weekData2, weekData3) => {
     plugins: {
       title: {
         display: true,
-        text: 'Chart.js Line Chart'
+        text: 'Weekly Activity Graph'
       },
     },
     interaction: {
