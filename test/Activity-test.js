@@ -12,6 +12,7 @@ describe("activity", () => {
     let activityEntry7;
     let activityEntry8;
     let activityEntry9;
+    let activityEntry10;
     let activityData;
     let activity;
     let user1
@@ -88,6 +89,15 @@ describe("activity", () => {
             flightsOfStairs: 20
         };
 
+
+        activityEntry10 = {
+            userID: 2,
+            date: "2019/06/22",
+            numSteps: 15000,
+            minutesActive: 80,
+            flightsOfStairs: 40
+        };
+
         activityData = [
             activityEntry1,
             activityEntry2,
@@ -97,8 +107,9 @@ describe("activity", () => {
             activityEntry6,
             activityEntry7,
             activityEntry8,
-            activityEntry9
-        ];
+            activityEntry9,
+            activityEntry10
+            ];
 
         user1Data = {
             id: 1,
@@ -182,9 +193,9 @@ describe("activity", () => {
     })
 
     it("should find the average minutes active for all users for a specific date", () => {
-        expect(activity.findAllUsersAvg("2019/06/15", "flightsOfStairs")).to.equal(15)
-        expect(activity.findAllUsersAvg("2019/06/15", "minutesActive")).to.equal(25)
-        expect(activity.findAllUsersAvg("2019/06/15", "numSteps")).to.equal(1050)
+        expect(activity.findAllUsersAvg("flightsOfStairs", "2019/06/15")).to.equal(15)
+        expect(activity.findAllUsersAvg("minutesActive", "2019/06/15" )).to.equal(25)
+        expect(activity.findAllUsersAvg("numSteps")).to.equal(12500)
     })
 
       it('should have a method that returns the specified measurement each day over the course of a week', () => {
