@@ -105,16 +105,7 @@ submitActivityData.addEventListener('click', showMainForm)
 submitHydrationData.addEventListener('click', showMainForm)
 submitSleepData.addEventListener('click', showMainForm)
 
-// addDataBtn.addEventListener("click", doSomething)
-
-// function doSomething() {
-//   for(i = 0; i < dataForm.length; i++) {
-//       if(dataForm[i].checked) {
-//           console.log(dataForm[i].id)
-//       }
-//   }
-// }
-        
+  
 const makeUserInstances = (dataFile) => {
   dataFile.forEach((obj) => {
     let newUser = new User(obj);
