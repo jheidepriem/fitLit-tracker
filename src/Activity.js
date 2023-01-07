@@ -91,18 +91,14 @@ class Activity {
         const latestDate = this.allData.slice(-1)[0].date
         const filteredData = this.allData.filter(entry => entry.date === date)
         const noDate =  this.allData.filter(entry => entry.date === latestDate)
-        console.log('noDate:', noDate)
-
         if(arguments.length === 2) {
             const avgData = filteredData.reduce((acc, entry) => {
                 acc += entry[measure]
                 return acc
             }, 0)/filteredData.length
-            console.log('MEASURE:', measure)
             return Number(avgData.toFixed(1))
         } else {
             const avgNoDateData = noDate.reduce((acc, entry) => {
-                // console.log('measure:', measure)
                 acc += entry[measure]
                 return acc
             }, 0)
