@@ -61,6 +61,12 @@ apiCalls.fetchAllData().then((data) => {
   loadPageFunctions();
 });
 
+const updatedAPI = () => {
+  apiCalls.fetchAllData().then((data) => {
+
+  })
+}
+
 addActivityBtn.addEventListener('click', showActivity)
 addHydrationBtn.addEventListener('click', showHydration)
 addSleepBtn.addEventListener('click', showSleep)
@@ -99,7 +105,7 @@ const loadPageFunctions = () => {
           activity.getWeeklyData(activity.activityHistory[activity.activityHistory.length - 1].date, "flightsOfStairs"
           )
           )
-          validateForm()
+          // validateForm()
   
 };
 const makeUserInstances = (dataFile) => {
@@ -169,27 +175,36 @@ const showAllTimeInfo = () => {
   qualityAvg.innerText = `${sleep.calcDailyQualityAvg()}`;
 };
 
+// function validateForm() {
+//   var x = document.forms["hydration-form"]["date"].value;
+//   var y = document.forms["hydration-form"]["numOunces"].value;
+//   console.log(x)
+//   console.log(y)
+//   console.log(x !== "" && y !== "")
+//   if (x !== "" && y !== "") {
+//     submitData.disabled = fasle
+//   }
+// }
+
+// Toggle Functions
+
+let formId;
+
 function showActivity() {
   addDataContainer.classList.toggle('hidden');
   activityForm.classList.toggle('hidden');
+  formId = activityForm.id
 };
 function showHydration() {
   addDataContainer.classList.toggle('hidden');
   hydrationForm.classList.toggle('hidden');
+  formId = hydrationForm.id
 };
 function showSleep() {
   addDataContainer.classList.toggle('hidden');
   sleepForm.classList.toggle('hidden');
+  formId = sleepForm.id
 };
-
-
-function validateForm() {
-  var x = document.forms["hydration-form"]["date"].value;
-  var y = document.forms["hydration-form"]["numOunces"].value;
-  if (x !== "" && y !== "") {
-    submitData.disabled = false
-  }
-}
 
 function showMainForm() {
   addDataContainer.classList.toggle('hidden');
@@ -202,41 +217,13 @@ function showMainForm() {
     }
 }
 
-function addNewSleepData(newActivity) {
-  fetch("http://localhost:3001/api/v1/sleep", {
-    method: "POST",
-    body: JSON.stringify(newActivity),
-    Headers: {
-      "Content-Type": "application/json"
-    }
-  })
-  .then(res => res.json())
-  .then(data => console.log(data))
-  .catch(err => console.log('Error!', err))
-}
-
-sleepForm.addEventListener("submit", (e) => {
-  e.preventDefault();
-  const formData = new FormData(e.target);
-  const newActivty = {
-    userID: `${user.id}`,
-    date: formData.get("date"),
-    hoursSlept: formData.get("hoursSlept"),
-    sleepQuality: formData.get("sleepQuality")
-  };
-  console.log('NEW ACTIVITY:', newActivity)
-  addNewSleepData(newActivity);
-  showMainForm()
-  e.target.reset();
-});
+// POST Functions
 
 function addNewHydrationData(newActivity) {
   fetch("http://localhost:3001/api/v1/hydration", {
     method: "POST",
-    body: JSON.stringify(newActivity),
-    Headers: {
-      "Content-Type": "application/json"
-    }
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify(newActivity)
   })
   .then(res => res.json())
   .then(data => data)
@@ -252,35 +239,64 @@ hydrationForm.addEventListener("submit", (e) => {
     numOunces: Number(formData.get("numOunces"))
   };
   console.log(newActivity)
-  showMainForm()
   addNewHydrationData(newActivity);
-  e.target.reset();
-});
-
-function addNewActivityData(newActivity) {
-  fetch("http://localhost:3001/api/v1/activity", {
-    method: "POST",
-    body: JSON.stringify(newActivity),
-    Headers: {
-      "Content-Type": "application/json"
-    }
-  })
-  .then(res => res.json())
-  .then(data => console.log(data))
-  .catch(err => console.log('Error!', err))
-}
-
-activityForm.addEventListener("submit", (e) => {
-  e.preventDefault();
-  const formData = new FormData(e.target);
-  const newActivty = {
-    userID: `${user.id}`,
-    date: formData.get("date"),
-    numSteps: formData.get("numSteps"),
-    minutesActive: formData.get("minutesActive"),
-    flightsOfStairs: formData.get("flightsOfStairs")
-  };
+  console.log(hydration.userHistory);
   showMainForm()
-  addNewActivityData(newActivity);
   e.target.reset();
 });
+
+// function addNewSleepData(newActivity) {
+//   fetch("http://localhost:3001/api/v1/sleep", {
+//     method: "POST",
+//     body: JSON.stringify(newActivity),
+//     Headers: {
+//       "Content-Type": "application/json"
+//     }
+//   })
+//   .then(res => res.json())
+//   .then(data => console.log(data))
+//   .catch(err => console.log('Error!', err))
+// }
+
+// sleepForm.addEventListener("submit", (e) => {
+//   e.preventDefault();
+//   const formData = new FormData(e.target);
+//   const newActivty = {
+//     userID: `${user.id}`,
+//     date: formData.get("date"),
+//     hoursSlept: formData.get("hoursSlept"),
+//     sleepQuality: formData.get("sleepQuality")
+//   };
+//   console.log('NEW ACTIVITY:', newActivity)
+//   addNewSleepData(newActivity);
+//   showMainForm()
+//   e.target.reset();
+// });
+
+// function addNewActivityData(newActivity) {
+//   fetch("http://localhost:3001/api/v1/activity", {
+//     method: "POST",
+//     body: JSON.stringify(newActivity),
+//     Headers: {
+//       "Content-Type": "application/json"
+//     }
+//   })
+//   .then(res => res.json())
+//   .then(data => console.log(data))
+//   .catch(err => console.log('Error!', err))
+// }
+
+// activityForm.addEventListener("submit", (e) => {
+//   e.preventDefault();
+//   const formData = new FormData(e.target);
+//   const newActivty = {
+//     userID: `${user.id}`,
+//     date: formData.get("date"),
+//     numSteps: formData.get("numSteps"),
+//     minutesActive: formData.get("minutesActive"),
+//     flightsOfStairs: formData.get("flightsOfStairs")
+//   };
+//   showMainForm()
+//   addNewActivityData(newActivity);
+//   e.target.reset();
+// });
