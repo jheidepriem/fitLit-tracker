@@ -190,10 +190,13 @@ function showMainForm() {
   addDataContainer.classList.toggle('hidden');
   if(!activityForm.classList.contains('hidden')) {
       activityForm.classList.toggle('hidden');
+      addNewActivityData(newActivity)
   } else if(!hydrationForm.classList.contains('hidden')) {
       hydrationForm.classList.toggle('hidden');
+      addNewHydrationData(newActivity)
   } else if(!sleepForm.classList.contains('hidden')) {
       sleepForm.classList.toggle('hidden');
+      addNewSleepData(newActivity)
   }
 }
 
@@ -220,7 +223,7 @@ sleepForm.addEventListener("submit", (e) => {
     sleepQuality: formData.get("sleepQuality")
   };
   console.log('NEW ACTIVITY:', newActivity)
-  addNewActivityData(newActivity);
+  addNewSleepData(newActivity);
   e.target.reset();
 });
 
@@ -246,7 +249,7 @@ hydrationForm.addEventListener("submit", (e) => {
     numOunces: formData.get("numOunces")
   };
   console.log('NEW ACTIVITY:', newActivity)
-  addNewActivityData(newActivity);
+  addNewHydrationData(newActivity);
   e.target.reset();
 });
 
