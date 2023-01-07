@@ -58,7 +58,7 @@ const sleepGraph = (sleepData1, sleepData2) => {
         {
           label: "Weekly Hours",
           data: sleepData1,
-          borderColor: "rgb(77, 18, 238)",
+          borderColor: "#193498",
           backgroundColor: "rgb(248, 246, 246)",
         },
         {
@@ -95,7 +95,7 @@ const weeklyActivityGraph = (weekData1, weekData2, weekData3) => {
     {
       label: 'Number of Steps',
       fill: false,
-      backgroundColor:  "rgb(248, 246, 246)",
+      backgroundColor: "rgb(248, 246, 246)",
       borderColor: "rgb(77, 18, 238)",
       data: weekData1, 
     }, {
@@ -103,12 +103,12 @@ const weeklyActivityGraph = (weekData1, weekData2, weekData3) => {
       fill: false,
       backgroundColor:  "rgb(248, 246, 246)",
       borderColor: "rgb(77, 18, 238)",
-      borderDash: [5, 5],
+
       data: weekData2,
     }, {
       label: 'Flights of Stairs Climbed',
-      backgroundColor:  "rgb(248, 246, 246)",
-      borderColor: "rgb(77, 18, 238)",
+      backgroundColor:  "rgba(75, 192, 192, 0.2)",
+      borderColor: "rgb(75, 192, 192)",
       data: weekData3,
       fill: true,
     },

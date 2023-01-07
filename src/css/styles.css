@@ -138,6 +138,7 @@ h1 {
   flex-direction: row;
   height: 40vh;
   justify-content: space-evenly;
+  text-align: center;
   width: 75vw;
 }
 
