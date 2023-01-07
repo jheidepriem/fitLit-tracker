@@ -203,7 +203,7 @@ function showMainForm() {
 function addNewSleepData(newActivity) {
   fetch("http://localhost:3001/api/v1/sleep", {
     method: "POST",
-    body: JSON.stringify(),
+    body: JSON.stringify(newActivity),
     Headers: {
       "Content-Type": "application/json"
     }
@@ -217,34 +217,36 @@ sleepForm.addEventListener("submit", (e) => {
   e.preventDefault();
   const formData = new FormData(e.target);
   const newActivty = {
-    userID: user.id,
+    userID: `${user.id}`,
     date: formData.get("date"),
     hoursSlept: formData.get("hoursSlept"),
     sleepQuality: formData.get("sleepQuality")
   };
   console.log('NEW ACTIVITY:', newActivity)
   addNewSleepData(newActivity);
+  showMainForm()
   e.target.reset();
 });
 
 function addNewHydrationData(newActivity) {
   fetch("http://localhost:3001/api/v1/hydration", {
     method: "POST",
-    body: JSON.stringify(),
+    body: JSON.stringify(newActivity),
     Headers: {
       "Content-Type": "application/json"
     }
   })
   .then(res => res.json())
-  .then(data => console.log(data))
+  .then(data => data)
   .catch(err => console.log('Error!', err))
 }
 
 hydrationForm.addEventListener("submit", (e) => {
   e.preventDefault();
+  console.log('USER ID:', user.id)
   const formData = new FormData(e.target);
   const newActivty = {
-    userID: user.id,
+    userID: `${user.id}`,
     date: formData.get("date"),
     numOunces: formData.get("numOunces")
   };
@@ -270,7 +272,7 @@ activityForm.addEventListener("submit", (e) => {
   e.preventDefault();
   const formData = new FormData(e.target);
   const newActivty = {
-    userID: user.id,
+    userID: `${user.id}`,
     date: formData.get("date"),
     numSteps: formData.get("numSteps"),
     minutesActive: formData.get("minutesActive"),
