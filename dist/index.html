@@ -38,8 +38,8 @@
     </aside>
     <main>
       <h1 class="greeting"></h1>
-      <div class="today-container">
-        <div class="water-container today">
+      <section class="today-container">
+        <section class="water-container today">
           <div class="emoji">
             <img src="./images/water.jpg" alt="water-glass">
           </div>
@@ -47,8 +47,8 @@
             <h2 class="today-title">Today's Ounces:</h2>
             <p class="ounces p-main"></p>
           </div>
-        </div>
-        <div class="activity-container today">
+        </section>
+        <section class="activity-container today">
           <div class="emoji">
             <img src="./images/steps.jpg" alt="steps">
           </div>
@@ -62,8 +62,8 @@
             <h2 class="today-title">Today's Stairs Climbed:</h2>
             <p class="p-main" id="stairs"></p>
           </div>
-        </div>
-        <div class="all-users-container today">
+        </section>
+        <section class="all-users-container today">
           <div class="emoji">
             <img src="./images/steps.jpg" alt="steps">
           </div>
@@ -77,8 +77,8 @@
             <h2 class="today-title">Average Stairs Climbed:</h2>
             <p class="p-main" id="allStairs"></p>
           </div>
-        </div>
-        <div class="sleep-container today">
+        </section>
+        <section class="sleep-container today">
           <div class="emoji">
             <img src="./images/zzz.jpg" alt="bed">
           </div>
@@ -88,9 +88,9 @@
             <h2 class="today-title">Today's Quality of Sleep:</h2>
             <p class="daily-quality p-main"></p>
           </div>
-        </div>
-      </div>
-      <div class="stride-container">
+        </section>
+      </section>
+      <section class="stride-container">
         <div class="p-h">
           <h2 class="title step-info">Stride Length:</h2>
           <p class="stride p"></p>
@@ -103,8 +103,8 @@
           <h2 class="title step-info">Average Step Goal:</h2>
           <p class="average p">$</p>
         </div>
-      </div>
-      <div class="graphs-container">
+      </section>
+      <section class="graphs-container">
         <div class="weekly-water-container container">
           <canvas id="weekWater"></canvas>
         </div>
@@ -114,7 +114,7 @@
         <div class="activity-data-container container">
           <canvas id="weekActivity"></canvas>
         </div>
-      </div>
+      </section>
       <script src="bundle.js"></script>
     </main>
   </body>
