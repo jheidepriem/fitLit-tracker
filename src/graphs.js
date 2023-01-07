@@ -95,20 +95,20 @@ const weeklyActivityGraph = (weekData1, weekData2, weekData3) => {
     {
       label: 'Number of Steps',
       fill: false,
-      backgroundColor: "rgb(248, 246, 246)",
-      borderColor: "rgb(77, 18, 238)",
+      backgroundColor: "rgba(54, 162, 235, 0.2)",
+      borderColor:  "rgb(54, 162, 235)",
       data: weekData1, 
     }, {
       label: 'Minutes Active',
       fill: false,
-      backgroundColor:  "rgb(248, 246, 246)",
-      borderColor: "rgb(77, 18, 238)",
+      backgroundColor: "rgba(25, 52, 152, 0.2)",
+      borderColor:  "#193498",
 
       data: weekData2,
     }, {
       label: 'Flights of Stairs Climbed',
-      backgroundColor:  "rgba(75, 192, 192, 0.2)",
-      borderColor: "rgb(75, 192, 192)",
+      backgroundColor:  "rgba(113, 223, 231, 0.2)",
+      borderColor: "rgb(113, 223, 231)",
       data: weekData3,
       fill: true,
     },
