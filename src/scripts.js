@@ -36,9 +36,7 @@ const addHydrationBtn = document.querySelector('.addHydration')
 const hydrationForm = document.querySelector('.hydrationInputs')
 const addSleepBtn = document.querySelector('.addSleep')
 const sleepForm = document.querySelector('.sleepInputs')
-const submitActivityData = document.querySelector('.submitActivityData')
-const submitHydrationData = document.querySelector('.submitHydrationData')
-const submitSleepData = document.querySelector('.submitSleepData')
+const submitData = document.querySelectorAll('.submitData')
 
 //Global Variables
 let allUserData = [];
@@ -63,6 +61,10 @@ apiCalls.fetchAllData().then((data) => {
   loadPageFunctions();
 });
 
+addActivityBtn.addEventListener('click', showActivity)
+addHydrationBtn.addEventListener('click', showHydration)
+addSleepBtn.addEventListener('click', showSleep)
+
 const loadPageFunctions = () => {
   makeUserInstances(userData);
   newRepo();
@@ -83,30 +85,23 @@ const loadPageFunctions = () => {
     sleep.totalWeekly(
       sleep.sleepHistory[sleep.sleepHistory.length - 1].date,
       "hoursSlept"
-    ),
-    sleep.totalWeekly(
-      sleep.sleepHistory[sleep.sleepHistory.length - 1].date,
-      "sleepQuality"
-    )
-  );
-  weeklyActivityGraph(
-    activity.getWeeklyData(activity.activityHistory[activity.activityHistory.length - 1].date, "numSteps"
-    ), 
-    activity.getWeeklyData(activity.activityHistory[activity.activityHistory.length - 1].date, "minutesActive"
-    ),
-    activity.getWeeklyData(activity.activityHistory[activity.activityHistory.length - 1].date, "flightsOfStairs"
-    )
-  )
-};
-
-addActivityBtn.addEventListener('click', showActivity)
-addHydrationBtn.addEventListener('click', showHydration)
-addSleepBtn.addEventListener('click', showSleep)
-submitActivityData.addEventListener('click', showMainForm)
-submitHydrationData.addEventListener('click', showMainForm)
-submitSleepData.addEventListener('click', showMainForm)
-
+      ),
+      sleep.totalWeekly(
+        sleep.sleepHistory[sleep.sleepHistory.length - 1].date,
+        "sleepQuality"
+        )
+        );
+        weeklyActivityGraph(
+          activity.getWeeklyData(activity.activityHistory[activity.activityHistory.length - 1].date, "numSteps"
+          ), 
+          activity.getWeeklyData(activity.activityHistory[activity.activityHistory.length - 1].date, "minutesActive"
+          ),
+          activity.getWeeklyData(activity.activityHistory[activity.activityHistory.length - 1].date, "flightsOfStairs"
+          )
+          )
+          validateForm()
   
+};
 const makeUserInstances = (dataFile) => {
   dataFile.forEach((obj) => {
     let newUser = new User(obj);
@@ -187,18 +182,24 @@ function showSleep() {
   sleepForm.classList.toggle('hidden');
 };
 
+
+function validateForm() {
+  var x = document.forms["hydration-form"]["date"].value;
+  var y = document.forms["hydration-form"]["numOunces"].value;
+  if (x !== "" && y !== "") {
+    submitData.disabled = false
+  }
+}
+
 function showMainForm() {
   addDataContainer.classList.toggle('hidden');
   if(!activityForm.classList.contains('hidden')) {
       activityForm.classList.toggle('hidden');
-      addNewActivityData(newActivity)
   } else if(!hydrationForm.classList.contains('hidden')) {
       hydrationForm.classList.toggle('hidden');
-      addNewHydrationData(newActivity)
   } else if(!sleepForm.classList.contains('hidden')) {
       sleepForm.classList.toggle('hidden');
-      addNewSleepData(newActivity)
-  }
+    }
 }
 
 function addNewSleepData(newActivity) {
@@ -247,12 +248,12 @@ hydrationForm.addEventListener("submit", (e) => {
   const formData = new FormData(e.target);
   const newActivity = {
     userID: Number(`${user.id}`),
-    // date: formData.get("date").split("-").join("/"),
-    date: dayjs(formData.get("date")),
+    date: dayjs(formData.get("date")).format("MM/DD/YYYY"),
     numOunces: Number(formData.get("numOunces"))
   };
   console.log(newActivity)
-  // addNewHydrationData(newActivity);
+  showMainForm()
+  addNewHydrationData(newActivity);
   e.target.reset();
 });
 
@@ -279,6 +280,7 @@ activityForm.addEventListener("submit", (e) => {
     minutesActive: formData.get("minutesActive"),
     flightsOfStairs: formData.get("flightsOfStairs")
   };
+  showMainForm()
   addNewActivityData(newActivity);
   e.target.reset();
 });
