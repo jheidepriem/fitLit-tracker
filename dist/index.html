@@ -22,7 +22,7 @@
           <button type="button" class="addHydration">Hydration</button>
           <button type="button" class="addSleep">Sleep</button>
         </div>
-        <form class="activityInputs hidden">
+        <form name="activity-form" class="activityInputs hidden" id="activity">
           <fieldset>
             Date<input type="date" name="date">
             Number of Steps<input type="number" name="numSteps">
@@ -32,15 +32,15 @@
             <button type="submit" class="submitData">Submit Data</button>
           </fieldset>
         </form>
-        <form name="hydradtion-form" class="hydrationInputs hidden">
+        <form name="hydradtion-form" class="hydrationInputs hidden" id="hydration">
           <fieldset>
             Date<input type="date" name="date">
             Ounces Drank<input type="number" name="numOunces">
             <br>
-            <button type="submit" class="submitData" disabled>Submit Data</button>
+            <button type="submit" class="submitData">Submit Data</button>
           </fieldset>
         </form>
-        <form class="sleepInputs hidden">
+        <form name="sleep-form" class="sleepInputs hidden" id="sleep">
           <fieldset>
             Date<input type="date" name="date">
             Hours Slept<input type="number" name="hoursSlept">
