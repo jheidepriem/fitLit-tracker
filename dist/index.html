@@ -14,11 +14,39 @@
         <p class="address user-info"></p>
         <h2 class="title user-info">Email:</h2>
         <p class="email user-info"></p>
-      </section>
-      <section class="input-container card">
+      </div>
+      <div class="input-container card">
+        <div class="addDataButtons">
+          <h4>Add New Data</h4>
+          <button type="button" class="addActivity">Activity</button>
+          <button type="button" class="addHydration">Hydration</button>
+          <button type="button" class="addSleep">Sleep</button>
+        </div>
+        <form class="activityInputs hidden">
+          Date<input type="date">
+          Number of Steps<input type="number">
+          Minutes Active<input type="number">
+          Stairs Climbed<input type="number">
+          <br>
+          <button type="button" class="submitActivityData">Submit Data</button>
+        </form>
+        <form class="hydrationInputs hidden">
+          Date<input type="date">
+          Ounces Drank<input type="number">
+          <br>
+          <button type="button" class="submitHydrationData">Submit Data</button>
+        </form>
+        <form class="sleepInputs hidden">
+          Date<input type="date">
+          Hours Slept<input type="number">
+          Sleep Quality<input type="number">
+          <br>
+          <button type="button" class="submitSleepData">Submit Data</button>
+        </form>
+      </div>
         <!-- <button class="submit-input">Add new data</button>
         <div> -->
-          <form class="input-list">
+          <!-- <form class="input-list">
             <input type="radio" id="activity" name="newDataType" value="activity">
             <label for="activity">Activity</label>
             <input type="radio" id="hydration" name="newDataType" value="hydration">
@@ -26,7 +54,7 @@
             <input type="radio" id="sleep" name="newDataType" value="sleep">
             <label for="sleep">Sleep</label>
             <button type=“button” class=“add-data-btn”>Add Data!</button>
-          </form>
+          </form> -->
         <!-- </div> -->
         </section>
       <section class="all-time-info card">

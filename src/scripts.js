@@ -28,8 +28,19 @@ const allMinutes = document.getElementById("allMinutes");
 const allDistance = document.getElementById("allDistance");
 const allSteps = document.getElementById("allSteps");
 const allStairs = document.getElementById("allStairs");
-const dataForm = document.getElementsByName("newDataType");
-const addDataBtn = document.querySelector(".add-data-btn");
+var activityBtn = document.querySelector('.addActivity')
+var hydrationBtn = document.querySelector('.addHydration')
+var sleepBtn = document.querySelector('.addSleep')
+var addDataContainer = document.querySelector('.addDataButtons')
+var addActivityBtn = document.querySelector('.addActivity')
+var activityForm = document.querySelector('.activityInputs')
+var addHydrationBtn = document.querySelector('.addHydration')
+var hydrationForm = document.querySelector('.hydrationInputs')
+var addSleepBtn = document.querySelector('.addSleep')
+var sleepForm = document.querySelector('.sleepInputs')
+var submitActivityData = document.querySelector('.submitActivityData')
+var submitHydrationData = document.querySelector('.submitHydrationData')
+var submitSleepData = document.querySelector('.submitSleepData')
 
 //Global Variables
 let allUserData = [];
@@ -81,20 +92,21 @@ const loadPageFunctions = () => {
     )
   );
   weeklyActivityGraph(
-    activity.getWeeklyData( 
-      activity.activityHistory[activity.activityHistory.length - 1].date,
-      "numSteps"
-      ), 
-      activity.getWeeklyData(
-        activity.activityHistory[activity.activityHistory.length - 1].date,
-        "minutesActive"
-        ),
-        activity.getWeeklyData(
-          activity.activityHistory[activity.activityHistory.length - 1].date,
-          "flightsOfStairs"
-          )
-          )
-        };
+    activity.getWeeklyData(activity.activityHistory[activity.activityHistory.length - 1].date, "numSteps"
+    ), 
+    activity.getWeeklyData(activity.activityHistory[activity.activityHistory.length - 1].date, "minutesActive"
+    ),
+    activity.getWeeklyData(activity.activityHistory[activity.activityHistory.length - 1].date, "flightsOfStairs"
+    )
+  )
+};
+
+addActivityBtn.addEventListener('click', showActivity)
+addHydrationBtn.addEventListener('click', showHydration)
+addSleepBtn.addEventListener('click', showSleep)
+submitActivityData.addEventListener('click', showMainForm)
+submitHydrationData.addEventListener('click', showMainForm)
+submitSleepData.addEventListener('click', showMainForm)
 
 // addDataBtn.addEventListener("click", doSomething)
 
@@ -172,3 +184,27 @@ const showAllTimeInfo = () => {
   hoursAvg.innerText = `${sleep.calcDailyHrsAvg()}`;
   qualityAvg.innerText = `${sleep.calcDailyQualityAvg()}`;
 };
+
+function showActivity() {
+  addDataContainer.classList.toggle('hidden');
+  activityForm.classList.toggle('hidden');
+};
+function showHydration() {
+  addDataContainer.classList.toggle('hidden');
+  hydrationForm.classList.toggle('hidden');
+};
+function showSleep() {
+  addDataContainer.classList.toggle('hidden');
+  sleepForm.classList.toggle('hidden');
+};
+
+function showMainForm() {
+  addDataContainer.classList.toggle('hidden');
+  if(!activityForm.classList.contains('hidden')) {
+      activityForm.classList.toggle('hidden');
+  } else if(!hydrationForm.classList.contains('hidden')) {
+      hydrationForm.classList.toggle('hidden');
+  } else if(!sleepForm.classList.contains('hidden')) {
+      sleepForm.classList.toggle('hidden');
+  }
+}

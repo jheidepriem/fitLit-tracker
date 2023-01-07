@@ -19,6 +19,9 @@ body {
   width: 100vw;
 }
 
+.hidden {
+  display: none!important;
+}
 
 /* LEFT SIDE */
 
@@ -81,6 +84,19 @@ body {
 .input-list {
   display: flex;
   flex-direction: column;
+}
+
+.addDataButtons {
+  display: flex;
+  flex-direction: column;
+  width: 10vw;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  width: 10vw;
+  font-size: smaller;
 }
 
 .all-time-info {
