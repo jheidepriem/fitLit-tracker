@@ -5,7 +5,7 @@ import Sleep from "./Sleep"
 import User from "./User";
 import apiCalls from "./apiCalls";
 import Activity from "./Activity";
-import { waterGraph, sleepGraph } from "./graphs";
+import { waterGraph, sleepGraph, weeklyActivityGraph } from "./graphs";
 
 // Query Selectors
 
@@ -28,6 +28,8 @@ const allMinutes = document.getElementById("allMinutes");
 const allDistance = document.getElementById("allDistance");
 const allSteps = document.getElementById("allSteps");
 const allStairs = document.getElementById("allStairs");
+const dataForm = document.getElementsByName("newDataType");
+const addDataBtn = document.querySelector(".add-data-btn");
 
 //Global Variables
 let allUserData = [];
@@ -40,6 +42,7 @@ let userData;
 let sleep;
 let activity;
 let activityData;
+
 
 //Functions
 
@@ -64,6 +67,7 @@ const loadPageFunctions = () => {
   showAllTimeInfo();
   showTodayWater();
   showTodaySleep();
+  showAverageActivity();
   showUserActivity();
   waterGraph(hydration.getWeeklyOunces());
   sleepGraph(
@@ -76,9 +80,32 @@ const loadPageFunctions = () => {
       "sleepQuality"
     )
   );
-  showAverageActivity();
-};
+  weeklyActivityGraph(
+    activity.getWeeklyData( 
+      activity.activityHistory[activity.activityHistory.length - 1].date,
+      "numSteps"
+      ), 
+      activity.getWeeklyData(
+        activity.activityHistory[activity.activityHistory.length - 1].date,
+        "minutesActive"
+        ),
+        activity.getWeeklyData(
+          activity.activityHistory[activity.activityHistory.length - 1].date,
+          "flightsOfStairs"
+          )
+          )
+        };
 
+// addDataBtn.addEventListener("click", doSomething)
+
+// function doSomething() {
+//   for(i = 0; i < dataForm.length; i++) {
+//       if(dataForm[i].checked) {
+//           console.log(dataForm[i].id)
+//       }
+//   }
+// }
+        
 const makeUserInstances = (dataFile) => {
   dataFile.forEach((obj) => {
     let newUser = new User(obj);

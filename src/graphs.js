@@ -2,6 +2,7 @@ import { Chart } from "chart.js/auto";
 
 const weeklyWaterContainer = document.querySelector(".weekly-water-container");
 const sleepDataContainer = document.querySelector(".sleep-data-container");
+const weeklyActivityContainer = document.querySelector(".activity-data-container")
 
 const waterGraph = (waterData) => {
   weeklyWaterContainer.innerHTML = `<canvas id="weekWater"></canvas>`;
@@ -57,7 +58,7 @@ const sleepGraph = (sleepData1, sleepData2) => {
         {
           label: "Weekly Hours",
           data: sleepData1,
-          borderColor: "rgb(77, 18, 238)",
+          borderColor: "#193498",
           backgroundColor: "rgb(248, 246, 246)",
         },
         {
@@ -82,4 +83,67 @@ const sleepGraph = (sleepData1, sleepData2) => {
     },
   });
 };
-export { waterGraph, sleepGraph };
+
+const weeklyActivityGraph = (weekData1, weekData2, weekData3) => {
+  weeklyActivityContainer.innerHTML = `<canvas id="weekActivity"></canvas>`;
+  const ctx = document.getElementById("weekActivity").getContext("2d");
+  new Chart(ctx, {
+    type: "line",
+    data: {
+      labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
+      datasets: [
+    {
+      label: 'Number of Steps',
+      fill: false,
+      backgroundColor: "rgb(248, 246, 246)",
+      borderColor: "rgb(77, 18, 238)",
+      data: weekData1, 
+    }, {
+      label: 'Minutes Active',
+      fill: false,
+      backgroundColor:  "rgb(248, 246, 246)",
+      borderColor: "rgb(77, 18, 238)",
+
+      data: weekData2,
+    }, {
+      label: 'Flights of Stairs Climbed',
+      backgroundColor:  "rgba(75, 192, 192, 0.2)",
+      borderColor: "rgb(75, 192, 192)",
+      data: weekData3,
+      fill: true,
+    },
+  ],
+},
+  options: {
+    responsive: true,
+    plugins: {
+      title: {
+        display: true,
+        text: 'Weekly Activity Graph'
+      },
+    },
+    interaction: {
+      mode: 'index',
+      intersect: false
+    },
+    scales: {
+      x: {
+        display: true,
+        title: {
+          display: true,
+          text: 'Month'
+        }
+      },
+      y: {
+        display: true,
+        title: {
+          display: true,
+          text: 'Value'
+        },
+      },
+    },
+  },
+  });
+};
+
+export { waterGraph, sleepGraph, weeklyActivityGraph };
