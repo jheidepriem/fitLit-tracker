@@ -6,6 +6,7 @@ import User from "./User";
 import apiCalls from "./apiCalls";
 import Activity from "./Activity";
 import { waterGraph, sleepGraph, weeklyActivityGraph } from "./graphs";
+import * as dayjs from 'dayjs' 
 
 // Query Selectors
 
@@ -246,7 +247,8 @@ hydrationForm.addEventListener("submit", (e) => {
   const formData = new FormData(e.target);
   const newActivity = {
     userID: Number(`${user.id}`),
-    date: formData.get("date").split("-").join("/"),
+    // date: formData.get("date").split("-").join("/"),
+    date: dayjs(formData.get("date")),
     numOunces: Number(formData.get("numOunces"))
   };
   console.log(newActivity)
