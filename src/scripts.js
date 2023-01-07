@@ -243,15 +243,14 @@ function addNewHydrationData(newActivity) {
 
 hydrationForm.addEventListener("submit", (e) => {
   e.preventDefault();
-  console.log('USER ID:', user.id)
   const formData = new FormData(e.target);
-  const newActivty = {
-    userID: `${user.id}`,
-    date: formData.get("date"),
-    numOunces: formData.get("numOunces")
+  const newActivity = {
+    userID: Number(`${user.id}`),
+    date: formData.get("date").split("-").join("/"),
+    numOunces: Number(formData.get("numOunces"))
   };
-  console.log('NEW ACTIVITY:', newActivity)
-  addNewHydrationData(newActivity);
+  console.log(newActivity)
+  // addNewHydrationData(newActivity);
   e.target.reset();
 });
 
