@@ -196,3 +196,83 @@ function showMainForm() {
       sleepForm.classList.toggle('hidden');
   }
 }
+
+function addNewSleepData(newActivity) {
+  fetch("http://localhost:3001/api/v1/sleep", {
+    method: "POST",
+    body: JSON.stringify(),
+    Headers: {
+      "Content-Type": "application/json"
+    }
+  })
+  .then(res => res.json())
+  .then(data => console.log(data))
+  .catch(err => console.log('Error!', err))
+}
+
+sleepForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const formData = new FormData(e.target);
+  const newActivty = {
+    userID: user.id,
+    date: formData.get("date"),
+    hoursSlept: formData.get("hoursSlept"),
+    sleepQuality: formData.get("sleepQuality")
+  };
+  console.log('NEW ACTIVITY:', newActivity)
+  addNewActivityData(newActivity);
+  e.target.reset();
+});
+
+function addNewHydrationData(newActivity) {
+  fetch("http://localhost:3001/api/v1/hydration", {
+    method: "POST",
+    body: JSON.stringify(),
+    Headers: {
+      "Content-Type": "application/json"
+    }
+  })
+  .then(res => res.json())
+  .then(data => console.log(data))
+  .catch(err => console.log('Error!', err))
+}
+
+hydrationForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const formData = new FormData(e.target);
+  const newActivty = {
+    userID: user.id,
+    date: formData.get("date"),
+    numOunces: formData.get("numOunces")
+  };
+  console.log('NEW ACTIVITY:', newActivity)
+  addNewActivityData(newActivity);
+  e.target.reset();
+});
+
+function addNewActivityData(newActivity) {
+  fetch("http://localhost:3001/api/v1/activity", {
+    method: "POST",
+    body: JSON.stringify(newActivity),
+    Headers: {
+      "Content-Type": "application/json"
+    }
+  })
+  .then(res => res.json())
+  .then(data => console.log(data))
+  .catch(err => console.log('Error!', err))
+}
+
+activityForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const formData = new FormData(e.target);
+  const newActivty = {
+    userID: user.id,
+    date: formData.get("date"),
+    numSteps: formData.get("numSteps"),
+    minutesActive: formData.get("minutesActive"),
+    flightsOfStairs: formData.get("flightsOfStairs")
+  };
+  addNewActivityData(newActivity);
+  e.target.reset();
+});
