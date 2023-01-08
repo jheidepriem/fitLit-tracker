@@ -44,7 +44,6 @@ let user;
 let currentRepo;
 let hydration;
 let hydrationData;
-let updatedHydrationData
 let sleepData;
 let userData;
 let sleep;
@@ -62,11 +61,11 @@ apiCalls.fetchAllData().then((data) => {
   loadPageFunctions();
 });
 
-const updatedAPI = () => {
-  apiCalls.fetchAllData().then((data) => {
+// const updatedAPI = () => {
+//   apiCalls.fetchAllData().then((data) => {
 
-  })
-}
+//   })
+// }
 
 addActivityBtn.addEventListener('click', showActivity)
 addHydrationBtn.addEventListener('click', showHydration)
@@ -157,7 +156,7 @@ const showStepInfo = () => {
 };
 
 const showTodayWater = () =>
-  (ounces.innerText += `${hydration.getDailyOunces()}`);
+  (ounces.innerText = `${hydration.getDailyOunces()}`);
 
 const showTodaySleep = () => {
   const lastIndex = sleep.sleepHistory.length - 1;
@@ -235,7 +234,17 @@ function addNewHydrationData(newActivity) {
     body: JSON.stringify(newActivity)
   })
   .then(res => res.json())
-  .then(data => data)
+  .then(data => data)//test to see if we need these^
+  .then(() => fetchApiUrl('hydration')
+  .then(hydro => {
+    console.log("YOO: ", hydro.hydrationData)
+    hydrationData = hydro.hydrationData
+  })
+  .then(() => {
+    newHydration()
+    showHydration()
+    showTodayWater()
+  }))
   .catch(err => console.log('Error!', err))
 }
 hydrationForm.addEventListener("submit", (e) => {
@@ -243,19 +252,17 @@ hydrationForm.addEventListener("submit", (e) => {
   const formData = new FormData(e.target);
   const newActivity = {
     userID: Number(`${user.id}`),
-    date: dayjs(formData.get("date")).format("MM/DD/YYYY"),
+    date: dayjs(formData.get("date")).format( ),
     numOunces: Number(formData.get("numOunces"))
   };
   addNewHydrationData(newActivity);
   showMainForm()
   e.target.reset();
-
-  fetchApiUrl('hydration').then((data) => {
-    console.log("HD: ", data.hydrationData)
-    hydrationData = data.hydrationData
-    
-  })
+  // newHydration()
 });
+
+//iterate through hydration data and access the .date property, .forEach()
+//use dayjs to formatt the date
 
 function addNewSleepData(newActivity) {
   fetch("http://localhost:3001/api/v1/sleep", {
