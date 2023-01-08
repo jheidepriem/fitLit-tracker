@@ -44,6 +44,7 @@ let user;
 let currentRepo;
 let hydration;
 let hydrationData;
+let updatedHydrationData
 let sleepData;
 let userData;
 let sleep;
@@ -105,7 +106,7 @@ const loadPageFunctions = () => {
           activity.getWeeklyData(activity.activityHistory[activity.activityHistory.length - 1].date, "flightsOfStairs"
           )
           )
-          // validateForm()
+  //validateForm()
   
 };
 const makeUserInstances = (dataFile) => {
@@ -182,7 +183,7 @@ const showAllTimeInfo = () => {
 //   console.log(y)
 //   console.log(x !== "" && y !== "")
 //   if (x !== "" && y !== "") {
-//     submitData.disabled = fasle
+//     submitData.disabled = false
 //   }
 // }
 
@@ -194,6 +195,7 @@ function showActivity() {
   addDataContainer.classList.toggle('hidden');
   activityForm.classList.toggle('hidden');
   formId = activityForm.id
+  console.log(formId)
 };
 function showHydration() {
   addDataContainer.classList.toggle('hidden');
@@ -217,6 +219,13 @@ function showMainForm() {
     }
 }
 
+const fetchApiUrl = (path) => {
+  return fetch(`http://localhost:3001/api/v1/${path}`)
+  .then(response => response.json())
+  .then(data => data)
+  .catch(error => console.log(`${path} error`))
+}
+
 // POST Functions
 
 function addNewHydrationData(newActivity) {
@@ -237,13 +246,29 @@ hydrationForm.addEventListener("submit", (e) => {
     date: dayjs(formData.get("date")).format("MM/DD/YYYY"),
     numOunces: Number(formData.get("numOunces"))
   };
-  console.log(newActivity)
   addNewHydrationData(newActivity);
-  console.log(hydration.userHistory);
   showMainForm()
   e.target.reset();
+
+  fetchApiUrl('hydration').then((data) => {
+    console.log("HD: ", data.hydrationData)
+    hydrationData = data.hydrationData
+    
+  })
 });
 
+function addNewSleepData(newActivity) {
+  fetch("http://localhost:3001/api/v1/sleep", {
+    method: "POST",
+    body: JSON.stringify(newActivity),
+    headers: {
+      "Content-Type": "application/json"
+    }
+  })
+  .then(res => res.json())
+  .then(data => console.log(data))
+  .catch(err => console.log('Error!', err))
+}
 
 sleepForm.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -259,19 +284,6 @@ sleepForm.addEventListener("submit", (e) => {
   showMainForm()
   e.target.reset();
 });
-function addNewSleepData(newActivity) {
-  fetch("http://localhost:3001/api/v1/sleep", {
-    method: "POST",
-    body: JSON.stringify(newActivity),
-    headers: {
-      "Content-Type": "application/json"
-    }
-  })
-  .then(res => res.json())
-  .then(data => console.log(data))
-  .catch(err => console.log('Error!', err))
-}
-
 
 function addNewActivityData(newActivity) {
   fetch("http://localhost:3001/api/v1/activity", {
