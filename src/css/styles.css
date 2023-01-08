@@ -151,7 +151,7 @@ h1 {
   box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, .2);
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: center;
   margin: 2% 1% 3% 1%;
   height: 32vh;
   width: 20vw;
@@ -217,15 +217,15 @@ h1 {
   width: 30vw;
 }
 
-.step-graph,
+/* .step-graph,
 .sleep-graph {
   display: flex;
   height: 40vh;
-  /* border: 3px solid blue; */
+  border: 3px solid blue;
   justify-content: center;
   width: 30vw;
 }
 
 .step-graph {
   border-radius: 150px;
-}
+} */
