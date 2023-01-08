@@ -229,7 +229,6 @@ function addNewHydrationData(newActivity) {
   .then(data => data)
   .catch(err => console.log('Error!', err))
 }
-
 hydrationForm.addEventListener("submit", (e) => {
   e.preventDefault();
   const formData = new FormData(e.target);
@@ -245,58 +244,59 @@ hydrationForm.addEventListener("submit", (e) => {
   e.target.reset();
 });
 
-// function addNewSleepData(newActivity) {
-//   fetch("http://localhost:3001/api/v1/sleep", {
-//     method: "POST",
-//     body: JSON.stringify(newActivity),
-//     Headers: {
-//       "Content-Type": "application/json"
-//     }
-//   })
-//   .then(res => res.json())
-//   .then(data => console.log(data))
-//   .catch(err => console.log('Error!', err))
-// }
 
-// sleepForm.addEventListener("submit", (e) => {
-//   e.preventDefault();
-//   const formData = new FormData(e.target);
-//   const newActivty = {
-//     userID: `${user.id}`,
-//     date: formData.get("date"),
-//     hoursSlept: formData.get("hoursSlept"),
-//     sleepQuality: formData.get("sleepQuality")
-//   };
-//   console.log('NEW ACTIVITY:', newActivity)
-//   addNewSleepData(newActivity);
-//   showMainForm()
-//   e.target.reset();
-// });
+sleepForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const formData = new FormData(e.target);
+  const newActivity = {
+    userID: Number(`${user.id}`),
+    date: dayjs(formData.get("date")).format("MM/DD/YYYY"),
+    hoursSlept: Number(formData.get("hoursSlept")),
+    sleepQuality: Number(formData.get("sleepQuality"))
+  };
+  console.log('NEW ACTIVITY:', newActivity)
+  addNewSleepData(newActivity);
+  showMainForm()
+  e.target.reset();
+});
+function addNewSleepData(newActivity) {
+  fetch("http://localhost:3001/api/v1/sleep", {
+    method: "POST",
+    body: JSON.stringify(newActivity),
+    headers: {
+      "Content-Type": "application/json"
+    }
+  })
+  .then(res => res.json())
+  .then(data => console.log(data))
+  .catch(err => console.log('Error!', err))
+}
 
-// function addNewActivityData(newActivity) {
-//   fetch("http://localhost:3001/api/v1/activity", {
-//     method: "POST",
-//     body: JSON.stringify(newActivity),
-//     Headers: {
-//       "Content-Type": "application/json"
-//     }
-//   })
-//   .then(res => res.json())
-//   .then(data => console.log(data))
-//   .catch(err => console.log('Error!', err))
-// }
 
-// activityForm.addEventListener("submit", (e) => {
-//   e.preventDefault();
-//   const formData = new FormData(e.target);
-//   const newActivty = {
-//     userID: `${user.id}`,
-//     date: formData.get("date"),
-//     numSteps: formData.get("numSteps"),
-//     minutesActive: formData.get("minutesActive"),
-//     flightsOfStairs: formData.get("flightsOfStairs")
-//   };
-//   showMainForm()
-//   addNewActivityData(newActivity);
-//   e.target.reset();
-// });
+function addNewActivityData(newActivity) {
+  fetch("http://localhost:3001/api/v1/activity", {
+    method: "POST",
+    body: JSON.stringify(newActivity),
+    headers: {
+      "Content-Type": "application/json"
+    }
+  })
+  .then(res => res.json())
+  .then(data => console.log(data))
+  .catch(err => console.log('Error!', err))
+}
+
+activityForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const formData = new FormData(e.target);
+  const newActivity = {
+    userID: Number(`${user.id}`),
+    date: dayjs(formData.get("date")).format("MM/DD/YYYY"),
+    numSteps: Number(formData.get("numSteps")),
+    minutesActive: Number(formData.get("minutesActive")),
+    flightsOfStairs: Number(formData.get("flightsOfStairs"))
+  };
+  showMainForm()
+  addNewActivityData(newActivity);
+  e.target.reset();
+});
