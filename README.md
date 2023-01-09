@@ -1,5 +1,5 @@
 ## Abstract
-The purpose of this app is to display a user's data, such as sleep, hydration and activity for the latest day and week including comparisions to the average of all user's for each topic.
+The purpose of this app is to display a user's data, such as sleep, hydration and activity for the latest day and week including comparisions to the average of all user's for each topic. The user is able to add their own data for a given date.
 
 ## Setup
 
