@@ -26,7 +26,6 @@ const userDistance = document.getElementById("distance");
 const userSteps = document.getElementById("steps");
 const userStairs = document.getElementById("stairs");
 const allMinutes = document.getElementById("allMinutes");
-const allDistance = document.getElementById("allDistance");
 const allSteps = document.getElementById("allSteps");
 const allStairs = document.getElementById("allStairs");
 const addDataContainer = document.querySelector('.addDataButtons')
