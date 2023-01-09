@@ -1,5 +1,5 @@
 ## Abstract
-The purpose of this app is to display a user's data, such as sleep, hydration and activity for the latest day and week including comparisions to the average of all user's for each topic.
+The purpose of this app is to display a user's data, such as sleep, hydration and activity for the latest day and week including comparisions to the average of all user's for each topic. The user is able to add their own data for a given date.
 
 ## Setup
 
@@ -31,6 +31,8 @@ Some future features would be to add each user's friends activity and rank them 
 
 ## GIF
 ![fitGif](https://user-images.githubusercontent.com/110955503/207127036-e1385276-5b43-4af0-84c3-173de74355b0.gif)
+![fitlit gif part 2](https://user-images.githubusercontent.com/110955503/211421583-dc15e797-dd31-4645-a0ee-0dc4ebaf3f24.gif)
+
 
 
 

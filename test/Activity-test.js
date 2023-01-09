@@ -151,24 +151,24 @@ describe("activity", () => {
     });
 
     it("should be able to return the number of steps for a user", () => {
-            expect(activity.returnSteps("2019/06/21")).to.equal(2900)
-            expect(activity.returnSteps()).to.equal(10000)
-        })
+        expect(activity.returnActivity("numSteps", "2019/06/21")).to.equal(2900)
+        expect(activity.returnActivity("numSteps")).to.equal(10000)
+    });
 
     it("should be able to return the minutes a user is active", () => {
-        expect(activity.returnMinutesActive("2019/06/21")).to.equal(50)
-        expect(activity.returnMinutesActive()).to.equal(60)
-    })
+        expect(activity.returnActivity("minutesActive", "2019/06/21")).to.equal(50)
+        expect(activity.returnActivity("minutesActive")).to.equal(60)
+    });
 
       it("should be able to return the stairs a user climbed", () => {
-        expect(activity.returnStairs("2019/06/21")).to.equal(30)
-        expect(activity.returnStairs()).to.equal(20)
-    })
+        expect(activity.returnActivity("flightsOfStairs", "2019/06/21")).to.equal(30)
+        expect(activity.returnActivity("flightsOfStairs")).to.equal(20)
+    });
 
     it("should be able to return the miles a user has walked", () => {
         expect(activity.returnMilesWalked("2019/06/21")).to.equal(2.4)
         expect(activity.returnMilesWalked()).to.equal(8.1)
-    })
+    });
 
     it("should be able to check if step goal was reached for a given day", () => {
         activity.checkStepGoal("2019/06/21")
@@ -177,28 +177,28 @@ describe("activity", () => {
         expect(activity.stepGoalReached).to.equal(true)
         activity.checkStepGoal()
         expect(activity.stepGoalReached).to.equal(true)
-    })
+    });
 
     it("should be able to find all days that reach step goal", () => {
         expect(activity.findReachedGoals()).to.deep.equal([activityEntry5, activityEntry7, activityEntry9])
-    })
+    });
 
     it("should find users all time stairs record", () => {
         expect(activity.findAllTimeStairsRecord()).to.equal(35)
-    })
+    });
 
     it("should find the average minutes active for any week", () => {
         expect(activity.findAvgMin("2019/06/21")).to.equal(22.1)
         expect(activity.findAvgMin("2019/06/22")).to.equal(27.9)
-    })
+    });
 
     it("should find the average minutes active for all users for a specific date", () => {
         expect(activity.findAllUsersAvg("flightsOfStairs", "2019/06/15")).to.equal(15)
         expect(activity.findAllUsersAvg("minutesActive", "2019/06/15" )).to.equal(25)
         expect(activity.findAllUsersAvg("numSteps")).to.equal(12500)
-    })
+    });
 
-      it('should have a method that returns the specified measurement each day over the course of a week', () => {
+    it('should have a method that returns the specified measurement each day over the course of a week', () => {
         expect(activity.getWeeklyData("2019/06/19", "flightsOfStairs")).to.deep.equal([10, 0, 15, 20, 35, 5, 30])
         expect(activity.getWeeklyData("2019/06/22", "flightsOfStairs")).to.deep.equal([0, 15, 20, 35, 5, 30, 20])
 
@@ -207,6 +207,6 @@ describe("activity", () => {
         
         expect(activity.getWeeklyData("2019/06/19", "numSteps")).to.deep.equal([1000, 9000, 8000, 10005, 8035, 10000, 2900])
         expect(activity.getWeeklyData("2019/06/22", "numSteps")).to.deep.equal([9000, 8000, 10005, 8035, 10000, 2900, 10000])
-      });
+    });
       
 });
