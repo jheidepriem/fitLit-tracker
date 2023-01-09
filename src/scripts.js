@@ -236,10 +236,7 @@ function addNewHydrationData(newActivity) {
   .then(res => res.json())
   .then(data => data)//test to see if we need these^
   .then(() => fetchApiUrl('hydration')
-  .then(hydro => {
-    console.log("YOO: ", hydro.hydrationData)
-    hydrationData = hydro.hydrationData
-  })
+  .then(hydro => hydrationData = hydro.hydrationData)
   .then(() => {
     newHydration()
     showHydration()
@@ -258,22 +255,23 @@ hydrationForm.addEventListener("submit", (e) => {
   addNewHydrationData(newActivity);
   showMainForm()
   e.target.reset();
-  // newHydration()
 });
-
-//iterate through hydration data and access the .date property, .forEach()
-//use dayjs to formatt the date
 
 function addNewSleepData(newActivity) {
   fetch("http://localhost:3001/api/v1/sleep", {
     method: "POST",
+    headers: {"Content-Type": "application/json"},
     body: JSON.stringify(newActivity),
-    headers: {
-      "Content-Type": "application/json"
-    }
   })
   .then(res => res.json())
-  .then(data => console.log(data))
+  .then(data => data)
+  .then(() => fetchApiUrl('sleep')
+  .then(sleep => sleepData = sleep.sleepData)
+  .then(() => {
+    newSleep()
+    showSleep()
+    showTodaySleep()
+  }))
   .catch(err => console.log('Error!', err))
 }
 
@@ -282,7 +280,7 @@ sleepForm.addEventListener("submit", (e) => {
   const formData = new FormData(e.target);
   const newActivity = {
     userID: Number(`${user.id}`),
-    date: dayjs(formData.get("date")).format("MM/DD/YYYY"),
+    date: dayjs(formData.get("date")).format("YYYY/MM/DD"),
     hoursSlept: Number(formData.get("hoursSlept")),
     sleepQuality: Number(formData.get("sleepQuality"))
   };
@@ -295,27 +293,31 @@ sleepForm.addEventListener("submit", (e) => {
 function addNewActivityData(newActivity) {
   fetch("http://localhost:3001/api/v1/activity", {
     method: "POST",
+    headers: {"Content-Type": "application/json"},
     body: JSON.stringify(newActivity),
-    headers: {
-      "Content-Type": "application/json"
-    }
   })
   .then(res => res.json())
-  .then(data => console.log(data))
+  .then(data => data)
+  .then(() => fetchApiUrl('activity')
+  .then(activity => activityData = activity.activityData)
+  .then(() => {
+    newActivity()
+    showActivity()
+    showUserActivity()
+  }))
   .catch(err => console.log('Error!', err))
 }
-
 activityForm.addEventListener("submit", (e) => {
   e.preventDefault();
   const formData = new FormData(e.target);
   const newActivity = {
     userID: Number(`${user.id}`),
-    date: dayjs(formData.get("date")).format("MM/DD/YYYY"),
+    date: dayjs(formData.get("date")).format("YYYY/MM/DD"),
     numSteps: Number(formData.get("numSteps")),
     minutesActive: Number(formData.get("minutesActive")),
     flightsOfStairs: Number(formData.get("flightsOfStairs"))
   };
-  showMainForm()
   addNewActivityData(newActivity);
+  showMainForm()
   e.target.reset();
 });
