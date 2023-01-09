@@ -6,7 +6,9 @@
 */
 
 * {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Lora", serif;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 300;
   font-size: 12px;
   margin: 0;
   padding: 0;
@@ -22,8 +24,6 @@ body {
 .hidden {
   display: none!important;
 }
-
-/* LEFT SIDE */
 
 .left-side {
   align-items: center;
@@ -49,11 +49,11 @@ body {
 
 .title {
   color: #193498;
-  font-size: 16px;
+  font-size: 14px;
 }
 
 .p {
-  color: #2F24C1;
+  color: #020202;
 }
 
 .user-info-card {
@@ -66,6 +66,18 @@ body {
 
 .input-container {
   height: 30vh;
+}
+
+.addSleep,
+.addHydration,
+.addActivity {
+  border-radius: 5px;
+  background-color: white;
+  border-color:#193498;
+  font-size: 14px;
+  padding: 4px;
+  margin: 5px
+
 }
 
 .submit-input {
@@ -90,6 +102,8 @@ body {
   display: flex;
   flex-direction: column;
   width: 10vw;
+  font-size: 14px;
+  color:#193498;
 }
 
 form {
@@ -108,7 +122,7 @@ form {
   margin: 5% 0% 0% 5%;
 }
 
-/* Main */
+
 main {
   align-items: center;
   border: 2px solid #E3FDFD;
@@ -129,7 +143,7 @@ h1 {
 
 .p-main {
   font-size: 16px;
-  color: #2F24C1;
+  color: #050505;
 }
 
 .today-container {
@@ -149,7 +163,7 @@ h1 {
   box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, .2);
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: center;
   margin: 2% 1% 3% 1%;
   height: 32vh;
   width: 20vw;
@@ -215,15 +229,4 @@ h1 {
   width: 30vw;
 }
 
-.step-graph,
-.sleep-graph {
-  display: flex;
-  height: 40vh;
-  /* border: 3px solid blue; */
-  justify-content: center;
-  width: 30vw;
-}
 
-.step-graph {
-  border-radius: 150px;
-}
