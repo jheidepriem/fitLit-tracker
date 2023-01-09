@@ -61,12 +61,6 @@ apiCalls.fetchAllData().then((data) => {
   loadPageFunctions();
 });
 
-// const updatedAPI = () => {
-//   apiCalls.fetchAllData().then((data) => {
-
-//   })
-// }
-
 addActivityBtn.addEventListener('click', showActivity)
 addHydrationBtn.addEventListener('click', showHydration)
 addSleepBtn.addEventListener('click', showSleep)
@@ -105,6 +99,8 @@ const loadPageFunctions = () => {
           activity.getWeeklyData(activity.activityHistory[activity.activityHistory.length - 1].date, "flightsOfStairs"
           )
           )
+          console.log("currentUser: ", activity.currentUser)
+          console.log("user: ", user)
   //validateForm()
   
 };
@@ -175,36 +171,19 @@ const showAllTimeInfo = () => {
   qualityAvg.innerText = `${sleep.calcDailyQualityAvg()}`;
 };
 
-// function validateForm() {
-//   var x = document.forms["hydration-form"]["date"].value;
-//   var y = document.forms["hydration-form"]["numOunces"].value;
-//   console.log(x)
-//   console.log(y)
-//   console.log(x !== "" && y !== "")
-//   if (x !== "" && y !== "") {
-//     submitData.disabled = false
-//   }
-// }
-
 // Toggle Functions
-
-let formId;
 
 function showActivity() {
   addDataContainer.classList.toggle('hidden');
   activityForm.classList.toggle('hidden');
-  formId = activityForm.id
-  console.log(formId)
 };
 function showHydration() {
   addDataContainer.classList.toggle('hidden');
   hydrationForm.classList.toggle('hidden');
-  formId = hydrationForm.id
 };
 function showSleep() {
   addDataContainer.classList.toggle('hidden');
   sleepForm.classList.toggle('hidden');
-  formId = sleepForm.id
 };
 
 function showMainForm() {
@@ -227,11 +206,11 @@ const fetchApiUrl = (path) => {
 
 // POST Functions
 
-function addNewHydrationData(newActivity) {
+function addNewHydrationData(newDataEntry) {
   fetch("http://localhost:3001/api/v1/hydration", {
     method: "POST",
     headers: {"Content-Type": "application/json"},
-    body: JSON.stringify(newActivity)
+    body: JSON.stringify(newDataEntry)
   })
   .then(res => res.json())
   .then(data => data)//test to see if we need these^
@@ -247,21 +226,20 @@ function addNewHydrationData(newActivity) {
 hydrationForm.addEventListener("submit", (e) => {
   e.preventDefault();
   const formData = new FormData(e.target);
-  const newActivity = {
+  const newDataEntry = {
     userID: Number(`${user.id}`),
-    date: dayjs(formData.get("date")).format( ),
+    date: dayjs(formData.get("date")).format("YYYY/MM/DD"),
     numOunces: Number(formData.get("numOunces"))
   };
-  addNewHydrationData(newActivity);
-  showMainForm()
+  addNewHydrationData(newDataEntry);
   e.target.reset();
 });
 
-function addNewSleepData(newActivity) {
+function addNewSleepData(newDataEntry) {
   fetch("http://localhost:3001/api/v1/sleep", {
     method: "POST",
     headers: {"Content-Type": "application/json"},
-    body: JSON.stringify(newActivity),
+    body: JSON.stringify(newDataEntry),
   })
   .then(res => res.json())
   .then(data => data)
@@ -278,23 +256,22 @@ function addNewSleepData(newActivity) {
 sleepForm.addEventListener("submit", (e) => {
   e.preventDefault();
   const formData = new FormData(e.target);
-  const newActivity = {
+  const newDataEntry = {
     userID: Number(`${user.id}`),
     date: dayjs(formData.get("date")).format("YYYY/MM/DD"),
     hoursSlept: Number(formData.get("hoursSlept")),
     sleepQuality: Number(formData.get("sleepQuality"))
   };
-  console.log('NEW ACTIVITY:', newActivity)
-  addNewSleepData(newActivity);
-  showMainForm()
+  console.log('NEW ACTIVITY:', newDataEntry)
+  addNewSleepData(newDataEntry);
   e.target.reset();
 });
 
-function addNewActivityData(newActivity) {
+function addNewActivityData(newDataEntry) {
   fetch("http://localhost:3001/api/v1/activity", {
     method: "POST",
     headers: {"Content-Type": "application/json"},
-    body: JSON.stringify(newActivity),
+    body: JSON.stringify(newDataEntry),
   })
   .then(res => res.json())
   .then(data => data)
@@ -310,14 +287,13 @@ function addNewActivityData(newActivity) {
 activityForm.addEventListener("submit", (e) => {
   e.preventDefault();
   const formData = new FormData(e.target);
-  const newActivity = {
+  const newDataEntry = {
     userID: Number(`${user.id}`),
     date: dayjs(formData.get("date")).format("YYYY/MM/DD"),
     numSteps: Number(formData.get("numSteps")),
     minutesActive: Number(formData.get("minutesActive")),
     flightsOfStairs: Number(formData.get("flightsOfStairs"))
   };
-  addNewActivityData(newActivity);
-  showMainForm()
+  addNewActivityData(newDataEntry)
   e.target.reset();
 });
