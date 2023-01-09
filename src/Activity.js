@@ -6,33 +6,13 @@ class Activity {
         this.stepGoalReached = false
     };
 
-    returnSteps(date) {
+    returnActivity(measure, date) {
         const providedDate = this.activityHistory.find(entry => entry.date === date)
         if(providedDate) {
-            return providedDate.numSteps
+            return providedDate[measure]
         } else {
             const latestDate = this.activityHistory.slice(-1)
-            return latestDate[0].numSteps
-        }
-    }
-
-    returnMinutesActive(date) {
-        const providedDate = this.activityHistory.find(entry => entry.date === date)
-        if(providedDate) {
-            return providedDate.minutesActive
-        } else {
-            const latestDate = this.activityHistory.slice(-1)
-            return latestDate[0].minutesActive
-        }
-    }
-
-    returnStairs(date) {
-        const providedDate = this.activityHistory.find(entry => entry.date === date)
-        if(providedDate) {
-            return providedDate.flightsOfStairs
-        } else {
-            const latestDate = this.activityHistory.slice(-1)
-            return latestDate[0].flightsOfStairs
+            return latestDate[0][measure]
         }
     }
 
