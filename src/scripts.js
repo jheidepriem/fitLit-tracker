@@ -132,10 +132,10 @@ const showUserInfo = () => {
 };
 
 const showUserActivity = () => {
-  userMinutes.innerText = `${activity.returnMinutesActive()}`;
+  userMinutes.innerText = `${activity.returnActivity("minutesActive")}`;
   userDistance.innerText = `${activity.returnMilesWalked()}`;
-  userSteps.innerText = `${activity.returnSteps()}`;
-  userStairs.innerText = `${activity.returnStairs()}`;
+  userSteps.innerText = `${activity.returnActivity("numSteps")}`;
+  userStairs.innerText = `${activity.returnActivity("flightsOfStairs")}`;
 };
 
 const showAverageActivity = () => {
