@@ -25,8 +25,6 @@ body {
   display: none!important;
 }
 
-/* LEFT SIDE */
-
 .left-side {
   align-items: center;
   display: flex;
@@ -51,7 +49,7 @@ body {
 
 .title {
   color: #193498;
-  font-size: 16px;
+  font-size: 14px;
 }
 
 .p {
@@ -68,6 +66,18 @@ body {
 
 .input-container {
   height: 30vh;
+}
+
+.addSleep,
+.addHydration,
+.addActivity {
+  border-radius: 5px;
+  background-color: white;
+  border-color:#193498;
+  font-size: 14px;
+  padding: 4px;
+  margin: 5px
+
 }
 
 .submit-input {
@@ -92,6 +102,8 @@ body {
   display: flex;
   flex-direction: column;
   width: 10vw;
+  font-size: 14px;
+  color:#193498;
 }
 
 form {
@@ -110,7 +122,7 @@ form {
   margin: 5% 0% 0% 5%;
 }
 
-/* Main */
+
 main {
   align-items: center;
   border: 2px solid #E3FDFD;
@@ -217,15 +229,4 @@ h1 {
   width: 30vw;
 }
 
-/* .step-graph,
-.sleep-graph {
-  display: flex;
-  height: 40vh;
-  border: 3px solid blue;
-  justify-content: center;
-  width: 30vw;
-}
 
-.step-graph {
-  border-radius: 150px;
-} */
