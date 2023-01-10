@@ -1,10 +1,3 @@
-/* COLORS 
-#F8F6F6 light silver
-#3FD1CB aqua
-#2F24C1 royal blue
-#4D12EE regular blue
-*/
-
 * {
   font-family: "Lora", serif;
   font-family: "Montserrat", sans-serif;
@@ -22,7 +15,7 @@ body {
 }
 
 .hidden {
-  display: none!important;
+  display: none !important;
 }
 
 .left-side {
@@ -36,9 +29,9 @@ body {
 
 .card {
   align-items: center;
-  border: 2px solid #E3FDFD;
+  border: 2px solid #e3fdfd;
   border-radius: 16%;
-  box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, .2);
+  box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -73,11 +66,10 @@ body {
 .addActivity {
   border-radius: 5px;
   background-color: white;
-  border-color:#193498;
+  border-color: #193498;
   font-size: 14px;
   padding: 4px;
-  margin: 5px
-
+  margin: 5px;
 }
 
 .submit-input {
@@ -103,7 +95,7 @@ body {
   flex-direction: column;
   width: 10vw;
   font-size: 14px;
-  color:#193498;
+  color: #193498;
 }
 
 form {
@@ -122,11 +114,10 @@ form {
   margin: 5% 0% 0% 5%;
 }
 
-
 main {
   align-items: center;
-  border: 2px solid #E3FDFD;
-  box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, .2);
+  border: 2px solid #e3fdfd;
+  box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: column;
   height: 100vh;
@@ -158,9 +149,9 @@ h1 {
 
 .today {
   align-items: center;
-  border: 2px solid #E3FDFD;
+  border: 2px solid #e3fdfd;
   border-radius: 16%;
-  box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, .2);
+  box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -183,9 +174,9 @@ h1 {
 
 .stride-container {
   align-items: center;
-  border: 2px solid #E3FDFD;
+  border: 2px solid #e3fdfd;
   border-radius: 3%;
-  box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, .2);
+  box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -203,7 +194,8 @@ h1 {
   width: 20vw;
 }
 
-.step-info, .p {
+.step-info,
+.p {
   font-size: 18px;
 }
 
@@ -218,9 +210,9 @@ h1 {
 
 .container {
   align-items: center;
-  border: 2px solid #E3FDFD;
+  border: 2px solid #e3fdfd;
   border-radius: 5%;
-  box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, .2);
+  box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.2);
   display: flex;
   height: 25vh;
   justify-content: center;
@@ -228,5 +220,3 @@ h1 {
   opacity: 100%;
   width: 30vw;
 }
-
-
