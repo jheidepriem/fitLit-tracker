@@ -1,14 +1,12 @@
 import "./css/styles.css";
 import UserRepository from "./UserRepository";
 import Hydration from "./Hydration";
-import Sleep from "./Sleep"
+import Sleep from "./Sleep";
 import User from "./User";
 import apiCalls from "./apiCalls";
 import Activity from "./Activity";
 import { waterGraph, sleepGraph, weeklyActivityGraph } from "./graphs";
-import * as dayjs from 'dayjs' 
-
-// Query Selectors
+import * as dayjs from "dayjs";
 
 const greeting = document.querySelector(".greeting");
 const address = document.querySelector(".address");
@@ -28,15 +26,14 @@ const userStairs = document.getElementById("stairs");
 const allMinutes = document.getElementById("allMinutes");
 const allSteps = document.getElementById("allSteps");
 const allStairs = document.getElementById("allStairs");
-const addDataContainer = document.querySelector('.addDataButtons')
-const addActivityBtn = document.querySelector('.addActivity')
-const activityForm = document.querySelector('.activityInputs')
-const addHydrationBtn = document.querySelector('.addHydration')
-const hydrationForm = document.querySelector('.hydrationInputs')
-const addSleepBtn = document.querySelector('.addSleep')
-const sleepForm = document.querySelector('.sleepInputs')
+const addDataContainer = document.querySelector(".addDataButtons");
+const addActivityBtn = document.querySelector(".addActivity");
+const activityForm = document.querySelector(".activityInputs");
+const addHydrationBtn = document.querySelector(".addHydration");
+const hydrationForm = document.querySelector(".hydrationInputs");
+const addSleepBtn = document.querySelector(".addSleep");
+const sleepForm = document.querySelector(".sleepInputs");
 
-//Global Variables
 let allUserData = [];
 let user;
 let currentRepo;
@@ -48,8 +45,6 @@ let sleep;
 let activity;
 let activityData;
 
-//Functions
-
 apiCalls.fetchAllData().then((data) => {
   userData = data[0].userData;
   hydrationData = data[1].hydrationData;
@@ -58,9 +53,9 @@ apiCalls.fetchAllData().then((data) => {
   loadPageFunctions();
 });
 
-addActivityBtn.addEventListener('click', showActivity)
-addHydrationBtn.addEventListener('click', showHydration)
-addSleepBtn.addEventListener('click', showSleep)
+addActivityBtn.addEventListener("click", showActivity);
+addHydrationBtn.addEventListener("click", showHydration);
+addSleepBtn.addEventListener("click", showSleep);
 
 const loadPageFunctions = () => {
   makeUserInstances(userData);
@@ -80,14 +75,27 @@ const loadPageFunctions = () => {
   waterGraph(hydration.getWeeklyOunces());
   sleepGraph(
     sleep.totalWeekly(
-      sleep.sleepHistory[sleep.sleepHistory.length - 1].date, "hoursSlept"),
+      sleep.sleepHistory[sleep.sleepHistory.length - 1].date,
+      "hoursSlept"
+    ),
     sleep.totalWeekly(
-      sleep.sleepHistory[sleep.sleepHistory.length - 1].date, "sleepQuality")
+      sleep.sleepHistory[sleep.sleepHistory.length - 1].date,
+      "sleepQuality"
+    )
   );
   weeklyActivityGraph(
-    activity.getWeeklyData(activity.activityHistory[activity.activityHistory.length - 1].date, "numSteps"), 
-    activity.getWeeklyData(activity.activityHistory[activity.activityHistory.length - 1].date, "minutesActive"),
-    activity.getWeeklyData(activity.activityHistory[activity.activityHistory.length - 1].date, "flightsOfStairs")
+    activity.getWeeklyData(
+      activity.activityHistory[activity.activityHistory.length - 1].date,
+      "numSteps"
+    ),
+    activity.getWeeklyData(
+      activity.activityHistory[activity.activityHistory.length - 1].date,
+      "minutesActive"
+    ),
+    activity.getWeeklyData(
+      activity.activityHistory[activity.activityHistory.length - 1].date,
+      "flightsOfStairs"
+    )
   );
 };
 const makeUserInstances = (dataFile) => {
@@ -108,7 +116,7 @@ const newHydration = () => (hydration = new Hydration(user.id, hydrationData));
 
 const newSleep = () => (sleep = new Sleep(user.id, sleepData));
 
-const newActivity = () => (activity = new Activity(activityData, user))
+const newActivity = () => (activity = new Activity(activityData, user));
 
 const greetUser = () => (greeting.innerHTML = `Hi, ${user.findFirstName()}!`);
 
@@ -156,50 +164,48 @@ const showAllTimeInfo = () => {
   qualityAvg.innerText = `${sleep.calcDailyQualityAvg()}`;
 };
 
-// Toggle Functions
-
 function showActivity() {
-  addDataContainer.classList.toggle('hidden');
-  activityForm.classList.toggle('hidden');
-};
+  addDataContainer.classList.toggle("hidden");
+  activityForm.classList.toggle("hidden");
+}
 
 function showHydration() {
-  addDataContainer.classList.toggle('hidden');
-  hydrationForm.classList.toggle('hidden');
-};
+  addDataContainer.classList.toggle("hidden");
+  hydrationForm.classList.toggle("hidden");
+}
 
 function showSleep() {
-  addDataContainer.classList.toggle('hidden');
-  sleepForm.classList.toggle('hidden');
-};
-
-// POST Functions
+  addDataContainer.classList.toggle("hidden");
+  sleepForm.classList.toggle("hidden");
+}
 
 const fetchApiUrl = (path) => {
   return fetch(`http://localhost:3001/api/v1/${path}`)
-  .then(response => response.json())
-  .then(data => data)
-  .catch(error => console.log(`${path} error`, error))
+    .then((response) => response.json())
+    .then((data) => data)
+    .catch((error) => console.log(`${path} error`, error));
 };
 
 function addNewHydrationData(newDataEntry) {
   fetch("http://localhost:3001/api/v1/hydration", {
     method: "POST",
-    headers: {"Content-Type": "application/json"},
-    body: JSON.stringify(newDataEntry)
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(newDataEntry),
   })
-  .then(res => res.json())
-  .then(data => data)
-  .then(() => fetchApiUrl('hydration')
-  .then(hydro => hydrationData = hydro.hydrationData)
-  .then(() => {
-    newHydration()
-    showHydration()
-    showTodayWater()
-    waterGraph(hydration.getWeeklyOunces());
-  }))
-  .catch(err => console.log('Error!', err))
-};
+    .then((res) => res.json())
+    .then((data) => data)
+    .then(() =>
+      fetchApiUrl("hydration")
+        .then((hydro) => (hydrationData = hydro.hydrationData))
+        .then(() => {
+          newHydration();
+          showHydration();
+          showTodayWater();
+          waterGraph(hydration.getWeeklyOunces());
+        })
+    )
+    .catch((err) => console.log("Error!", err));
+}
 
 hydrationForm.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -207,7 +213,7 @@ hydrationForm.addEventListener("submit", (e) => {
   const newDataEntry = {
     userID: Number(`${user.id}`),
     date: dayjs(formData.get("date")).format("YYYY/MM/DD"),
-    numOunces: Number(formData.get("numOunces"))
+    numOunces: Number(formData.get("numOunces")),
   };
   addNewHydrationData(newDataEntry);
   e.target.reset();
@@ -216,26 +222,32 @@ hydrationForm.addEventListener("submit", (e) => {
 function addNewSleepData(newDataEntry) {
   fetch("http://localhost:3001/api/v1/sleep", {
     method: "POST",
-    headers: {"Content-Type": "application/json"},
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify(newDataEntry),
   })
-  .then(res => res.json())
-  .then(data => data)
-  .then(() => fetchApiUrl('sleep')
-  .then(sleep => sleepData = sleep.sleepData)
-  .then(() => {
-    newSleep()
-    showSleep()
-    showTodaySleep()
-    sleepGraph(
-      sleep.totalWeekly(
-        sleep.sleepHistory[sleep.sleepHistory.length - 1].date, "hoursSlept"),
-      sleep.totalWeekly(
-        sleep.sleepHistory[sleep.sleepHistory.length - 1].date, "sleepQuality")
-    );
-  }))
-  .catch(err => console.log('Error!', err))
-};
+    .then((res) => res.json())
+    .then((data) => data)
+    .then(() =>
+      fetchApiUrl("sleep")
+        .then((sleep) => (sleepData = sleep.sleepData))
+        .then(() => {
+          newSleep();
+          showSleep();
+          showTodaySleep();
+          sleepGraph(
+            sleep.totalWeekly(
+              sleep.sleepHistory[sleep.sleepHistory.length - 1].date,
+              "hoursSlept"
+            ),
+            sleep.totalWeekly(
+              sleep.sleepHistory[sleep.sleepHistory.length - 1].date,
+              "sleepQuality"
+            )
+          );
+        })
+    )
+    .catch((err) => console.log("Error!", err));
+}
 
 sleepForm.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -244,9 +256,9 @@ sleepForm.addEventListener("submit", (e) => {
     userID: Number(`${user.id}`),
     date: dayjs(formData.get("date")).format("YYYY/MM/DD"),
     hoursSlept: Number(formData.get("hoursSlept")),
-    sleepQuality: Number(formData.get("sleepQuality"))
+    sleepQuality: Number(formData.get("sleepQuality")),
   };
-  console.log('NEW ACTIVITY:', newDataEntry)
+  console.log("NEW ACTIVITY:", newDataEntry);
   addNewSleepData(newDataEntry);
   e.target.reset();
 });
@@ -254,24 +266,39 @@ sleepForm.addEventListener("submit", (e) => {
 function addNewActivityData(newDataEntry) {
   fetch("http://localhost:3001/api/v1/activity", {
     method: "POST",
-    headers: {"Content-Type": "application/json"},
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify(newDataEntry),
   })
-  .then(res => res.json())
-  .then(data => data)
-  .then(() => fetchApiUrl('activity')
-  .then(activity => activityData = activity.activityData)
-  .then(() => {
-    newActivity()
-    showActivity()
-    showUserActivity()
-    weeklyActivityGraph(
-      activity.getWeeklyData(activity.activityHistory[activity.activityHistory.length - 1].date, "numSteps"), 
-      activity.getWeeklyData(activity.activityHistory[activity.activityHistory.length - 1].date, "minutesActive"),
-      activity.getWeeklyData(activity.activityHistory[activity.activityHistory.length - 1].date, "flightsOfStairs")
+    .then((res) => res.json())
+    .then((data) => data)
+    .then(() =>
+      fetchApiUrl("activity")
+        .then((activity) => (activityData = activity.activityData))
+        .then(() => {
+          newActivity();
+          showActivity();
+          showUserActivity();
+          showAverageActivity();
+          weeklyActivityGraph(
+            activity.getWeeklyData(
+              activity.activityHistory[activity.activityHistory.length - 1]
+                .date,
+              "numSteps"
+            ),
+            activity.getWeeklyData(
+              activity.activityHistory[activity.activityHistory.length - 1]
+                .date,
+              "minutesActive"
+            ),
+            activity.getWeeklyData(
+              activity.activityHistory[activity.activityHistory.length - 1]
+                .date,
+              "flightsOfStairs"
+            )
+          );
+        })
     )
-  }))
-  .catch(err => console.log('Error!', err))
+    .catch((err) => console.log("Error!", err));
 }
 activityForm.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -281,8 +308,8 @@ activityForm.addEventListener("submit", (e) => {
     date: dayjs(formData.get("date")).format("YYYY/MM/DD"),
     numSteps: Number(formData.get("numSteps")),
     minutesActive: Number(formData.get("minutesActive")),
-    flightsOfStairs: Number(formData.get("flightsOfStairs"))
+    flightsOfStairs: Number(formData.get("flightsOfStairs")),
   };
-  addNewActivityData(newDataEntry)
+  addNewActivityData(newDataEntry);
   e.target.reset();
 });
