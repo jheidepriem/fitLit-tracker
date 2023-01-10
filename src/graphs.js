@@ -2,7 +2,9 @@ import { Chart } from "chart.js/auto";
 
 const weeklyWaterContainer = document.querySelector(".weekly-water-container");
 const sleepDataContainer = document.querySelector(".sleep-data-container");
-const weeklyActivityContainer = document.querySelector(".activity-data-container")
+const weeklyActivityContainer = document.querySelector(
+  ".activity-data-container"
+);
 
 const waterGraph = (waterData) => {
   weeklyWaterContainer.innerHTML = `<canvas id="weekWater"></canvas>`;
@@ -92,57 +94,59 @@ const weeklyActivityGraph = (weekData1, weekData2, weekData3) => {
     data: {
       labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
       datasets: [
-    {
-      label: 'Number of Steps',
-      fill: false,
-      backgroundColor: "rgba(54, 162, 235, 0.2)",
-      borderColor:  "rgb(54, 162, 235)",
-      data: weekData1, 
-    }, {
-      label: 'Minutes Active',
-      fill: false,
-      backgroundColor: "rgba(25, 52, 152, 0.2)",
-      borderColor:  "#193498",
+        {
+          label: "Number of Steps",
+          fill: false,
+          backgroundColor: "rgba(54, 162, 235, 0.2)",
+          borderColor: "rgb(54, 162, 235)",
+          data: weekData1,
+        },
+        {
+          label: "Minutes Active",
+          fill: false,
+          backgroundColor: "rgba(25, 52, 152, 0.2)",
+          borderColor: "#193498",
 
-      data: weekData2,
-    }, {
-      label: 'Flights of Stairs Climbed',
-      backgroundColor:  "rgba(113, 223, 231, 0.2)",
-      borderColor: "rgb(113, 223, 231)",
-      data: weekData3,
-      fill: true,
+          data: weekData2,
+        },
+        {
+          label: "Flights of Stairs Climbed",
+          backgroundColor: "rgba(113, 223, 231, 0.2)",
+          borderColor: "rgb(113, 223, 231)",
+          data: weekData3,
+          fill: true,
+        },
+      ],
     },
-  ],
-},
-  options: {
-    responsive: true,
-    plugins: {
-      title: {
-        display: true,
-        text: 'Weekly Activity Graph'
-      },
-    },
-    interaction: {
-      mode: 'index',
-      intersect: false
-    },
-    scales: {
-      x: {
-        display: true,
+    options: {
+      responsive: true,
+      plugins: {
         title: {
           display: true,
-          text: 'Month'
-        }
+          text: "Weekly Activity Graph",
+        },
       },
-      y: {
-        display: true,
-        title: {
+      interaction: {
+        mode: "index",
+        intersect: false,
+      },
+      scales: {
+        x: {
           display: true,
-          text: 'Value'
+          title: {
+            display: true,
+            text: "Month",
+          },
+        },
+        y: {
+          display: true,
+          title: {
+            display: true,
+            text: "Value",
+          },
         },
       },
     },
-  },
   });
 };
 
